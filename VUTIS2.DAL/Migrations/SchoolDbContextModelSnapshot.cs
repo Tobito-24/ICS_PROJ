@@ -29,7 +29,7 @@ namespace VUTIS2.DAL.Migrations
 
                     b.HasIndex("SubjectsId");
 
-                    b.ToTable("StudentEntitySubjectEntity");
+                    b.ToTable("StudentEntitySubjectEntity", (string)null);
                 });
 
             modelBuilder.Entity("VUTIS2.DAL.Entities.ActivityEntity", b =>
@@ -62,7 +62,7 @@ namespace VUTIS2.DAL.Migrations
 
                     b.HasIndex("SubjectId");
 
-                    b.ToTable("Activities");
+                    b.ToTable("Activities", (string)null);
                 });
 
             modelBuilder.Entity("VUTIS2.DAL.Entities.EvaluationEntity", b =>
@@ -90,7 +90,7 @@ namespace VUTIS2.DAL.Migrations
 
                     b.HasIndex("StudentId");
 
-                    b.ToTable("Evaluations");
+                    b.ToTable("Evaluations", (string)null);
                 });
 
             modelBuilder.Entity("VUTIS2.DAL.Entities.StudentEntity", b =>
@@ -112,7 +112,7 @@ namespace VUTIS2.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Students");
+                    b.ToTable("Students", (string)null);
                 });
 
             modelBuilder.Entity("VUTIS2.DAL.Entities.SubjectEntity", b =>
@@ -131,7 +131,7 @@ namespace VUTIS2.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Subjects");
+                    b.ToTable("Subjects", (string)null);
                 });
 
             modelBuilder.Entity("StudentEntitySubjectEntity", b =>
