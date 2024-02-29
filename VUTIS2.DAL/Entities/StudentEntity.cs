@@ -15,6 +15,6 @@ namespace VUTIS2.DAL.Entities
 
         public string? PhotoUrl { get; set; }
 
-        public ICollection<EnrollmentsEntity> EnrolledSubjects { get; init; } = new List<EnrollmentsEntity>();
+        public ICollection<SubjectEntity> Subjects { get; init; } = [];
     }
 }

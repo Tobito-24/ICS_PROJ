@@ -21,27 +21,37 @@ namespace VUTIS2.DAL
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<StudentEntity>()
-                .HasMany<EnrollmentsEntity>()
-                .WithOne(i => i.Student)
-                .OnDelete(DeleteBehavior.NoAction);
+                .HasMany(i => i.Subjects)
+                .WithMany(i => i.Students);
 
             modelBuilder.Entity<SubjectEntity>()
-                .HasMany<EnrollmentsEntity>()
-                .WithOne(i => i.Subject)
-                .OnDelete(DeleteBehavior.NoAction);
+                .HasMany(i => i.Students)
+                .WithMany(i => i.Subjects);
 
             modelBuilder.Entity<SubjectEntity>()
-                .HasMany<ActivityEntity>()
+                .HasMany(i => i.Activities)
                 .WithOne(i => i.Subject)
                 .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<ActivityEntity>()
-                .HasOne<SubjectEntity>()
+                .HasOne(i => i.Subject)
                 .WithMany(i => i.Activities)
                 .OnDelete(DeleteBehavior.NoAction);
 
+            //Not sure (0 - many)
             modelBuilder.Entity<ActivityEntity>()
-                .HasOne<EvaluationEntity>();
+                .HasOne(i => i.Evaluation)
+                .WithOne(i => i.Activity)
+                .HasForeignKey<EvaluationEntity>(i => i.ActivityId)
+                .IsRequired(false);
+
+            //Apparently we don't need to define the relationship between Eval and Activity (it's redundant)
+
+
+            modelBuilder.Entity<EvaluationEntity>()
+                .HasOne(i => i.Student);
+
+                
 
             //if (_seedDemoData)
             //{

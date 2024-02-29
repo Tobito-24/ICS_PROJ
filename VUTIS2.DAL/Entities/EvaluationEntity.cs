@@ -11,10 +11,10 @@ namespace VUTIS2.DAL.Entities
         public Guid Id { get; set; }
 
         public required int Points { get; set; }
-
         public string? Description { get; set; }
 
-        public required ActivityEntity Activity { get; set; }
+        public int? ActivityId { get; set; }
+        public required ActivityEntity? Activity { get; set; }
 
         public required StudentEntity Student { get; set; }
     }
