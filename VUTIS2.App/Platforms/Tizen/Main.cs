@@ -2,7 +2,7 @@ using Microsoft.Maui;
 using Microsoft.Maui.Hosting;
 using System;
 
-namespace VUTIS2
+namespace VUTIS2.App
 {
     internal class Program : MauiApplication
     {

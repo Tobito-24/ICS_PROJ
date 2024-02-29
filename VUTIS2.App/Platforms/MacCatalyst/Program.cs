@@ -1,7 +1,7 @@
 ﻿using ObjCRuntime;
 using UIKit;
 
-namespace VUTIS2
+namespace VUTIS2.App
 {
     public class Program
     {

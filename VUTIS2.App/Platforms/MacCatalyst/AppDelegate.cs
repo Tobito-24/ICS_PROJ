@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace VUTIS2
+namespace VUTIS2.App
 {
     [Register("AppDelegate")]
     public class AppDelegate : MauiUIApplicationDelegate

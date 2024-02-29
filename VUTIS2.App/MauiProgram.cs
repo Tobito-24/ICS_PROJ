@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace VUTIS2
+namespace VUTIS2.App
 {
     public static class MauiProgram
     {
