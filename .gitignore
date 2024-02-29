@@ -1,3 +1,10 @@
 .vs/*
+
 VUTIS2.App/bin/*
 VUTIS2.App/obj/*
+
+VUTIS2.DAL/bin/*
+VUTIS2.DAL/obj/*
+
+VUTIS2.Common/bin/*
+VUTIS2.Common/obj/*
