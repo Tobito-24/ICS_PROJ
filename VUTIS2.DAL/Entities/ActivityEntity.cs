@@ -14,6 +14,7 @@ namespace VUTIS2.DAL.Entities
 
 
         public required SubjectEntity Subject { get; set; }
+
         public required EvaluationEntity? Evaluation { get; init; }
     }
 }
