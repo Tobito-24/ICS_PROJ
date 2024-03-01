@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using VUTIS2.DAL.Entities;
+using VUTIS2.DAL.Seeds;
 
 namespace VUTIS2.DAL
 {
-    public class SchoolDbContext(DbContextOptions contextOptions) : DbContext(contextOptions)
+    public class SchoolDbContext(DbContextOptions contextOptions, bool seedDemoData = false) : DbContext(contextOptions)
     {
         public DbSet<StudentEntity> Students => Set<StudentEntity>();
         public DbSet<ActivityEntity> Activities => Set<ActivityEntity>();
@@ -43,6 +44,14 @@ namespace VUTIS2.DAL
 
             modelBuilder.Entity<EvaluationEntity>()
                 .HasOne(i => i.Student);
+
+            if (seedDemoData)
+            {
+                StudentSeed.Seed(modelBuilder);
+                SubjectSeed.Seed(modelBuilder);
+                ActivitySeed.Seed(modelBuilder);
+                EvaluationSeed.Seed(modelBuilder);
+            }
         }
     }
 }

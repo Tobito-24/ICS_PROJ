@@ -8,7 +8,7 @@ namespace VUTIS2.DAL.Factories;
 /// </summary>
 public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<SchoolDbContext>
 {
-    private readonly DbContextSqLiteFactory _dbContextSqLiteFactory = new($"Data Source=project;Cache=Shared");
+    private readonly DbContextSqLiteFactory _dbContextSqLiteFactory = new($"Data Source=school;Cache=Shared", true);
 
     public SchoolDbContext CreateDbContext(string[] args) => _dbContextSqLiteFactory.CreateDbContext();
 }
