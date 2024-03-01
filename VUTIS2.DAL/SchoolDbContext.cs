@@ -15,13 +15,10 @@ namespace VUTIS2.DAL
         {
             base.OnModelCreating(modelBuilder);
 
+            //Removed redundant relations (EF core infers them automatically from one side of the relation)
             modelBuilder.Entity<StudentEntity>()
                 .HasMany(i => i.Subjects)
                 .WithMany(i => i.Students);
-
-            modelBuilder.Entity<SubjectEntity>()
-                .HasMany(i => i.Students)
-                .WithMany(i => i.Subjects);
 
             modelBuilder.Entity<SubjectEntity>()
                 .HasMany(i => i.Activities)
@@ -29,15 +26,8 @@ namespace VUTIS2.DAL
                 .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<ActivityEntity>()
-                .HasOne(i => i.Subject)
-                .WithMany(i => i.Activities)
-                .OnDelete(DeleteBehavior.NoAction);
-
-            modelBuilder.Entity<ActivityEntity>()
-                .HasOne(i => i.Evaluation)
-                .WithOne(i => i.Activity)
-                .HasForeignKey<EvaluationEntity>(i => i.ActivityId)
-                .IsRequired(false);
+                .HasMany(i => i.Evaluation)
+                .WithOne(i => i.Activity);
 
             modelBuilder.Entity<EvaluationEntity>()
                 .HasOne(i => i.Student);

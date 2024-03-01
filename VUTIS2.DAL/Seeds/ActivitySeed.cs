@@ -17,8 +17,12 @@ namespace VUTIS2.DAL.Seeds
             SubjectId = SubjectSeed.SubjectIMA.Id,
             Subject = SubjectSeed.SubjectIMA,
             EvaluationId = EvaluationSeed.EvaluationIMAExam.Id,
-            Evaluation = EvaluationSeed.EvaluationIMAExam
         };
+
+        static ActivitySeed()
+        {
+            ExamIMA.Evaluation?.Add(EvaluationSeed.EvaluationIMAExam);
+        }
 
         public static void Seed(this ModelBuilder modelBuilder) =>
             modelBuilder.Entity<SubjectEntity>().HasData(
