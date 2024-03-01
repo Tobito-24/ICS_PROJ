@@ -45,13 +45,13 @@ namespace VUTIS2.DAL
             modelBuilder.Entity<EvaluationEntity>()
                 .HasOne(i => i.Student);
 
-            if (seedDemoData)
-            {
-                StudentSeed.Seed(modelBuilder);
-                SubjectSeed.Seed(modelBuilder);
-                ActivitySeed.Seed(modelBuilder);
-                EvaluationSeed.Seed(modelBuilder);
-            }
+            // if (seedDemoData)
+            // {
+            //     StudentSeed.Seed(modelBuilder);
+            //     SubjectSeed.Seed(modelBuilder);
+            //     ActivitySeed.Seed(modelBuilder);
+            //     EvaluationSeed.Seed(modelBuilder);
+            // }
         }
     }
 }
