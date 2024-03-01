@@ -33,18 +33,17 @@ namespace VUTIS2.DAL
                 .WithMany(i => i.Activities)
                 .OnDelete(DeleteBehavior.NoAction);
 
-            //Not sure (0 - many)
             modelBuilder.Entity<ActivityEntity>()
                 .HasOne(i => i.Evaluation)
                 .WithOne(i => i.Activity)
                 .HasForeignKey<EvaluationEntity>(i => i.ActivityId)
                 .IsRequired(false);
 
-            //Apparently we don't need to define the relationship between Eval and Activity (it's redundant)
-
             modelBuilder.Entity<EvaluationEntity>()
                 .HasOne(i => i.Student);
 
+            // REVIEW: Why is it crashing??
+            //
             // if (seedDemoData)
             // {
             //     StudentSeed.Seed(modelBuilder);

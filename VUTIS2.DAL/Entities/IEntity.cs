@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace VUTIS2.DAL.Entities
+﻿namespace VUTIS2.DAL.Entities
 {
     public interface IEntity
     {

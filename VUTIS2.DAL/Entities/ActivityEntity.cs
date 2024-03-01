@@ -8,7 +8,9 @@ namespace VUTIS2.DAL.Entities
 
         public required DateTime StartTime { get; set; }
         public required DateTime EndTime { get; set; }
+
         public required string RoomName { get; set; }
+
         public required ActivityType ActivityType { get; set; }
         public required string Description { get; set; }
 

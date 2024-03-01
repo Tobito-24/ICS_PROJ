@@ -1,10 +1,10 @@
-using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
 namespace VUTIS2.DAL.Factories;
 
 /// <summary>
-///     EF Core CLI migration generation uses this DbContext to create model and migration
+/// EF Core CLI migration generation uses this DbContext to create model and migration
+/// UsedImplicitly
 /// </summary>
 public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<SchoolDbContext>
 {
