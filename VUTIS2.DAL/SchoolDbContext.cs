@@ -3,14 +3,8 @@ using VUTIS2.DAL.Entities;
 
 namespace VUTIS2.DAL
 {
-    public class SchoolDbContext : DbContext
+    public class SchoolDbContext(DbContextOptions contextOptions) : DbContext(contextOptions)
     {
-        private readonly bool _seedDemoData;
-
-        public SchoolDbContext(DbContextOptions contextOptions, bool seedDemoData = false)
-            : base(contextOptions) =>
-            _seedDemoData = seedDemoData;
-
         public DbSet<StudentEntity> Students => Set<StudentEntity>();
         public DbSet<ActivityEntity> Activities => Set<ActivityEntity>();
         public DbSet<SubjectEntity> Subjects => Set<SubjectEntity>();
@@ -47,18 +41,8 @@ namespace VUTIS2.DAL
 
             //Apparently we don't need to define the relationship between Eval and Activity (it's redundant)
 
-
             modelBuilder.Entity<EvaluationEntity>()
                 .HasOne(i => i.Student);
-
-                
-
-            //if (_seedDemoData)
-            //{
-            //    IngredientSeeds.Seed(modelBuilder);
-            //    RecipeSeeds.Seed(modelBuilder);
-            //    IngredientAmountSeeds.Seed(modelBuilder);
-            //}
         }
     }
 }

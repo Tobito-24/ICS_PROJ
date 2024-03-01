@@ -4,13 +4,10 @@ namespace VUTIS2.DAL.Factories;
 
 public class DbContextSqLiteFactory : IDbContextFactory<SchoolDbContext>
 {
-    private readonly bool _seedTestingData;
     private readonly DbContextOptionsBuilder<SchoolDbContext> _contextOptionsBuilder = new();
 
-    public DbContextSqLiteFactory(string databaseName, bool seedTestingData = false)
+    public DbContextSqLiteFactory(string databaseName)
     {
-        _seedTestingData = seedTestingData;
-
         ////May be helpful for ad-hoc testing, not drop in replacement, needs some more configuration.
         //builder.UseSqlite($"Data Source =:memory:;");
         _contextOptionsBuilder.UseSqlite($"Data Source={databaseName};Cache=Shared");
@@ -20,5 +17,5 @@ public class DbContextSqLiteFactory : IDbContextFactory<SchoolDbContext>
         //_contextOptionsBuilder.LogTo(Console.WriteLine);
     }
 
-    public SchoolDbContext CreateDbContext() => new(_contextOptionsBuilder.Options, _seedTestingData);
+    public SchoolDbContext CreateDbContext() => new(_contextOptionsBuilder.Options);
 }
