@@ -476,3 +476,8 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+*.dgml
+VUTIS2.DAL/school.db-shm
+VUTIS2.DAL/school.db-wal
+VUTIS2.DAL/school.db

@@ -5,6 +5,17 @@ namespace VUTIS2.DAL.Seeds
 {
     public static class EvaluationSeed
     {
+        public static readonly EvaluationEntity EmptyEvaluation = new()
+        {
+            Id = default,
+            Points = default,
+            Description = default,
+            ActivityId = default,
+            Activity = default,
+            StudentId = default,
+            Student = default
+        };
+
         public static readonly EvaluationEntity EvaluationIMAExam = new()
         {
             Id = Guid.Parse("92dd6d9d-bf28-4c90-9a23-c000b3829943"),

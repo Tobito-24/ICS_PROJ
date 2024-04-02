@@ -5,6 +5,14 @@ namespace VUTIS2.DAL.Seeds
 {
     public static class StudentSeed
     {
+        public static readonly StudentEntity EmptyStudent = new()
+        {
+            Id = default,
+            FirstName = default,
+            LastName = default,
+            PhotoUrl = default
+        };
+
         public static readonly StudentEntity StudentA = new()
         {
             Id = Guid.Parse("a54df656-c63c-4cc9-aa25-1760c764974b"),

@@ -5,6 +5,13 @@ namespace VUTIS2.DAL.Seeds
 {
     public static class SubjectSeed
     {
+        public static readonly SubjectEntity EmptySubject = new()
+        {
+            Id = default,
+            Name = default,
+            Abbreviation = default
+        };
+
         public static readonly SubjectEntity SubjectIMA = new()
         {
             Id = Guid.Parse("5ece6b37-b4ea-4a85-8ece-ee8beecca847"),

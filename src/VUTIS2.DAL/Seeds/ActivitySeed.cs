@@ -6,6 +6,19 @@ namespace VUTIS2.DAL.Seeds
 {
     public static class ActivitySeed
     {
+        public static readonly ActivityEntity EmptyActivity = new()
+        {
+            Id = default,
+            StartTime = default,
+            EndTime = default,
+            RoomName = default,
+            ActivityType = default,
+            Description = default,
+            SubjectId = default,
+            Subject = default,
+            EvaluationId = default,
+        };
+
         public static readonly ActivityEntity ExamIMA = new()
         {
             Id = Guid.Parse("2e5ddbaa-a6e1-466b-91c8-38804599e8aa"),
