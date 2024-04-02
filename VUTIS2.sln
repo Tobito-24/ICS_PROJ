@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VUTIS2.Common", "src\VUTIS2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VUTIS2.DAL", "src\VUTIS2.DAL\VUTIS2.DAL.csproj", "{7030DF02-FE0D-41CE-9D3F-0D11437F118E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VUTIS2.BL", "src\VUTIS2.BL\VUTIS2.BL.csproj", "{E465FFE4-D968-47A7-B8B2-729C727B354E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{7030DF02-FE0D-41CE-9D3F-0D11437F118E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7030DF02-FE0D-41CE-9D3F-0D11437F118E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7030DF02-FE0D-41CE-9D3F-0D11437F118E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E465FFE4-D968-47A7-B8B2-729C727B354E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E465FFE4-D968-47A7-B8B2-729C727B354E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E465FFE4-D968-47A7-B8B2-729C727B354E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E465FFE4-D968-47A7-B8B2-729C727B354E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
