@@ -1,17 +1,15 @@
-﻿using System.Collections.ObjectModel;
+﻿// Copyright (c) .NET Foundation and contributors. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 namespace VUTIS2.BL.Models;
 
-public class StudentDetailModel : ModelBase
+public class StudentListModel: ModelBase
 {
     public required string FirstName { get; init; }
     public required string LastName { get; init; }
 
     public string? PhotoUrl { get; init; }
-
-    public ObservableCollection<SubjectListModel> Subjects { get; init; } = new ();
-
-    public static StudentDetailModel Empty => new()
+    public static StudentListModel Empty => new()
     {
         Id = Guid.Empty,
         FirstName = string.Empty,

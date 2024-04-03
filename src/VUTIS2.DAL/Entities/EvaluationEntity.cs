@@ -4,13 +4,12 @@
     {
         public Guid Id { get; set; }
 
-        public required int Points { get; init; }
-        public string? Description { get; init; }
-
-        public required Guid ActivityId { get; init; }
+        public required int Points { get; set; }
+        public string? Description { get; set; }
+        public required Guid StudentId { get; set; }
+        public required Guid ActivityId { get; set; }
         public required ActivityEntity? Activity { get; init; }
 
-        public required Guid StudentId { get; init; }
         public required StudentEntity? Student { get; init; }
     }
 }
