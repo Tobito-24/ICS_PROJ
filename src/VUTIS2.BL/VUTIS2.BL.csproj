@@ -8,6 +8,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\VUTIS2.Common\VUTIS2.Common.csproj" />
+      <ProjectReference Include="..\VUTIS2.DAL\VUTIS2.DAL.csproj" />
     </ItemGroup>
 
 </Project>

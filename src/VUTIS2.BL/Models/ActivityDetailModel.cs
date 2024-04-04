@@ -12,10 +12,9 @@ public class ActivityDetailModel : ModelBase
 
     public required ActivityType ActivityType { get; init; }
     public required string Description { get; init; }
-
+    public Guid SubjectId { get; set; }
     public SubjectDetailModel? Subject { get; init; }
-
-    public ObservableCollection<EvaluationListModel> Evaluation { get; init; } = new();
+    public ObservableCollection<EvaluationListModel>? Evaluations { get; init; } = new();
 
     public static ActivityDetailModel Empty => new()
     {

@@ -14,6 +14,5 @@ public class ActivityEntityMapper : IEntityMapper<ActivityEntity>
         existingEntity.StartTime = newEntity.StartTime;
         existingEntity.EndTime = newEntity.EndTime;
         existingEntity.RoomName = newEntity.RoomName;
-        existingEntity.EvaluationId = newEntity.EvaluationId;
     }
 }

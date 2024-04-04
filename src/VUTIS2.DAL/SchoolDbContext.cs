@@ -26,7 +26,7 @@ namespace VUTIS2.DAL
                 .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<ActivityEntity>()
-                .HasMany(i => i.Evaluation)
+                .HasMany(i => i.Evaluations)
                 .WithOne(i => i.Activity);
 
             modelBuilder.Entity<EvaluationEntity>()

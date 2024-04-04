@@ -5,5 +5,5 @@ namespace VUTIS2.DAL.UnitOfWork;
 
 public interface IUnitOfWorkFactory
 {
-    
+    IUnitOfWork Create();
 }

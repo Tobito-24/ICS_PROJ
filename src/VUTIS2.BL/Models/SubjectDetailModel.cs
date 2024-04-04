@@ -1,8 +1,9 @@
 ﻿using System.Collections.ObjectModel;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace VUTIS2.BL.Models;
 
-public class SubjectDetailModel
+public class SubjectDetailModel : ModelBase
 {
     public required string Name { get; set; }
     public required string Abbreviation { get; set; }
