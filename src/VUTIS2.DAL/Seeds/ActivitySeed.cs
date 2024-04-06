@@ -16,6 +16,7 @@ namespace VUTIS2.DAL.Seeds
             Description = default,
             SubjectId = default,
             Subject = default,
+
         };
 
         public static readonly ActivityEntity ExamIMA = new()
@@ -36,8 +37,8 @@ namespace VUTIS2.DAL.Seeds
         }
 
         public static void Seed(this ModelBuilder modelBuilder) =>
-            modelBuilder.Entity<SubjectEntity>().HasData(
-                ExamIMA with { Subject = null!, Evaluations = null! }
-            );
+        modelBuilder.Entity<SubjectEntity>().HasData(
+            ExamIMA with { Subject = null!, Evaluations = null! }
+        );
     }
 }
