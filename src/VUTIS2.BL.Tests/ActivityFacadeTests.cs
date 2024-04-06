@@ -4,6 +4,7 @@ using VUTIS2.Common.Enums;
 using VUTIS2.Common.Tests;
 using VUTIS2.Common.Tests.Seeds;
 using System.Collections.ObjectModel;
+using Microsoft.EntityFrameworkCore;
 using VUTIS2.BL.Tests;
 using VUTIS2.Common.Tests;
 using VUTIS2.DAL.Entities;
@@ -30,21 +31,20 @@ public class ActivityFacadeTests : FacadeTestsBase
         //Arrange
         var model = new ActivityDetailModel()
         {
-            Id = Guid.NewGuid(),
-            StartTime = DateTime.UtcNow,
-            EndTime = DateTime.UtcNow.AddHours(4),
+            StartTime = DateTime.Parse("2023-01-04 07:00 AM"),
+            EndTime = DateTime.Parse("2023-01-04 08:00 AM"),
             RoomName = "A100",
             ActivityType = ActivityType.Exam,
             Description = "Test activity description",
             SubjectId = SubjectSeeds.SampleSubject1.Id,
-            Subject = await _subjectFacadeSUT.GetAsync(SubjectSeeds.SampleSubject1.Id)
         };
 
         //Act
-        await _facadeSUT.SaveAsync(model, SubjectSeeds.SampleSubject1.Id);
-        var returnedModel = await _facadeSUT.GetAsync(model.Id);
+        model = await _facadeSUT.SaveAsync(model);
+        var dbContext = await DbContextFactory.CreateDbContextAsync();
+        var entity = await dbContext.Activities.SingleAsync(e => e.Id == model.Id);
         //Assert
-        Assert.Equal<ActivityDetailModel>(model, returnedModel);
+        DeepAssert.Equal<ActivityDetailModel>(model, ActivityModelMapper.MapToDetailModel(entity));
     }
 
 

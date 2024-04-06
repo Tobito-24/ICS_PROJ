@@ -1,8 +1,4 @@
-﻿// Copyright (c) .NET Foundation and contributors. All rights reserved.
-// Licensed under the MIT license. See LICENSE file in the project root for full license information.
-//
-using System;
-using KellermanSoftware.CompareNetObjects;
+﻿using KellermanSoftware.CompareNetObjects;
 using Xunit.Sdk;
 
 namespace VUTIS2.Common.Tests;
@@ -26,7 +22,7 @@ public static class DeepAssert
         ComparisonResult comparisonResult = compareLogic.Compare(expected!, actual!);
         if (!comparisonResult.AreEqual)
         {
-            EqualException.ForMismatchedValues(expected, actual, comparisonResult.DifferencesString);
+            throw EqualException.ForMismatchedValues(expected, actual, comparisonResult.DifferencesString);
         }
     }
 
@@ -38,18 +34,18 @@ public static class DeepAssert
         CompareLogic compareLogic = new()
         {
             Config =
-                {
-                    MembersToIgnore = propertiesToIgnore.ToList(),
-                    IgnoreCollectionOrder = true,
-                    IgnoreObjectTypes = true,
-                    CompareStaticProperties = false,
-                    CompareStaticFields = false
-                }
+            {
+                MembersToIgnore = propertiesToIgnore.ToList(),
+                IgnoreCollectionOrder = true,
+                IgnoreObjectTypes = true,
+                CompareStaticProperties = false,
+                CompareStaticFields = false
+            }
         };
 
         if (!collection.Any(item => compareLogic.Compare(expected!, item).AreEqual))
         {
-            ContainsException.ForCollectionItemNotFound(expected.ToString(), nameof(collection));
+            throw ContainsException.ForCollectionItemNotFound(expected.ToString(), nameof(collection));
         }
     }
 }

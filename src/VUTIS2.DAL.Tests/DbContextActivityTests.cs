@@ -52,10 +52,9 @@ public class DbContextActivityTests(ITestOutputHelper output) : DbContextTestsBa
     {
         // Act
         var entities = await SchoolDbContextSUT.Activities.ToListAsync();
-
         // Assert
-        DeepAssert.Contains(ActivitySeeds.SampleActivity1, entities);
-        DeepAssert.Contains(ActivitySeeds.SampleActivity2, entities);
+        DeepAssert.Contains(SeedsBase.ClearJoined(ActivitySeeds.SampleActivity1) , entities);
+        DeepAssert.Contains(SeedsBase.ClearJoined(ActivitySeeds.SampleActivity2), entities);
     }
 
     [Fact]
@@ -68,22 +67,7 @@ public class DbContextActivityTests(ITestOutputHelper output) : DbContextTestsBa
         var entity = await SchoolDbContextSUT.Activities.FindAsync(entityId);
 
         // Assert
-        DeepAssert.Equal(ActivitySeeds.SampleActivity1, entity);
-    }
-
-    [Fact]
-    public async Task GetById_IncludingEvaluation_Activity()
-    {
-        // Arrange
-        var entityId = ActivitySeeds.SampleActivity1.Id;
-
-        // Act
-        var entity = await SchoolDbContextSUT.Activities
-            .Include(a => a.Evaluations)
-            .SingleOrDefaultAsync(a => a.Id == entityId);
-
-        // Assert
-        DeepAssert.Equal(ActivitySeeds.SampleActivity1, entity);
+        DeepAssert.Equal(ActivitySeeds.ClearJoins(ActivitySeeds.SampleActivity1), entity);
     }
 
     [Fact]

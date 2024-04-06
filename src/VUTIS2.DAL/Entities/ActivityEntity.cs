@@ -17,6 +17,6 @@ namespace VUTIS2.DAL.Entities
         public required Guid SubjectId { get; set; }
         public required SubjectEntity? Subject { get; init; }
 
-        public ICollection<EvaluationEntity>? Evaluations { get; init; } = new List<EvaluationEntity>();
+        public ICollection<EvaluationEntity> Evaluations { get; init; } = new List<EvaluationEntity>();
     }
 }

@@ -31,12 +31,10 @@ public class ActivityModelMapper(EvaluationModelMapper evaluationModelMapper, Su
         RoomName = entity.RoomName,
         ActivityType = entity.ActivityType,
         SubjectId = entity.SubjectId,
-        Evaluations = entity.Evaluations is null ? null : evaluationModelMapper.MapToListModel(entity.Evaluations).ToObservableCollection()
+        Evaluations = evaluationModelMapper.MapToListModel(entity.Evaluations).ToObservableCollection()
     };
 
-    public override ActivityEntity MapToEntity(ActivityDetailModel model)
-        => throw new NotImplementedException("This method is unsupported. Use the other overload.");
-    public ActivityEntity MapToEntity(ActivityDetailModel model, Guid subjectId)=> new()
+    public override ActivityEntity MapToEntity(ActivityDetailModel model)=> new()
     {
         Id = model.Id,
         Description = model.Description,
@@ -46,6 +44,5 @@ public class ActivityModelMapper(EvaluationModelMapper evaluationModelMapper, Su
         ActivityType = model.ActivityType,
         SubjectId = model.SubjectId,
         Subject = null!,
-        Evaluations = null!
     };
 }

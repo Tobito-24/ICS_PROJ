@@ -63,6 +63,14 @@ namespace VUTIS2.Common.Tests.Seeds
                 SampleActivity2 with { Subject = null!, Evaluations = null! }
             );
         }
+        public static ActivityEntity ClearJoins(ActivityEntity entity)
+        {
+            return entity with
+            {
+                Subject = null!,
+                Evaluations = Array.Empty<EvaluationEntity>(),
+            };
+        }
     }
 }
 

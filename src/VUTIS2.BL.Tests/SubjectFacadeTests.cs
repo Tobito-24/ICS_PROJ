@@ -5,6 +5,7 @@ using VUTIS2.BL.Facades;
 using VUTIS2.BL.Models;
 using VUTIS2.Common.Tests;
 using VUTIS2.Common.Tests.Seeds;
+using VUTIS2.DAL.Entities;
 using Xunit.Abstractions;
 
 namespace VUTIS2.BL.Tests;
@@ -43,7 +44,8 @@ public class SubjectFacadeTests : FacadeTestsBase
     public async Task GetById_SeededSubject()
     {
         var subject = await _subjectFacadeSUT.GetAsync(SubjectSeeds.SampleSubject1.Id);
-        DeepAssert.Equal(SubjectModelMapper.MapToDetailModel(SubjectSeeds.SampleSubject1), subject);
+        var expected = SubjectModelMapper.MapToDetailModel(SubjectSeeds.SampleSubject1 with {Students = new List<StudentEntity>(), Activities = new List<ActivityEntity>()});
+       DeepAssert.Equal(expected, subject);
     }
 
     [Fact]

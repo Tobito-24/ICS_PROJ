@@ -12,7 +12,7 @@ namespace VUTIS2.BL.Facades;
 
 public class ActivityFacade(IUnitOfWorkFactory unitOfWorkFactory, ActivityModelMapper activityModelMapper) : FacadeBase<ActivityEntity, ActivityListModel, ActivityDetailModel, ActivityEntityMapper>(unitOfWorkFactory, activityModelMapper), IActivityFacade
 {
-    public async Task SaveAsync(ActivityDetailModel model, Guid subjectId)
+    /*public async Task SaveAsync(ActivityDetailModel model, Guid subjectId)
     {
         ActivityEntity entity = activityModelMapper.MapToEntity(model, subjectId);
         await using IUnitOfWork uow = UnitOfWorkFactory.Create();
@@ -24,10 +24,10 @@ public class ActivityFacade(IUnitOfWorkFactory unitOfWorkFactory, ActivityModelM
             await repository.UpdateAsync(entity);
             await uow.CommitAsync();
         }
-    }
+    }*/
 
-    protected override List<string> IncludesNavigationPathDetail => new()
-    {
-        $"{nameof(ActivityEntity.Evaluations)}.{nameof(EvaluationEntity.Student)}"
-    };
+    // protected override List<string> IncludesNavigationPathDetail => new()
+    // {
+    //     $"{nameof(ActivityEntity.Evaluations)}.{nameof(EvaluationEntity.Student)}"
+    // };
 }

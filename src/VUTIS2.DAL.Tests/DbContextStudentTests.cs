@@ -4,6 +4,7 @@
 using Microsoft.EntityFrameworkCore;
 using VUTIS2.Common.Tests;
 using VUTIS2.Common.Tests.Seeds;
+using VUTIS2.DAL.Entities;
 using Xunit.Abstractions;
 
 namespace VUTIS2.DAL.Tests;
@@ -38,7 +39,7 @@ public class DbContextStudentTests(ITestOutputHelper output) : DbContextTestsBas
         var entities = await SchoolDbContextSUT.Students.ToListAsync();
 
         // Assert
-        DeepAssert.Contains(StudentSeeds.SampleStudent1, entities);
-        DeepAssert.Contains(StudentSeeds.SampleStudent2, entities);
+        DeepAssert.Contains(StudentSeeds.SampleStudent1 with { Subjects = Array.Empty<SubjectEntity>()}, entities);
+        DeepAssert.Contains(StudentSeeds.SampleStudent2 with {Subjects = Array.Empty<SubjectEntity>()}, entities);
     }
 }
