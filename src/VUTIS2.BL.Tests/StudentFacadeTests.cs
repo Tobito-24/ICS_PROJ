@@ -43,7 +43,7 @@ public sealed class StudentFacadeTests : FacadeTestsBase
     public async Task GetById_SeededStudent()
     {
         var student = await _studentFacadeSUT.GetAsync(StudentSeeds.SampleStudent1.Id);
-        DeepAssert.Equal(StudentModelMapper.MapToListModel(StudentSeeds.SampleStudent1), student);
+        DeepAssert.Equal(StudentModelMapper.MapToDetailModel(StudentSeeds.SampleStudent1), student);
     }
 
     [Fact]
