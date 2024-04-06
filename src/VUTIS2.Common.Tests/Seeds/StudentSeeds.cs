@@ -36,8 +36,7 @@ public static class StudentSeeds
 
     static StudentSeeds()
     {
-        SampleStudent1.Subjects?.Add(SubjectSeeds.SampleSubject);
-        SampleStudent2.Subjects?.Add(SubjectSeeds.SampleSubject);
+        SampleStudent1.Subjects?.Add(SubjectSeeds.SampleSubject1);
         SampleStudent2.Subjects?.Add(SubjectSeeds.SampleSubject2);
     }
 

@@ -27,15 +27,15 @@ public class DbContextActivityTests(ITestOutputHelper output) : DbContextTestsBa
             RoomName = "A100",
             ActivityType = ActivityType.Exam,
             Description = "Test activity description",
-            SubjectId = SubjectSeeds.SampleSubject.Id,
-            Subject = SubjectSeeds.SampleSubject,
-            Evaluations = new EvaluationEntity[]
+            SubjectId = SubjectSeeds.SampleSubject1.Id,
+            Subject = SubjectSeeds.SampleSubject1,
+            Evaluations = new List<EvaluationEntity>()
             {
-                EvaluationSeeds.SampleEvaluation1,
-                EvaluationSeeds.SampleEvaluation2
+                EvaluationSeeds.SampleEvaluation1
             }
         };
-
+        SchoolDbContextSUT.Subjects.Attach(entity.Subject);
+        SchoolDbContextSUT.Evaluations.Attach(entity.Evaluations.ToList()[0]);
         // Act
         SchoolDbContextSUT.Activities.Add(entity);
         await SchoolDbContextSUT.SaveChangesAsync();
@@ -90,8 +90,10 @@ public class DbContextActivityTests(ITestOutputHelper output) : DbContextTestsBa
     public async Task Update_Activity_Persisted()
     {
         // Arrange
-        var entity = ActivitySeeds.SampleActivity1;
-        entity.RoomName = "Updated Room";
+         ;
+         var entity = ActivitySeeds.SampleActivity1;
+         entity.RoomName = "Updated Room";
+
 
         // Act
         SchoolDbContextSUT.Update(entity);
@@ -106,7 +108,7 @@ public class DbContextActivityTests(ITestOutputHelper output) : DbContextTestsBa
     public async Task Delete_Activity_Deleted()
     {
         // Arrange
-        var entity = ActivitySeeds.SampleActivity1;
+        var entity = ActivitySeeds.SampleActivity2;
 
         // Act
         SchoolDbContextSUT.Activities.Remove(entity);

@@ -34,8 +34,8 @@ namespace VUTIS2.Common.Tests.Seeds
             RoomName = "D105",
             ActivityType = ActivityType.Exam,
             Description = "Polosemestralni zkouska",
-            SubjectId = SubjectSeeds.SampleSubject.Id,
-            Subject = SubjectSeeds.SampleSubject,
+            SubjectId = SubjectSeeds.SampleSubject1.Id,
+            Subject = SubjectSeeds.SampleSubject1,
         };
 
         public static readonly ActivityEntity SampleActivity2 = new()
@@ -53,7 +53,7 @@ namespace VUTIS2.Common.Tests.Seeds
         static ActivitySeeds()
         {
             SampleActivity1.Evaluations?.Add(EvaluationSeeds.SampleEvaluation1);
-            SampleActivity1.Evaluations?.Add(EvaluationSeeds.SampleEvaluation2);
+            SampleActivity2.Evaluations?.Add(EvaluationSeeds.SampleEvaluation2);
         }
 
         public static void Seed(this ModelBuilder modelBuilder)

@@ -18,7 +18,7 @@ namespace VUTIS2.Common.Tests.Seeds
 
         };
 
-        public static readonly SubjectEntity SampleSubject = new()
+        public static readonly SubjectEntity SampleSubject1 = new()
         {
             Id = Guid.NewGuid(),
             Name = "Seminar C#",
@@ -34,11 +34,10 @@ namespace VUTIS2.Common.Tests.Seeds
 
         static SubjectSeeds()
         {
-            SampleSubject.Activities?.Add(ActivitySeeds.SampleActivity1);
+            SampleSubject1.Activities?.Add(ActivitySeeds.SampleActivity1);
             SampleSubject2.Activities?.Add(ActivitySeeds.SampleActivity2);
 
-            SampleSubject.Students?.Add(StudentSeeds.SampleStudent1);
-            SampleSubject.Students?.Add(StudentSeeds.SampleStudent2);
+            SampleSubject1.Students?.Add(StudentSeeds.SampleStudent1);
             SampleSubject2.Students?.Add(StudentSeeds.SampleStudent2);
         }
 
@@ -46,7 +45,7 @@ namespace VUTIS2.Common.Tests.Seeds
         {
             modelBuilder.Entity<SubjectEntity>().HasData(
                 SampleSubject2 with { Students = null!, Activities = null! },
-                SampleSubject with { Students = null!, Activities = null! }
+                SampleSubject1 with { Students = null!, Activities = null! }
             );
         }
     }

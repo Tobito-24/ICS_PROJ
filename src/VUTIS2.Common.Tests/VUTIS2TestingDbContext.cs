@@ -20,8 +20,8 @@ public class SchoolTestingDbContext(DbContextOptions contextOptions, bool seedTe
 
         if (seedTestingData)
         {
-            ActivitySeeds.Seed(modelBuilder);
             SubjectSeeds.Seed(modelBuilder);
+            ActivitySeeds.Seed(modelBuilder);
             StudentSeeds.Seed(modelBuilder);
             EvaluationSeeds.Seed(modelBuilder);
         }

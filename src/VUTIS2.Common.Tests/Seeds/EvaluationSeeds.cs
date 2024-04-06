@@ -25,7 +25,7 @@ namespace VUTIS2.Common.Tests.Seeds
         {
             Id = Guid.NewGuid(),
             Points = 90,
-            Description = "First question is wrong, ....",
+            Description = "First question is wrong, ...",
             StudentId = StudentSeeds.SampleStudent1.Id,
             Student = StudentSeeds.SampleStudent1,
             ActivityId = ActivitySeeds.SampleActivity1.Id,
@@ -36,11 +36,11 @@ namespace VUTIS2.Common.Tests.Seeds
         {
             Id = Guid.NewGuid(),
             Points = 45,
-            Description = "Did not passed....",
+            Description = "Did not pass...",
             StudentId = StudentSeeds.SampleStudent2.Id,
             Student = StudentSeeds.SampleStudent2,
-            ActivityId = ActivitySeeds.SampleActivity1.Id,
-            Activity = ActivitySeeds.SampleActivity1,
+            ActivityId = ActivitySeeds.SampleActivity2.Id,
+            Activity = ActivitySeeds.SampleActivity2,
         };
 
         public static void Seed(this ModelBuilder modelBuilder)
