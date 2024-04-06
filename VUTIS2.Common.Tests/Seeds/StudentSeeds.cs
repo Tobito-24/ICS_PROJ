@@ -3,6 +3,7 @@
 //
 
 using System;
+using System.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using VUTIS2.DAL.Entities;
 
@@ -15,7 +16,6 @@ public static class StudentSeeds
         FirstName = default!,
         LastName = default!,
         PhotoUrl = default,
-        Subjects = default!,
     };
 
     public static readonly StudentEntity SampleStudent1 = new()
@@ -24,7 +24,6 @@ public static class StudentSeeds
         FirstName = "John",
         LastName = "Doe",
         PhotoUrl = "https://example.com/photo.jpg",
-        Subjects = new List<SubjectEntity> { SubjectSeeds.SampleSubject }
     };
 
     public static readonly StudentEntity SampleStudent2 = new()
@@ -33,15 +32,20 @@ public static class StudentSeeds
         FirstName = "Jacob",
         LastName = "Done",
         PhotoUrl = "https://example.com/photo.jpg",
-        Subjects = new List<SubjectEntity>{ SubjectSeeds.SampleSubject, SubjectSeeds.SampleSubject2 }
     };
+
+    static StudentSeeds()
+    {
+        SampleStudent1.Subjects?.Add(SubjectSeeds.SampleSubject);
+        SampleStudent2.Subjects?.Add(SubjectSeeds.SampleSubject);
+        SampleStudent2.Subjects?.Add(SubjectSeeds.SampleSubject2);
+    }
 
     public static void Seed(this ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<StudentEntity>().HasData(
-            SampleStudent1,
-            SampleStudent2,
-            EmptyStudent
+            SampleStudent1 with { Subjects = null!},
+            SampleStudent2 with { Subjects = null!}
         );
     }
 }

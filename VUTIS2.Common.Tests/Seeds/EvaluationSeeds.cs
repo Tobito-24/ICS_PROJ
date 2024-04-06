@@ -14,7 +14,7 @@ namespace VUTIS2.Common.Tests.Seeds
         {
             Id = default,
             Points = default,
-            Description = default,
+            Description = default!,
             StudentId = default,
             ActivityId = default,
             Activity = default,
@@ -46,9 +46,8 @@ namespace VUTIS2.Common.Tests.Seeds
         public static void Seed(this ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<EvaluationEntity>().HasData(
-                SampleEvaluation2,
-                SampleEvaluation1,
-                EmptyEvaluation
+                SampleEvaluation2 with { Activity = null!, Student = null! },
+                SampleEvaluation1 with { Activity = null!, Student = null! }
             );
         }
     }

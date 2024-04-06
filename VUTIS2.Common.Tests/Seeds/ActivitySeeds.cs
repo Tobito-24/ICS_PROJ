@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using VUTIS2.Common.Enums;
 using VUTIS2.DAL.Entities;
 using VUTIS2.Common.Tests.Seeds;
+using VUTIS2.DAL.Seeds;
 
 namespace VUTIS2.Common.Tests.Seeds
 {
@@ -23,8 +24,6 @@ namespace VUTIS2.Common.Tests.Seeds
             Description = default!,
             SubjectId = default,
             Subject = default,
-            EvaluationId = default,
-            Evaluation = default!,
         };
 
         public static readonly ActivityEntity SampleActivity1 = new()
@@ -37,8 +36,6 @@ namespace VUTIS2.Common.Tests.Seeds
             Description = "Polosemestralni zkouska",
             SubjectId = SubjectSeeds.SampleSubject.Id,
             Subject = SubjectSeeds.SampleSubject,
-            EvaluationId = Guid.NewGuid(),
-            Evaluation = new List<EvaluationEntity>{EvaluationSeeds.SampleEvaluation1, EvaluationSeeds.SampleEvaluation2}
         };
 
         public static readonly ActivityEntity SampleActivity2 = new()
@@ -51,16 +48,19 @@ namespace VUTIS2.Common.Tests.Seeds
             Description = "demo cviceni",
             SubjectId = SubjectSeeds.SampleSubject2.Id,
             Subject = SubjectSeeds.SampleSubject2,
-            EvaluationId = Guid.NewGuid(),
-            Evaluation = new List<EvaluationEntity>()
         };
+
+        static ActivitySeeds()
+        {
+            SampleActivity1.Evaluation?.Add(EvaluationSeeds.SampleEvaluation1);
+            SampleActivity1.Evaluation?.Add(EvaluationSeeds.SampleEvaluation2);
+        }
 
         public static void Seed(this ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ActivityEntity>().HasData(
-                SampleActivity1,
-                SampleActivity2,
-                EmptyActivity
+                SampleActivity1 with { Subject = null!, Evaluation = null! },
+                SampleActivity2 with { Subject = null!, Evaluation = null! }
             );
         }
     }

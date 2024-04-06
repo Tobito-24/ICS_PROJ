@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using VUTIS2.DAL;
 
 namespace VUTIS2.Common.Tests.Factories;
-internal class DbContextSQLiteTestingFactory(string databaseName, bool seedTestingData = false)
+public class DbContextSQLiteTestingFactory(string databaseName, bool seedTestingData = false)
     : IDbContextFactory<SchoolDbContext>
 {
     public SchoolDbContext CreateDbContext()

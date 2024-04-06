@@ -15,8 +15,6 @@ namespace VUTIS2.Common.Tests.Seeds
             Id = default,
             Name = default!,
             Abbreviation = default!,
-            Activities = default!,
-            Students = default!,
 
         };
 
@@ -25,8 +23,6 @@ namespace VUTIS2.Common.Tests.Seeds
             Id = Guid.NewGuid(),
             Name = "Seminar C#",
             Abbreviation = "ICS",
-            Activities = new List<ActivityEntity> { ActivitySeeds.SampleActivity1 },
-            Students = new List<StudentEntity>{ StudentSeeds.SampleStudent1, StudentSeeds.SampleStudent2 },
         };
 
         public static readonly SubjectEntity SampleSubject2 = new()
@@ -34,16 +30,23 @@ namespace VUTIS2.Common.Tests.Seeds
             Id = Guid.NewGuid(),
             Name = "Databaze",
             Abbreviation = "IDS",
-            Activities = new List<ActivityEntity> { ActivitySeeds.SampleActivity2 },
-            Students = new List<StudentEntity> { StudentSeeds.SampleStudent2 },
         };
+
+        static SubjectSeeds()
+        {
+            SampleSubject.Activities?.Add(ActivitySeeds.SampleActivity1);
+            SampleSubject2.Activities?.Add(ActivitySeeds.SampleActivity2);
+
+            SampleSubject.Students?.Add(StudentSeeds.SampleStudent1);
+            SampleSubject.Students?.Add(StudentSeeds.SampleStudent2);
+            SampleSubject2.Students?.Add(StudentSeeds.SampleStudent2);
+        }
 
         public static void Seed(this ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<SubjectEntity>().HasData(
-                SampleSubject2,
-                SampleSubject,
-                EmptySubject
+                SampleSubject2 with { Students = null!, Activities = null! },
+                SampleSubject with { Students = null!, Activities = null! }
             );
         }
     }

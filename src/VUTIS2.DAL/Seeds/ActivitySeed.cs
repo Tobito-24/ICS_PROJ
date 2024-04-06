@@ -16,7 +16,7 @@ namespace VUTIS2.DAL.Seeds
             Description = default,
             SubjectId = default,
             Subject = default,
-            EvaluationId = default,
+
         };
 
         public static readonly ActivityEntity ExamIMA = new()
@@ -29,7 +29,6 @@ namespace VUTIS2.DAL.Seeds
             Description = "Math analysis 1 exam",
             SubjectId = SubjectSeed.SubjectIMA.Id,
             Subject = SubjectSeed.SubjectIMA,
-            EvaluationId = EvaluationSeed.EvaluationIMAExam.Id,
         };
 
         static ActivitySeed()
@@ -38,8 +37,8 @@ namespace VUTIS2.DAL.Seeds
         }
 
         public static void Seed(this ModelBuilder modelBuilder) =>
-            modelBuilder.Entity<SubjectEntity>().HasData(
-                ExamIMA with { Subject = null!, Evaluation = null! }
-            );
+        modelBuilder.Entity<SubjectEntity>().HasData(
+            ExamIMA with { Subject = null!, Evaluation = null! }
+        );
     }
 }

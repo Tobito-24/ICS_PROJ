@@ -22,6 +22,8 @@ public class SchoolTestingDbContext(DbContextOptions contextOptions, bool seedTe
         {
             ActivitySeeds.Seed(modelBuilder);
             SubjectSeeds.Seed(modelBuilder);
+            StudentSeeds.Seed(modelBuilder);
+            EvaluationSeeds.Seed(modelBuilder);
         }
     }
 }
