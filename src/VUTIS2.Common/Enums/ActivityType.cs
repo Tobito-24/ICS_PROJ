@@ -3,6 +3,7 @@
     public enum ActivityType
     {
         Exam,
-        Exercise
+        Exercise,
+        Empty
     }
 }

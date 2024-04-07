@@ -4,10 +4,10 @@
     {
         public Guid Id { get; set; }
 
-        public required string FirstName { get; init; }
-        public required string LastName { get; init; }
+        public required string FirstName { get; set; }
+        public required string LastName { get; set; }
 
-        public string? PhotoUrl { get; init; }
+        public string? PhotoUrl { get; set; }
 
         public ICollection<SubjectEntity> Subjects { get; init; } = new List<SubjectEntity>();
     }

@@ -6,18 +6,17 @@ namespace VUTIS2.DAL.Entities
     {
         public Guid Id { get; set; }
 
-        public required DateTime StartTime { get; init; }
-        public required DateTime EndTime { get; init; }
+        public required DateTime StartTime { get; set; }
+        public required DateTime EndTime { get; set; }
 
-        public required string RoomName { get; init; }
+        public required string RoomName { get; set; }
 
-        public required ActivityType ActivityType { get; init; }
-        public required string Description { get; init; }
+        public required ActivityType ActivityType { get; set; }
+        public required string Description { get; set; }
 
-        public required Guid SubjectId { get; init; }
+        public required Guid SubjectId { get; set; }
         public required SubjectEntity? Subject { get; init; }
 
-        public required Guid EvaluationId { get; init; }
-        public ICollection<EvaluationEntity>? Evaluation { get; init; } = new List<EvaluationEntity>();
+        public ICollection<EvaluationEntity> Evaluations { get; init; } = new List<EvaluationEntity>();
     }
 }

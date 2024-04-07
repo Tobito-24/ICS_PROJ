@@ -7,8 +7,8 @@
         public required string Name { get; set; }
         public required string Abbreviation { get; set; }
 
-        public ICollection<ActivityEntity> Activities { get; init; } = [];
+        public ICollection<ActivityEntity> Activities { get; init; } = new List<ActivityEntity>();
 
-        public ICollection<StudentEntity> Students { get; init; } = [];
+        public ICollection<StudentEntity> Students { get; init; } = new List<StudentEntity>();
     }
 }
