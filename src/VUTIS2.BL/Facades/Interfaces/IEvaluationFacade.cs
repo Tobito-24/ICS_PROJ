@@ -2,10 +2,10 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using VUTIS2.BL.Models;
+using VUTIS2.DAL.Entities;
 
 namespace VUTIS2.BL.Facades;
 
-public interface IEvaluationFacade
+public interface IEvaluationFacade : IFacade<EvaluationEntity, EvaluationListModel, EvaluationDetailModel>
 {
-    Task SaveAsync(EvaluationDetailModel model, Guid activityId);
 }

@@ -35,8 +35,8 @@ public class EvaluationFacadeTests : FacadeTestsBase
         };
 
         model = await _evaluationFacadeSUT.SaveAsync(model);
-        var dbx = await DbContextFactory<>.CreateDbContextAsync();
-        var entity = await dbx.Activities.SingleAsync(e => e.Id == model.Id);
-        DeepAssert.Equal(model, ActivityModelMapper.MapToDetailModel(entity));
+        var dbx = await DbContextFactory.CreateDbContextAsync();
+        var entity = await dbx.Evaluations.SingleAsync(e => e.Id == model.Id);
+        DeepAssert.Equal(model, EvaluationModelMapper.MapToDetailModel(entity));
     }
 }

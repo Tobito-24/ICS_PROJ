@@ -40,9 +40,7 @@ public class EvaluationModelMapper(StudentModelMapper studentModelMapper) : Mode
             StudentId = evaluationDetailModel.StudentId,
             Student = evaluationDetailModel.Student,
         };
-    public override EvaluationEntity MapToEntity(EvaluationDetailModel model)
-        => throw new NotImplementedException("This method is unsupported. Use the other overload.");
-    public EvaluationEntity MapToEntity(EvaluationDetailModel model, Guid activityId) => new()
+    public override EvaluationEntity MapToEntity(EvaluationDetailModel model) => new()
     {
         Id = model.Id,
         Description = model.Description,

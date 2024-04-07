@@ -12,17 +12,4 @@ namespace VUTIS2.BL.Facades;
 
 public class EvaluationFacade(IUnitOfWorkFactory unitOfWorkFactory, EvaluationModelMapper evaluationModelMapper) : FacadeBase<EvaluationEntity, EvaluationListModel, EvaluationDetailModel, EvaluationEntityMapper>(unitOfWorkFactory, evaluationModelMapper), IEvaluationFacade
 {
-    public async Task SaveAsync(EvaluationDetailModel model, Guid activityId)
-    {
-        EvaluationEntity entity = evaluationModelMapper.MapToEntity(model, activityId);
-        await using IUnitOfWork uow = UnitOfWorkFactory.Create();
-        IRepository<EvaluationEntity> repository =
-            uow.GetRepository<EvaluationEntity, EvaluationEntityMapper>();
-
-        if (await repository.ExistsAsync(entity))
-        {
-            await repository.UpdateAsync(entity);
-            await uow.CommitAsync();
-        }
-    }
 }

@@ -6,9 +6,9 @@ public class EvaluationDetailModel : ModelBase
     public string? Description { get; init; }
     public Guid ActivityId { get; set; }
 
-    public required ActivityDetailModel Activity { get; init; }
+    public ActivityDetailModel? Activity { get; init; }
     public Guid StudentId { get; set; }
-    public required StudentListModel? Student { get; init; }
+    public StudentListModel? Student { get; init; }
     public static EvaluationDetailModel Empty => new()
     {
         Id = Guid.Empty,
