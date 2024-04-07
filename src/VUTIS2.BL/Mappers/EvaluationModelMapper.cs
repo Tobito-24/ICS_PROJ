@@ -27,8 +27,7 @@ public class EvaluationModelMapper(StudentModelMapper studentModelMapper) : Mode
         Points = entity.Points,
         StudentId = entity.StudentId,
         ActivityId = entity.ActivityId,
-        Activity = null!,
-        Student = null!
+        Student = studentModelMapper.MapToListModel(entity.Student),
     };
 
     public EvaluationListModel MapToListModel(EvaluationDetailModel evaluationDetailModel)

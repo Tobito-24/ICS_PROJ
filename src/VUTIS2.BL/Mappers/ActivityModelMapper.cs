@@ -6,7 +6,7 @@ using VUTIS2.DAL.Entities;
 
 namespace VUTIS2.BL.Mappers;
 
-public class ActivityModelMapper(EvaluationModelMapper evaluationModelMapper, SubjectModelMapper subjectModelMapper) : ModelMapperBase<ActivityEntity, ActivityListModel, ActivityDetailModel>
+public class ActivityModelMapper(EvaluationModelMapper evaluationModelMapper) : ModelMapperBase<ActivityEntity, ActivityListModel, ActivityDetailModel>
 {
     public override ActivityListModel MapToListModel(ActivityEntity? entity)
         => entity is null

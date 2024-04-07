@@ -5,7 +5,6 @@ public class EvaluationDetailModel : ModelBase
     public required int Points { get; init; }
     public string? Description { get; init; }
     public Guid ActivityId { get; set; }
-
     public ActivityDetailModel? Activity { get; init; }
     public Guid StudentId { get; set; }
     public StudentListModel? Student { get; init; }
