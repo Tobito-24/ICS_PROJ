@@ -1,6 +1,4 @@
-// Copyright (c) .NET Foundation and contributors. All rights reserved.
-// Licensed under the MIT license. See LICENSE file in the project root for full license information.
-
+using Microsoft.EntityFrameworkCore;
 using VUTIS2.BL.Facades;
 using VUTIS2.BL.Models;
 using VUTIS2.Common.Tests;
@@ -19,7 +17,7 @@ public sealed class StudentFacadeTests : FacadeTestsBase
     }
 
     [Fact]
-    public async Task Create_WithNonExistingItem_DoesNotThrow()
+    public async Task Create_WithNonExistentItem_DoesNotThrow()
     {
         var model = new StudentDetailModel()
         {
@@ -28,7 +26,7 @@ public sealed class StudentFacadeTests : FacadeTestsBase
             LastName = "Lastname",
         };
 
-        var _ = await _studentFacadeSUT.SaveAsync(model);
+        await _studentFacadeSUT.SaveAsync(model);
     }
 
     [Fact]
@@ -47,10 +45,42 @@ public sealed class StudentFacadeTests : FacadeTestsBase
     }
 
     [Fact]
-    public async Task GetById_NonExistent()
+    public async Task GetById_NonExistentStudent()
     {
         var student = await _studentFacadeSUT.GetAsync(StudentSeeds.EmptyStudent.Id);
 
         Assert.Null(student);
+    }
+
+    [Fact]
+    public async Task DeleteById_NonExistentStudent_Throw()
+    {
+        await Assert.ThrowsAsync<InvalidOperationException>(async () => await _studentFacadeSUT.DeleteAsync(StudentSeeds.EmptyStudent.Id));
+    }
+
+    [Fact]
+    public async Task DeleteById_SeededStudent()
+    {
+        await _studentFacadeSUT.DeleteAsync(StudentSeeds.SampleStudent1.Id);
+
+        var dbx = await DbContextFactory.CreateDbContextAsync();
+        Assert.False(await dbx.Students.AnyAsync(i => i.Id == StudentSeeds.SampleStudent1.Id));
+    }
+
+    [Fact]
+    public async Task NewStudent_Insert_Added()
+    {
+        var student = new StudentDetailModel()
+        {
+            Id = Guid.Empty,
+            FirstName = "Joe",
+            LastName = "Biden",
+        };
+
+        student = await _studentFacadeSUT.SaveAsync(student);
+
+        await using var dbx = await DbContextFactory.CreateDbContextAsync();
+        var studentFromDb = await dbx.Students.SingleAsync(i => i.Id == student.Id);
+        DeepAssert.Equal(student, StudentModelMapper.MapToDetailModel(studentFromDb));
     }
 }
