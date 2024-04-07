@@ -39,6 +39,19 @@ public class EvaluationFacadeTests : FacadeTestsBase
     }
 
     [Fact]
+    public async Task CreateEvaluation_WithoutStudent_Throw()
+    {
+        var model = new EvaluationDetailModel()
+        {
+            Points = 1,
+            ActivityId = ActivitySeeds.SampleActivity1.Id,
+            //StudentId = StudentSeeds.SampleStudent1.Id,
+        };
+
+        await Assert.ThrowsAsync<DbUpdateException>(async () => await _evaluationFacadeSUT.SaveAsync(model));
+    }
+
+    [Fact]
     public async Task GetAll_Single_SeededEvaluation()
     {
         var evaluations = await _evaluationFacadeSUT.GetAsync();
