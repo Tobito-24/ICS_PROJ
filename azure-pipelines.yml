@@ -24,4 +24,4 @@ steps:
     command: 'test'
     arguments: '--configuration Debug --no-build'
     publishTestResults: true
-    projects: '**/*.Tests.csproj'
+    projects: '**/src/*.Tests.csproj'
