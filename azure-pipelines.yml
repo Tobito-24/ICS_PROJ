@@ -22,6 +22,5 @@ steps:
   displayName: 'Run unit tests'
   inputs:
     command: 'test'
-    arguments: '--configuration Debug --no-build'
     publishTestResults: true
-    projects: '**/src/*.Tests.csproj'
+    projects: '**/*.Tests.csproj'
