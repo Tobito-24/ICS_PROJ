@@ -9,9 +9,6 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-variables:
-  buildConfiguration: 'Debug'
-
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
@@ -22,9 +19,9 @@ steps:
   displayName: 'Run a multi-line script'
 
 - task: DotNetCoreCLI@2
-  displayName: 'Run unit tests - $(buildConfiguration)'
+  displayName: 'Run unit tests'
   inputs:
     command: 'test'
-    arguments: '--no-build --configuration $(buildConfiguration)'
+    arguments: '--no-build'
     publishTestResults: true
     projects: '**/*.Tests.csproj'
