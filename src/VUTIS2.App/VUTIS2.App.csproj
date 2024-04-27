@@ -73,6 +73,10 @@
 
 	<ItemGroup>
 	  <Folder Include="Messages\" />
+	  <Folder Include="ViewModels\Activity\" />
+	  <Folder Include="ViewModels\Evaluation\" />
+	  <Folder Include="ViewModels\Student\" />
+	  <Folder Include="ViewModels\Subject\" />
 	</ItemGroup>
 
 	<ItemGroup>
