@@ -81,4 +81,19 @@
 	  </MauiXaml>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <EmbeddedResource Update="Resources\Texts\AppShellTexts.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>AppShellTexts.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Resources\Texts\AppShellTexts.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>AppShellTexts.resx</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
 </Project>
