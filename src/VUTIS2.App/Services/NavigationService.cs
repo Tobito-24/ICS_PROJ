@@ -4,6 +4,7 @@
 
 using VUTIS2.App.Models;
 using VUTIS2.App.ViewModels;
+using VUTIS2.App.Views;
 
 namespace VUTIS2.App.Services;
 
@@ -11,7 +12,12 @@ public class NavigationService : INavigationService
 {
     public IEnumerable<RouteModel> Routes { get; } = new List<RouteModel>
     {
-        //zde definujeme routes
+        new("//students", null, null),
+        new("//students/detail", null, null),
+        new("//activity", null, null),
+        new("//evaluation", null, null),
+        new("//subjects", null, null),
+        new("//subjects/detail", null, null),
     };
 
     public async Task GoToAsync<TViewModel>()
