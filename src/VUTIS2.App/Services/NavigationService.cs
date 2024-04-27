@@ -5,6 +5,7 @@
 using VUTIS2.App.Models;
 using VUTIS2.App.ViewModels;
 using VUTIS2.App.Views;
+using VUTIS2.App.Views.Student;
 
 namespace VUTIS2.App.Services;
 
@@ -12,8 +13,8 @@ public class NavigationService : INavigationService
 {
     public IEnumerable<RouteModel> Routes { get; } = new List<RouteModel>
     {
-        new("//students", null, null),
-        new("//students/detail", null, null),
+        new("//students", typeof(StudentListView), typeof(StudentListViewModel)),
+        new("//students/detail", typeof(StudentDetailViewModel), typeof(StudentDetailView)),
         new("//activity", null, null),
         new("//evaluation", null, null),
         new("//subjects", null, null),

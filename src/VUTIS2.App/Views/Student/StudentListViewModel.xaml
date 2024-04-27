@@ -5,7 +5,7 @@
                        xmlns:vm="clr-namespace:VUTIS2.App.ViewModels"
                        xmlns:views="clr-namespace:VUTIS2.App.Views"
                        x:DataType="vm:StudentListViewModel"
-                       x:Class="VUTIS2.App.Views.Student.StudenListView">
+                       x:Class="VUTIS2.App.Views.Student.StudentListView">
 
     <ScrollView>
         <Grid ColumnDefinitions="*,*">
@@ -15,5 +15,4 @@
 
         </Grid>
     </ScrollView>
-
 </views:ContentPageBase>

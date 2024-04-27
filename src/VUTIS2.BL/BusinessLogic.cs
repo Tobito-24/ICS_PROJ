@@ -1,6 +1,9 @@
-﻿namespace VUTIS2.BL;
+﻿using System.Runtime.CompilerServices;
 
-public class BusinessLogic
+[assembly: InternalsVisibleTo("VUTIS2.BL.Tests")]
+
+namespace VUTIS2.BL;
+
+internal class BusinessLogic
 {
-
 }
