@@ -14,7 +14,7 @@ public partial class StudentEditViewModel(IStudentFacade studentFacade, INavigat
     public async Task SaveAsync()
     {
         await studentFacade.SaveAsync(Student);
-        messengerService.Send(new StudentEditMessage {StudentId = Student.Id});
+        MessengerService.Send(new StudentEditMessage {StudentId = Student.Id});
         navigationService.SendBackButtonPressed();
     }
 }

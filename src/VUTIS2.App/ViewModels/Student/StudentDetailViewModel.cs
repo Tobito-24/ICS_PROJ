@@ -25,7 +25,7 @@ public partial class StudentDetailViewModel( IStudentFacade studentFacade, INavi
             try
             {
                 await studentFacade.DeleteAsync(Student.Id);
-                messengerService.Send(new StudentDeleteMessage());
+                MessengerService.Send(new StudentDeleteMessage());
                 navigationService.SendBackButtonPressed();
             }
             catch (InvalidOperationException)

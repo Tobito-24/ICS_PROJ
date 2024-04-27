@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<views:ContentPageBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:texts="clr-namespace:VUTIS2.App.Resources.Texts"
              xmlns:vm="clr-namespace:VUTIS2.App.ViewModels"
+             xmlns:views="clr-namespace:VUTIS2.App.Views"
              x:DataType="vm:StudentDetailViewModel"
-             x:Class="VUTIS2.App.Views.StudentDetailPage">
+             x:Class="VUTIS2.App.Views.Student.StudentDetailView">
 
 
     <Grid ColumnDefinitions="*,*">
@@ -18,4 +19,4 @@
 
         </VerticalStackLayout>
     </Grid>
-</ContentPage>
+</views:ContentPageBase>
