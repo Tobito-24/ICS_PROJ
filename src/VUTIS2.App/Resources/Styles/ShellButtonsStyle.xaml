@@ -7,5 +7,8 @@
         <Setter Property="BackgroundColor" Value="{StaticResource ShellButtonBackground}" />
         <Setter Property="Margin" Value="10, 0" />
         <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+        <Setter Property="CornerRadius" Value="5" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontFamily" Value="MonsterratMedium" />
     </Style>
 </ResourceDictionary>

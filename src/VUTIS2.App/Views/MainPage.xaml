@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VUTIS2.App.MainPage"
+             xmlns:text="clr-namespace:VUTIS2.App.Resources.Texts">
+
+
+    <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*">
+        <Label Text="{x:Static text:MainPage.WelcomeView}"
+               VerticalOptions="Start"
+               HorizontalOptions="Start"
+               FontSize="50"
+               Padding="40, 20"
+               Grid.Row="0"
+               Grid.Column="0"/>
+
+        <Grid Grid.Row="1"
+              Grid.Column="0"
+              ColumnDefinitions="*,*"
+              RowDefinitions="*,*"
+              Background="{StaticResource White}"
+              Margin="40">
+            <Image Source="subjects_image.jpg"
+                   Grid.Column="0"
+                   Grid.Row="0"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+            <Label Text="{x:Static text:MainPage.SubjectsView}"
+                   Grid.Column="1"
+                   Grid.Row="1"
+                   TextColor="Black"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   FontSize="40"/>
+        </Grid>
+
+        <Grid Grid.Row="1"
+              Grid.Column="1"
+              ColumnDefinitions="*,*"
+              RowDefinitions="*,*"
+              Background="{StaticResource White}"
+              Margin="40">
+            <Image Source="students_picture.png"
+                   Grid.Column="0"
+                   Grid.Row="0"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+            <Label Text="{x:Static text:MainPage.StudentsView}"
+                   Grid.Column="1"
+                   Grid.Row="1"
+                   TextColor="Black"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   FontSize="40"/>
+        </Grid>
+    </Grid>
+
+
+</ContentPage>
