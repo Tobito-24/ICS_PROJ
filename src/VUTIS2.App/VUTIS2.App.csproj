@@ -72,11 +72,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Messages\" />
-	  <Folder Include="ViewModels\Activity\" />
-	  <Folder Include="ViewModels\Evaluation\" />
-	  <Folder Include="ViewModels\Student\" />
-	  <Folder Include="ViewModels\Subject\" />
+	  <Folder Include="Views\Activity\" />
+	  <Folder Include="Views\Evaluation\" />
+	  <Folder Include="Views\Student\" />
+	  <Folder Include="Views\Subject\" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -121,6 +120,10 @@
 	    <DependentUpon>MainPage.xaml</DependentUpon>
 	    <SubType>Code</SubType>
 	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\VUTIS2.BL\VUTIS2.BL.csproj" />
 	</ItemGroup>
 
 </Project>
