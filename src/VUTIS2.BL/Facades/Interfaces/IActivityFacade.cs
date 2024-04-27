@@ -8,6 +8,5 @@ namespace VUTIS2.BL.Facades;
 
 public interface IActivityFacade : IFacade<ActivityEntity, ActivityListModel, ActivityDetailModel>
 {
-    //Task SaveAsync(ActivityDetailModel model, Guid subjectId);
     Task DeleteAsync(Guid id);
 }

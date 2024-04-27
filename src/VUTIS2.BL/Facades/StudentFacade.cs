@@ -11,5 +11,23 @@ namespace VUTIS2.BL.Facades;
 
 public class StudentFacade(IUnitOfWorkFactory unitOfWorkFactory, StudentModelMapper modelMapper) : FacadeBase<StudentEntity, StudentListModel, StudentDetailModel, StudentEntityMapper>(unitOfWorkFactory, modelMapper), IStudentFacade
 {
+    public IEnumerable<StudentListModel> GetOrderedByLastNameAsc(List<StudentListModel> students)
+    {
+        return students.OrderBy(s => s.LastName);
+    }
 
+    public IEnumerable<StudentListModel> GetOrderedByLastNameDesc(List<StudentListModel> students)
+    {
+        return students.OrderByDescending(s => s.LastName);
+    }
+
+    public IEnumerable<StudentListModel> GetOrderedByFirstNameAsc(List<StudentListModel> students)
+    {
+        return students.OrderBy(s => s.FirstName);
+    }
+
+    public IEnumerable<StudentListModel> GetOrderedByFirstNameDesc(List<StudentListModel> students)
+    {
+        return students.OrderByDescending(s => s.FirstName);
+    }
 }
