@@ -1,11 +1,12 @@
-﻿namespace VUTIS2.App;
-
-public partial class App : Application
+﻿namespace VUTIS2.App
 {
-    public App(IServiceProvider serviceProvider)
+    public partial class App : Application
     {
-        InitializeComponent();
+        public App()
+        {
+            InitializeComponent();
 
-        MainPage = serviceProvider.GetRequiredService<AppShell>();
+            MainPage = new AppShell();
+        }
     }
 }

@@ -1,15 +1,10 @@
-﻿using VUTIS2.App.Services;
-
-namespace VUTIS2.App;
-
-public partial class AppShell
+﻿namespace VUTIS2.App
 {
-    private readonly INavigationService _navigationService;
-
-    public AppShell(INavigationService navigationService)
+    public partial class AppShell : Shell
     {
-        _navigationService = navigationService;
-
-        InitializeComponent();
+        public AppShell()
+        {
+            InitializeComponent();
+        }
     }
 }
