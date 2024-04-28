@@ -4,7 +4,7 @@ using VUTIS2.DAL.Seeds;
 
 namespace VUTIS2.DAL
 {
-    public class SchoolDbContext(DbContextOptions contextOptions, bool seedDemoData = false) : DbContext(contextOptions)
+    public class SchoolDbContext(DbContextOptions contextOptions, bool seedDemoData) : DbContext(contextOptions)
     {
         public DbSet<StudentEntity> Students => Set<StudentEntity>();
         public DbSet<ActivityEntity> Activities => Set<ActivityEntity>();
@@ -31,15 +31,14 @@ namespace VUTIS2.DAL
             modelBuilder.Entity<EvaluationEntity>()
                 .HasOne(i => i.Student);
 
-            // REVIEW: Why is it crashing??
-            //
-            // if (seedDemoData)
-            // {
-            //     StudentSeed.Seed(modelBuilder);
-            //     SubjectSeed.Seed(modelBuilder);
-            //     ActivitySeed.Seed(modelBuilder);
-            //     EvaluationSeed.Seed(modelBuilder);
-            // }
+
+            if (seedDemoData)
+            {
+                StudentSeeds.Seed(modelBuilder);
+                SubjectSeeds.Seed(modelBuilder);
+                ActivitySeeds.Seed(modelBuilder);
+                EvaluationSeeds.Seed(modelBuilder);
+            }
         }
     }
 }
