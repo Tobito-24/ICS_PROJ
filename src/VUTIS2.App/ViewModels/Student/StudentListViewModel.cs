@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using VUTIS2.App.Messages;
@@ -13,11 +14,16 @@ public partial class StudentListViewModel(IStudentFacade studentFacade,  INaviga
     IMessengerService messengerService)
     : ViewModelBase(messengerService), IRecipient<StudentEditMessage>, IRecipient<StudentDeleteMessage>
 {
-    public IEnumerable<StudentListModel> Students { get; set; } = null!;
+    public ObservableCollection<StudentListModel> Students { get; set; } = new ObservableCollection<StudentListModel>();
     protected override async Task LoadDataAsync()
     {
         await base.LoadDataAsync();
-        Students = await studentFacade.GetAsync();
+        var students = await studentFacade.GetAsync();
+        Students.Clear();
+        foreach (var student in students)
+        {
+            Students.Add(student);
+        }
     }
     [RelayCommand]
     public async Task GoToDetailAsync(Guid id)
