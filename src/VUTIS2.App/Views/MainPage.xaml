@@ -23,8 +23,9 @@
             <Image Source="subjects_image.jpg"
                    Grid.Column="0"
                    Grid.Row="0"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center"/>
+                   Grid.RowSpan="2"
+                   Grid.ColumnSpan="2"
+                   HorizontalOptions="Start"/>
             <Label Text="{x:Static text:MainPage.SubjectsView}"
                    Grid.Column="1"
                    Grid.Row="1"
@@ -43,8 +44,9 @@
             <Image Source="students_picture.png"
                    Grid.Column="0"
                    Grid.Row="0"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center"/>
+                   Grid.RowSpan="2"
+                   Grid.ColumnSpan="2"
+                   HorizontalOptions="Start"/>
             <Label Text="{x:Static text:MainPage.StudentsView}"
                    Grid.Column="1"
                    Grid.Row="1"
