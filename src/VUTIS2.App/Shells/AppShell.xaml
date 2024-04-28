@@ -6,7 +6,8 @@
     xmlns:text="clr-namespace:VUTIS2.App.Resources.Texts"
     x:Name="AppShellRoot"
     FlyoutBehavior="Disabled"
-    Title="VUTIS2">
+    Title="VUTIS2"
+    Background="{StaticResource Gray100}">
 
     <ShellContent
         ContentTemplate="{DataTemplate local:MainPage}"
