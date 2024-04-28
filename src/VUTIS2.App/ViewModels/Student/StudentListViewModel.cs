@@ -14,16 +14,12 @@ public partial class StudentListViewModel(IStudentFacade studentFacade,  INaviga
     IMessengerService messengerService)
     : ViewModelBase(messengerService), IRecipient<StudentEditMessage>, IRecipient<StudentDeleteMessage>
 {
-    public ObservableCollection<StudentListModel> Students { get; set; } = new ObservableCollection<StudentListModel>();
+    public IEnumerable<StudentListModel> Students { get; set; } = null!;
     protected override async Task LoadDataAsync()
     {
         await base.LoadDataAsync();
-        var students = await studentFacade.GetAsync();
-        Students.Clear();
-        foreach (var student in students)
-        {
-            Students.Add(student);
-        }
+        Students = await studentFacade.GetAsync();
+
     }
     [RelayCommand]
     public async Task GoToDetailAsync(Guid id)

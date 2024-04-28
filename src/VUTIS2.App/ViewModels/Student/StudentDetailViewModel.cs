@@ -15,6 +15,7 @@ public partial class StudentDetailViewModel( IStudentFacade studentFacade, INavi
     public StudentDetailModel? Student { get; private set; }
     protected override async Task LoadDataAsync()
     {
+        await base.LoadDataAsync();
         Student = await studentFacade.GetAsync(Id);
     }
     [RelayCommand]
