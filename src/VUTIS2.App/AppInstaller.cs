@@ -14,7 +14,7 @@ public static class AppInstaller
 
         services.AddSingleton<IMessenger>(_ => StrongReferenceMessenger.Default);
         services.AddSingleton<IMessengerService, MessengerService>();
-
+        services.AddSingleton<INavigationService, NavigationService>();
         services.AddSingleton<IAlertService, AlertService>();
 
         services.Scan(selector => selector
@@ -28,8 +28,6 @@ public static class AppInstaller
             .AddClasses(filter => filter.AssignableTo<IViewModel>())
             .AsSelfWithInterfaces()
             .WithTransientLifetime());
-
-        services.AddTransient<INavigationService, NavigationService>();
 
         return services;
     }

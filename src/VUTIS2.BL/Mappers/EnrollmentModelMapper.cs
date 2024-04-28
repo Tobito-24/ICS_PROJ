@@ -25,6 +25,8 @@ public class EnrollmentModelMapper : ModelMapperBase<EnrollmentEntity, Enrollmen
     {
         Id = enrollmentDetailModel.Id,
         SubjectId = enrollmentDetailModel.SubjectId,
-        StudentId = enrollmentDetailModel.StudentId
+        StudentId = enrollmentDetailModel.StudentId,
+        Student = null,
+        Subject = null
     };
 }

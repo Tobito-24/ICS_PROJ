@@ -18,14 +18,12 @@ namespace VUTIS2.DAL
 
             //Removed redundant relations (EF core infers them automatically from one side of the relation)
             modelBuilder.Entity<StudentEntity>()
-                .HasMany(i => i.Enrollments);
-
-
+                .HasMany(i => i.Enrollments).WithOne(i=>i.Student);
             modelBuilder.Entity<SubjectEntity>()
                 .HasMany(i => i.Activities)
                 .WithOne(i => i.Subject);
             modelBuilder.Entity<SubjectEntity>()
-                .HasMany(i => i.Enrollments);
+                .HasMany(i => i.Enrollments).WithOne(i=>i.Subject);
 
             modelBuilder.Entity<ActivityEntity>()
                 .HasMany(i => i.Evaluations)
@@ -37,11 +35,12 @@ namespace VUTIS2.DAL
 
             if (seedDemoData)
             {
+                EnrollmentSeeds.Seed(modelBuilder);
                 StudentSeeds.Seed(modelBuilder);
                 SubjectSeeds.Seed(modelBuilder);
                 ActivitySeeds.Seed(modelBuilder);
                 EvaluationSeeds.Seed(modelBuilder);
-                EnrollmentSeeds.Seed(modelBuilder);
+
             }
         }
     }

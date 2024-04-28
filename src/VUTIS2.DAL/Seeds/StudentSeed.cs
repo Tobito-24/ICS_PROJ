@@ -28,8 +28,8 @@ namespace VUTIS2.DAL.Seeds;
         public static void Seed(this ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<StudentEntity>().HasData(
-                SampleStudent1 with { Enrollments = null! },
-                SampleStudent2 with { Enrollments = null! }
+                SampleStudent1,
+                SampleStudent2
             );
         }
     }

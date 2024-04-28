@@ -24,7 +24,7 @@
                Grid.Column="0"
                Grid.Row="2"/>
 
-        <CollectionView ItemsSource="{Binding Student.Subjects}">
+        <!--<CollectionView ItemsSource="{Binding Student.Subjects}">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical"
                                  HorizontalItemSpacing="10"
@@ -34,7 +34,7 @@
 
 
 
-        </CollectionView>
+        </CollectionView>-->
 
     </Grid>
 </views:ContentPageBase>
