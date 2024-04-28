@@ -1,4 +1,4 @@
-﻿namespace VUTIS2.App
+﻿namespace VUTIS2.App.Views
 {
     public partial class MainPage : ContentPage
     {

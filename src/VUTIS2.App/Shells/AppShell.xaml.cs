@@ -1,5 +1,4 @@
-﻿
-using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.Input;
 using VUTIS2.App.Services;
 using VUTIS2.App.ViewModels;
 
@@ -13,6 +12,7 @@ public partial class AppShell
         _navigationService = navigationService;
         InitializeComponent();
     }
+
     [RelayCommand]
     private async Task GoToStudentsAsync()
         => await _navigationService.GoToAsync<StudentListViewModel>();
