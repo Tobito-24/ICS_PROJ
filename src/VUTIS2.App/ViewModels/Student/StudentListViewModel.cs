@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using VUTIS2.App.Messages;
 using VUTIS2.App.Services;
@@ -18,12 +19,14 @@ public partial class StudentListViewModel(IStudentFacade studentFacade,  INaviga
         await base.LoadDataAsync();
         Students = await studentFacade.GetAsync();
     }
+    [RelayCommand]
     public async Task GoToDetailAsync(Guid id)
     {
         await navigationService.GoToAsync<StudentDetailViewModel>(
             new Dictionary<string, object?> { [nameof(StudentDetailViewModel.Id)] = id });
     }
-    public async Task GoToCreateAsync(Guid studentId)
+    [RelayCommand]
+    public async Task GoToCreateAsync()
     {
         await navigationService.GoToAsync("/edit");
     }

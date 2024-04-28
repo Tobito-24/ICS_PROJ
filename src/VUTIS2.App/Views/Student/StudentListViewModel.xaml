@@ -3,16 +3,50 @@
                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                        xmlns:texts="clr-namespace:VUTIS2.App.Resources.Texts"
                        xmlns:vm="clr-namespace:VUTIS2.App.ViewModels"
+                       xmlns:m="clr-namespace:VUTIS2.BL.Models;assembly=VUTIS2.BL"
                        xmlns:views="clr-namespace:VUTIS2.App.Views"
                        x:DataType="vm:StudentListViewModel"
-                       x:Class="VUTIS2.App.Views.Student.StudentListView">
+                       x:Class="VUTIS2.App.Views.Student.StudentListView"
+                       x:Name="StudentListViewRoot">
 
     <ScrollView>
-        <Grid ColumnDefinitions="*,*">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
+        <CollectionView ItemsSource="{Binding Students}">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Horizontal"
+                                 HorizontalItemSpacing="10"
+                                 VerticalItemSpacing="10"
+                                 Span="2"/>
+            </CollectionView.ItemsLayout>
 
-        </Grid>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="m:StudentListModel">
+                    <Frame Padding="0"
+                           CornerRadius="10"
+                           WidthRequest="320" HeightRequest="240"
+                           IsClippedToBounds="True">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Source={x:Reference StudentListViewRoot}, Path=BindingContext.GoToDetailCommand}"
+                                              CommandParameter="{Binding Id}"/>
+                    </Frame.GestureRecognizers>
+
+                        <Grid ColumnDefinitions="*,*,*,*,*,*"
+                              RowDefinitions="*,*">
+                            <Image Grid.Column="0" Grid.Row="0"
+                                   Grid.ColumnSpan="2" Grid.RowSpan="2"
+                                   Source="{Binding PhotoUrl, TargetNullValue='students_picture.png'}"/>
+
+                            <Label Grid.Column="2" Grid.Row="0"
+                                   Grid.ColumnSpan="2"
+                                   Text="{Binding FirstName}"/>
+
+                            <Label Grid.Column="2" Grid.Row="1"
+                                   Grid.ColumnSpan="2"
+                                   Text="{Binding LastName}"/>
+                        </Grid>
+
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </ScrollView>
 </views:ContentPageBase>
