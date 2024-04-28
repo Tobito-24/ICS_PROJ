@@ -10,6 +10,7 @@ namespace VUTIS2.DAL
         public DbSet<ActivityEntity> Activities => Set<ActivityEntity>();
         public DbSet<SubjectEntity> Subjects => Set<SubjectEntity>();
         public DbSet<EvaluationEntity> Evaluations => Set<EvaluationEntity>();
+        public DbSet<EnrollmentEntity> Enrollments => Set<EnrollmentEntity>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -17,12 +18,14 @@ namespace VUTIS2.DAL
 
             //Removed redundant relations (EF core infers them automatically from one side of the relation)
             modelBuilder.Entity<StudentEntity>()
-                .HasMany(i => i.Subjects)
-                .WithMany(i => i.Students);
+                .HasMany(i => i.Enrollments);
+
 
             modelBuilder.Entity<SubjectEntity>()
                 .HasMany(i => i.Activities)
                 .WithOne(i => i.Subject);
+            modelBuilder.Entity<SubjectEntity>()
+                .HasMany(i => i.Enrollments);
 
             modelBuilder.Entity<ActivityEntity>()
                 .HasMany(i => i.Evaluations)
@@ -38,6 +41,7 @@ namespace VUTIS2.DAL
                 SubjectSeeds.Seed(modelBuilder);
                 ActivitySeeds.Seed(modelBuilder);
                 EvaluationSeeds.Seed(modelBuilder);
+                EnrollmentSeeds.Seed(modelBuilder);
             }
         }
     }

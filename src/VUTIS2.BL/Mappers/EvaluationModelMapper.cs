@@ -3,7 +3,7 @@ using VUTIS2.DAL.Entities;
 
 namespace VUTIS2.BL.Mappers;
 
-public class EvaluationModelMapper(StudentModelMapper studentModelMapper) : ModelMapperBase<EvaluationEntity, EvaluationListModel, EvaluationDetailModel>
+public class EvaluationModelMapper(IStudentModelMapper studentModelMapper) : ModelMapperBase<EvaluationEntity, EvaluationListModel, EvaluationDetailModel>, IEvaluationModelMapper
 {
     public override EvaluationListModel MapToListModel(EvaluationEntity? entity)
         => entity is null

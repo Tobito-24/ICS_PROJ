@@ -6,8 +6,12 @@ using VUTIS2.DAL.UnitOfWork;
 
 namespace VUTIS2.BL.Facades;
 
-public class StudentFacade(IUnitOfWorkFactory unitOfWorkFactory, StudentModelMapper modelMapper) : FacadeBase<StudentEntity, StudentListModel, StudentDetailModel, StudentEntityMapper>(unitOfWorkFactory, modelMapper), IStudentFacade
+public class StudentFacade(IUnitOfWorkFactory unitOfWorkFactory, IStudentModelMapper modelMapper) : FacadeBase<StudentEntity, StudentListModel, StudentDetailModel, StudentEntityMapper>(unitOfWorkFactory, modelMapper), IStudentFacade
 {
+    protected override List<string> IncludesNavigationPathDetail => new()
+    {
+        $"{nameof(StudentEntity.Enrollments)}"
+    };
     public IEnumerable<StudentListModel> GetOrderedByLastNameAsc(List<StudentListModel> students)
     {
         return students.OrderBy(s => s.LastName);

@@ -10,7 +10,7 @@ public class SubjectDetailModel : ModelBase
 
     public ObservableCollection<ActivityListModel> Activities { get; init; } = new();
 
-    public ObservableCollection<StudentListModel> Students { get; init; } = new();
+    public ObservableCollection<EnrollmentListModel> Enrollments { get; init; } = new();
     public static SubjectDetailModel Empty => new()
     {
         Name = string.Empty,

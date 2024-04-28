@@ -35,6 +35,7 @@ public static class DALInstaller
         services.AddSingleton<ActivityEntityMapper>();
         services.AddSingleton<SubjectEntityMapper>();
         services.AddSingleton<EvaluationEntityMapper>();
+        services.AddSingleton<EnrollmentEntityMapper>();
 
         return services;
     }

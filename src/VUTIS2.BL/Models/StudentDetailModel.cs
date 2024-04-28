@@ -9,7 +9,7 @@ public class StudentDetailModel : ModelBase
 
     public string? PhotoUrl { get; init; }
 
-    public ObservableCollection<SubjectListModel> Subjects { get; init; } = new ();
+    public ObservableCollection<EnrollmentListModel> Enrollments { get; init; } = new ();
 
     public static StudentDetailModel Empty => new()
     {

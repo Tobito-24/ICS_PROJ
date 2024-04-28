@@ -39,7 +39,7 @@ public class DbContextStudentTests(ITestOutputHelper output) : DbContextTestsBas
         var entities = await SchoolDbContextSUT.Students.ToListAsync();
 
         // Assert
-        DeepAssert.Contains(StudentSeeds.SampleStudent1 with { Subjects = Array.Empty<SubjectEntity>()}, entities);
-        DeepAssert.Contains(StudentSeeds.SampleStudent2 with {Subjects = Array.Empty<SubjectEntity>()}, entities);
+        DeepAssert.Contains(StudentSeeds.SampleStudent1 with { Enrollments = Array.Empty<EnrollmentEntity>()}, entities);
+        DeepAssert.Contains(StudentSeeds.SampleStudent2 with { Enrollments = Array.Empty<EnrollmentEntity>()}, entities);
     }
 }

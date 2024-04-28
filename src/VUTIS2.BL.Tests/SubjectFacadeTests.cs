@@ -42,7 +42,7 @@ public class SubjectFacadeTests : FacadeTestsBase
     public async Task GetById_SeededSubject()
     {
         var subject = await _subjectFacadeSUT.GetAsync(SubjectSeeds.SampleSubject1.Id);
-        var expected = SubjectModelMapper.MapToDetailModel(SubjectSeeds.SampleSubject1 with {Students = new List<StudentEntity>(), Activities = new List<ActivityEntity>()});
+        var expected = SubjectModelMapper.MapToDetailModel(SubjectSeeds.SampleSubject1 with {Enrollments = new List<EnrollmentEntity>(), Activities = new List<ActivityEntity>()});
         DeepAssert.Equal(expected, subject);
     }
 

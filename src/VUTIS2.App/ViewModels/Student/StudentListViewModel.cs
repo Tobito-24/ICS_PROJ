@@ -19,7 +19,6 @@ public partial class StudentListViewModel(IStudentFacade studentFacade,  INaviga
     {
         await base.LoadDataAsync();
         Students = await studentFacade.GetAsync();
-
     }
     [RelayCommand]
     public async Task GoToDetailAsync(Guid id)

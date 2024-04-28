@@ -19,9 +19,9 @@ public static class BLInstaller
         services.Scan(selector => selector
             .FromAssemblyOf<BusinessLogic>()
             .AddClasses(filter => filter.AssignableTo(typeof(IModelMapper<,,>)))
-            .AsSelfWithInterfaces()
+            .AsMatchingInterface()
             .WithSingletonLifetime());
-
+        services.AddSingleton<IServiceProvider>(provider => provider);
         return services;
     }
 }

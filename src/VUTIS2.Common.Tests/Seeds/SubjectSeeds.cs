@@ -1,8 +1,4 @@
-﻿// Copyright (c) .NET Foundation and contributors. All rights reserved.
-// Licensed under the MIT license. See LICENSE file in the project root for full license information.
-//
-
-using System;
+﻿using System;
 using Microsoft.EntityFrameworkCore;
 using VUTIS2.DAL.Entities;
 
@@ -37,15 +33,15 @@ namespace VUTIS2.Common.Tests.Seeds
             SampleSubject1.Activities?.Add(ActivitySeeds.SampleActivity1);
             SampleSubject2.Activities?.Add(ActivitySeeds.SampleActivity2);
 
-            SampleSubject1.Students?.Add(StudentSeeds.SampleStudent1);
-            SampleSubject2.Students?.Add(StudentSeeds.SampleStudent2);
+            SampleSubject1.Enrollments?.Add(EnrollmentSeeds.SampleEnrollment1);
+            SampleSubject2.Enrollments?.Add(EnrollmentSeeds.SampleEnrollment2);
         }
 
         public static void Seed(this ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<SubjectEntity>().HasData(
-                SampleSubject2 with { Students = null!, Activities = null! },
-                SampleSubject1 with { Students = null!, Activities = null! }
+                SampleSubject2 with { Enrollments = null!, Activities = null! },
+                SampleSubject1 with { Enrollments = null!, Activities = null! }
             );
         }
     }

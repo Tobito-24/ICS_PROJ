@@ -6,7 +6,7 @@ using VUTIS2.DAL.UnitOfWork;
 
 namespace VUTIS2.BL.Facades;
 
-public class EvaluationFacade(IUnitOfWorkFactory unitOfWorkFactory, EvaluationModelMapper evaluationModelMapper) : FacadeBase<EvaluationEntity, EvaluationListModel, EvaluationDetailModel, EvaluationEntityMapper>(unitOfWorkFactory, evaluationModelMapper), IEvaluationFacade
+public class EvaluationFacade(IUnitOfWorkFactory unitOfWorkFactory, IEvaluationModelMapper evaluationModelMapper) : FacadeBase<EvaluationEntity, EvaluationListModel, EvaluationDetailModel, EvaluationEntityMapper>(unitOfWorkFactory, evaluationModelMapper), IEvaluationFacade
 {
     protected override List<string> IncludesNavigationPathDetail => new()
     {

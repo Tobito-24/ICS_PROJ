@@ -32,15 +32,15 @@ namespace VUTIS2.DAL.Seeds
             SampleSubject1.Activities?.Add(ActivitySeeds.SampleActivity1);
             SampleSubject2.Activities?.Add(ActivitySeeds.SampleActivity2);
 
-            SampleSubject1.Students?.Add(StudentSeeds.SampleStudent1);
-            SampleSubject2.Students?.Add(StudentSeeds.SampleStudent2);
+            SampleSubject1.Enrollments?.Add(EnrollmentSeeds.SampleEnrollment1);
+            SampleSubject2.Enrollments?.Add(EnrollmentSeeds.SampleEnrollment2);
         }
 
         public static void Seed(this ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<SubjectEntity>().HasData(
-                SampleSubject2 with { Students = null!, Activities = null! },
-                SampleSubject1 with { Students = null!, Activities = null! }
+                SampleSubject2 with { Enrollments = null!, Activities = null! },
+                SampleSubject1 with { Enrollments = null!, Activities = null! }
             );
         }
     }
