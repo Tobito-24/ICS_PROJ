@@ -24,7 +24,7 @@
                Grid.Column="0"
                CornerRadius="5"
                IsClippedToBounds="True"
-               Padding="10"
+               Padding="2"
                BackgroundColor="Red">
 
             <Frame.GestureRecognizers>
@@ -46,7 +46,7 @@
                        Grid.Column="1"
                        Grid.Row="1"
                        TextColor="Black"
-                       HorizontalOptions="Start"
+                       HorizontalOptions="Center"
                        VerticalOptions="Center"
                        FontSize="40"/>
 
@@ -57,7 +57,7 @@
                Grid.Column="1"
                CornerRadius="5"
                IsClippedToBounds="True"
-               Padding="10"
+               Padding="2"
                BackgroundColor="Red">
 
             <Frame.GestureRecognizers>

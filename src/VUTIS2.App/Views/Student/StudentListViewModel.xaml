@@ -9,44 +9,57 @@
                        x:Class="VUTIS2.App.Views.Student.StudentListView"
                        x:Name="StudentListViewRoot">
 
-    <ScrollView>
-        <CollectionView ItemsSource="{Binding Students}">
-            <CollectionView.ItemsLayout>
-                <GridItemsLayout Orientation="Horizontal"
-                                 HorizontalItemSpacing="10"
-                                 VerticalItemSpacing="10"
-                                 Span="2"/>
-            </CollectionView.ItemsLayout>
 
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="m:StudentListModel">
-                    <Frame Padding="0"
-                           CornerRadius="10"
-                           WidthRequest="320" HeightRequest="240"
-                           IsClippedToBounds="True">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding Source={x:Reference StudentListViewRoot}, Path=BindingContext.GoToDetailCommand}"
-                                              CommandParameter="{Binding Id}"/>
-                    </Frame.GestureRecognizers>
+    <CollectionView ItemsSource="{Binding Students}">
+        <CollectionView.ItemsLayout>
+            <GridItemsLayout Orientation="Horizontal"
+                             HorizontalItemSpacing="5"
+                             VerticalItemSpacing="5"
+                             Span="5"/>
+        </CollectionView.ItemsLayout>
 
-                        <Grid ColumnDefinitions="*,*,*,*,*,*"
-                              RowDefinitions="*,*">
-                            <Image Grid.Column="0" Grid.Row="0"
-                                   Grid.ColumnSpan="2" Grid.RowSpan="2"
-                                   Source="{Binding PhotoUrl, TargetNullValue='students_picture.png'}"/>
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="m:StudentListModel">
+                <Frame Padding="0"
+                       CornerRadius="5"
+                       WidthRequest="600"
+                       IsClippedToBounds="True">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Source={x:Reference StudentListViewRoot}, Path=BindingContext.GoToDetailCommand}"
+                                          CommandParameter="{Binding Id}"/>
+                </Frame.GestureRecognizers>
 
-                            <Label Grid.Column="2" Grid.Row="0"
-                                   Grid.ColumnSpan="2"
-                                   Text="{Binding FirstName}"/>
+                    <Grid ColumnDefinitions="*,*,*,*,*,*"
+                          RowDefinitions="*,*">
+                        <Image Grid.Column="0" Grid.Row="0"
+                               Grid.ColumnSpan="2" Grid.RowSpan="2"
+                               Source="{Binding PhotoUrl, TargetNullValue='students_picture.png'}"/>
 
-                            <Label Grid.Column="2" Grid.Row="1"
-                                   Grid.ColumnSpan="2"
-                                   Text="{Binding LastName}"/>
-                        </Grid>
+                        <Label Grid.Column="2" Grid.Row="0"
+                               Grid.ColumnSpan="3"
+                               Text="{Binding FirstName}"
+                               Style="{StaticResource StudentName}"/>
 
-                    </Frame>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </ScrollView>
+                        <Label Grid.Column="2" Grid.Row="1"
+                               Grid.ColumnSpan="3"
+                               Text="{Binding LastName}"
+                               Style="{StaticResource StudentName}"/>
+
+                        <ImageButton Grid.Column="5"
+                                Grid.Row="0"
+                                Grid.RowSpan="2"
+                                Margin="10, 20"
+                                Source="wrench.png"
+                                Aspect="AspectFit"
+                                BackgroundColor="{StaticResource Gray100}"
+                                CornerRadius="5"
+                                Command="{Binding Source={x:Reference StudentListViewRoot}, Path=BindingContext.GoToEditStudent}"
+                                CommandParameter="{Binding Id}"/>
+                    </Grid>
+
+                </Frame>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+
 </views:ContentPageBase>

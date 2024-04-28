@@ -94,6 +94,9 @@
 	  <MauiXaml Update="Views\MainPage.xaml">
 	    <SubType>Designer</SubType>
 	  </MauiXaml>
+	  <MauiXaml Update="Resources\Styles\StudentDetailStyle.xaml">
+	    <SubType>Designer</SubType>
+	  </MauiXaml>
 	</ItemGroup>
 
 	<ItemGroup>

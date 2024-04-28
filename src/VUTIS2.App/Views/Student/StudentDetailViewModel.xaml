@@ -1,24 +1,40 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <views:ContentPageBase
             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:texts="clr-namespace:VUTIS2.App.Resources.Texts"
-             xmlns:vm="clr-namespace:VUTIS2.App.ViewModels"
-             xmlns:views="clr-namespace:VUTIS2.App.Views"
-             xmlns:models="clr-namespace:VUTIS2.BL.Models;assembly=VUTIS2.DAL"
-             x:DataType="vm:StudentDetailViewModel"
-             x:Class="VUTIS2.App.Views.Student.StudentDetailView">
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:texts="clr-namespace:VUTIS2.App.Resources.Texts"
+            xmlns:vm="clr-namespace:VUTIS2.App.ViewModels"
+            xmlns:views="clr-namespace:VUTIS2.App.Views"
+            xmlns:models="clr-namespace:VUTIS2.BL.Models;assembly=VUTIS2.DAL"
+            x:DataType="vm:StudentDetailViewModel"
+            x:Class="VUTIS2.App.Views.Student.StudentDetailView">
+
+    <Grid ColumnDefinitions="*,*"
+          RowDefinitions="*,*,*">
+
+        <Image Source="{Binding Student.PhotoUrl, TargetNullValue='students_picture.png'}"
+               Grid.Column="0"
+               Grid.Row="0"/>
+        <Label Text="{Binding Student.FirstName}"
+               Style="{StaticResource StudentDetailName}"
+               Grid.Column="0"
+               Grid.Row="1"/>
+        <Label Text="{Binding Student.LastName}"
+               Style="{StaticResource StudentDetailName}"
+               Grid.Column="0"
+               Grid.Row="2"/>
+
+        <CollectionView ItemsSource="{Binding Student.Subjects}">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"
+                                 HorizontalItemSpacing="10"
+                                 VerticalItemSpacing="10"
+                                 Span="2"/>
+            </CollectionView.ItemsLayout>
 
 
-    <Grid ColumnDefinitions="*,*">
-        <VerticalStackLayout Grid.Column="0">
-            <Image Source="{Binding Student.PhotoUrl, TargetNullValue='students_picture.png'}"/>
-            <Label Text="{Binding Student.FirstName}" />
-            <Label Text="{Binding Student.LastName}" />
-        </VerticalStackLayout>
 
-        <VerticalStackLayout Grid.Column="1">
+        </CollectionView>
 
-        </VerticalStackLayout>
     </Grid>
 </views:ContentPageBase>
