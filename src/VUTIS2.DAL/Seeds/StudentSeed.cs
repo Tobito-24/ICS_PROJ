@@ -11,12 +11,12 @@ namespace VUTIS2.DAL.Seeds;
 
         public static readonly StudentEntity SampleStudent1 = new()
         {
-            Id = Guid.NewGuid(), FirstName = "John", LastName = "Doe", PhotoUrl = "https://example.com/photo.jpg",
+            Id = Guid.NewGuid(), FirstName = "John", LastName = "Doe", PhotoUrl = null,
         };
 
         public static readonly StudentEntity SampleStudent2 = new()
         {
-            Id = Guid.NewGuid(), FirstName = "Jacob", LastName = "Done", PhotoUrl = "https://example.com/photo.jpg",
+            Id = Guid.NewGuid(), FirstName = "Jacob", LastName = "Done", PhotoUrl = null,
         };
 
         static StudentSeeds()

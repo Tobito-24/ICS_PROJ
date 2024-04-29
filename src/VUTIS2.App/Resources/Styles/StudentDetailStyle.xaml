@@ -6,7 +6,7 @@
         <Setter Property="TextColor" Value="{StaticResource White}" />
         <Setter Property="FontSize" Value="60" />
         <Setter Property="FontFamily" Value="MonsterratMedium" />
-        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="Padding" Value="10, 0"/>
         <Setter Property="VerticalTextAlignment" Value="Center"/>
 
     </Style>
