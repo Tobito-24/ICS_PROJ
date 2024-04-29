@@ -13,9 +13,9 @@ public partial class SubjectDetailViewModel(ISubjectFacade subjectFacade, INavig
 {
     public Guid Id { get; set; }
     public SubjectDetailModel? Subject { get; private set; }
-    private IEnumerable<StudentListModel?> students = Enumerable.Empty<StudentListModel>();
+    private IEnumerable<StudentListModel?> Students = Enumerable.Empty<StudentListModel>();
 
-    private IEnumerable<ActivityListModel> activities = Enumerable.Empty<ActivityListModel>();
+    private IEnumerable<ActivityListModel> Activities = Enumerable.Empty<ActivityListModel>();
     protected override async Task LoadDataAsync()
     {
         await base.LoadDataAsync();
@@ -25,9 +25,9 @@ public partial class SubjectDetailViewModel(ISubjectFacade subjectFacade, INavig
             foreach (EnrollmentListModel enrollment in Subject.Enrollments)
             {
                 StudentListModel? student = await studentFacade.GetAsyncList(enrollment.StudentId);
-                students = students.Append(student);
+                Students = Students.Append(student);
             }
-            activities = await activityFacade.GetAsyncFromSubject(Subject.Id);
+            Activities = await activityFacade.GetAsyncFromSubject(Subject.Id);
         }
 
     }
