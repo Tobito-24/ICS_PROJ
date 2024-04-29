@@ -30,6 +30,5 @@
         <Setter Property="Padding" Value="10, 0"/>
         <Setter Property="VerticalTextAlignment" Value="Center"/>
         <Setter Property="HorizontalTextAlignment" Value="Start"/>
-        <Setter Property="BackgroundColor" Value="Black"/>
     </Style>
 </ResourceDictionary>

@@ -9,4 +9,18 @@
                        x:Class="VUTIS2.App.Views.Student.StudentEditView"
                        x:Name="StudentEditViewRoot">
 
+    <Grid RowDefinitions="*, *">
+
+        <Grid RowDefinitions="*,*,*"
+              ColumnDefinitions="*,*">
+
+            <VerticalStackLayout Grid.Row="0"
+                                 >
+
+            </VerticalStackLayout>
+
+        </Grid>
+
+    </Grid>
+
 </views:ContentPageBase>
