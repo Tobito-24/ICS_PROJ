@@ -139,6 +139,10 @@
 	    <Generator>ResXFileCodeGenerator</Generator>
 	    <LastGenOutput>StudentEditTexts.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>
+	  <EmbeddedResource Update="Resources\Texts\RandomTexts.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>RandomTexts.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -185,6 +189,11 @@
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
 	    <DependentUpon>StudentEditTexts.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="Resources\Texts\RandomTexts.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>RandomTexts.resx</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 

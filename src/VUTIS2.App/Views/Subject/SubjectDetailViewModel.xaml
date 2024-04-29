@@ -38,28 +38,24 @@
 
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="m:StudentListModel">
-                    <Frame>
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding Source={x:Reference SubjectDetailViewRoot}, Path=BindingContext.GoToStudentDetailCommand}"
-                                                  CommandParameter="{Binding Id}"/>
-                        </Frame.GestureRecognizers>
-                        <Grid ColumnDefinitions="*,*"
-                              RowDefinitions="*,*">
 
-                            <Image Grid.Column="0" Grid.Row="0"
-                                   Grid.RowSpan="2"
-                                   Source="{Binding PhotoUrl, TargetNullValue='students_picture.png'}"/>
+                    <Grid ColumnDefinitions="*,*"
+                          RowDefinitions="*,*">
 
-                            <Label Grid.Column="1" Grid.Row="0"
-                                   Text="{Binding FirstName}"
-                                   Style="{StaticResource SubjectStudentActivityLabel}"/>
+                        <Image Grid.Column="0" Grid.Row="0"
+                               Grid.RowSpan="2"
+                               Source="{Binding PhotoUrl, TargetNullValue='students_picture.png'}"/>
 
-                            <Label Grid.Column="1" Grid.Row="1"
-                                   Text="{Binding LastName}"
-                                   Style="{StaticResource SubjectStudentActivityLabel}"/>
+                        <Label Grid.Column="1" Grid.Row="0"
+                               Text="{Binding FirstName}"
+                               Style="{StaticResource SubjectStudentActivityLabel}"/>
 
-                        </Grid>
-                    </Frame>
+                        <Label Grid.Column="1" Grid.Row="1"
+                               Text="{Binding LastName}"
+                               Style="{StaticResource SubjectStudentActivityLabel}"/>
+
+                    </Grid>
+
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

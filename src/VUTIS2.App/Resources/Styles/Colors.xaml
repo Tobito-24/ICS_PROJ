@@ -8,6 +8,7 @@
 
     <Color x:Key="ShellButtonBackground">#FF0000</Color>
     <Color x:Key="ShellButtonText">#FFFFFF</Color>
+    <Color x:Key="EditButton">#0000FF</Color>
 
 
     <Color x:Key="Primary">#512BD4</Color>

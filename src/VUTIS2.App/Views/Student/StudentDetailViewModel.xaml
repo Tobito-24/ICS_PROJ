@@ -38,7 +38,8 @@
 
         <Button Command="{Binding Source={x:Reference StudentDetailViewRoot}, Path=BindingContext.GoToStudentEditCommand}"
                 Grid.Column="0"
-                Grid.Row="1"/>
+                Grid.Row="1"
+                Style="{StaticResource EditButton}"/>
 
         <CollectionView ItemsSource="{Binding Subjects}"
                         Grid.Column="1"
@@ -50,23 +51,17 @@
 
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="m:SubjectListModel">
-                    <Frame>
 
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding Source={x:Reference StudentDetailViewRoot}, Path=BindingContext.GoToSubjectDetailCommand}"
-                                                  CommandParameter="{Binding Id}"/>
-                        </Frame.GestureRecognizers>
+                    <Grid ColumnDefinitions="*"
+                          RowDefinitions="*,*">
+                        <Label Text="{Binding Abbreviation}"
+                               Style="{StaticResource StudentSubjectLabel}"
+                               Grid.Row="0"/>
+                        <Label Text="{Binding Name}"
+                               Style="{StaticResource StudentSubjectLabel}"
+                               Grid.Row="1"/>
+                    </Grid>
 
-                        <Grid ColumnDefinitions="*"
-                              RowDefinitions="*,*">
-                            <Label Text="{Binding Abbreviation}"
-                                   Style="{StaticResource StudentSubjectLabel}"
-                                   Grid.Row="0"/>
-                            <Label Text="{Binding Name}"
-                                   Style="{StaticResource StudentSubjectLabel}"
-                                   Grid.Row="1"/>
-                        </Grid>
-                    </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

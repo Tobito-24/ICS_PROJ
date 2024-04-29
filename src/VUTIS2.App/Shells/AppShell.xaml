@@ -7,14 +7,11 @@
     x:Name="AppShellRoot"
     FlyoutBehavior="Disabled"
     Title="VUTIS2"
-    Background="{StaticResource Gray100}"
-    xmlns:s="clr-namespace:VUTIS2.App.Views.Student"
-    xmlns:su="clr-namespace:VUTIS2.App.Views.Subject"
-    >
+    Background="{StaticResource Gray100}">
 
     <ShellContent
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+                ContentTemplate="{DataTemplate local:MainPage}"
+                Route="MainPageRoot" />
 
     <Shell.TitleView>
         <Grid ColumnDefinitions="*,*,*,*,*,*">
@@ -30,6 +27,6 @@
         </Grid>
     </Shell.TitleView>
 
-    <ShellContent ContentTemplate="{DataTemplate s:StudentListView}" Route="students"/>
-    <ShellContent ContentTemplate="{DataTemplate su:SubjectListView}" Route="subjects"/>
+
+
 </Shell>

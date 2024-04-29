@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <?xaml-comp compile="true" ?>
 <ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:texts="clr-namespace:VUTIS2.App.Resources.Texts">
+
     <Style x:Key="StudentDetailLabel" TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource White}" />
         <Setter Property="FontSize" Value="60" />
@@ -18,5 +20,18 @@
         <Setter Property="VerticalTextAlignment" Value="Center"/>
         <Setter Property="HorizontalTextAlignment" Value="End"/>
         <Setter Property="LineBreakMode" Value="WordWrap"/>
+    </Style>
+
+    <Style x:Key="EditButton" TargetType="Button">
+        <Setter Property="TextColor" Value="{StaticResource White}" />
+        <Setter Property="BackgroundColor" Value="{StaticResource EditButton}" />
+        <Setter Property="Margin" Value="10, 0" />
+        <Setter Property="CornerRadius" Value="5" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontFamily" Value="MonsterratMedium" />
+        <Setter Property="HeightRequest" Value="100" />
+        <Setter Property="WidthRequest" Value="200" />
+        <Setter Property="Text" Value="{x:Static texts:RandomTexts.EditButton}" />
+
     </Style>
 </ResourceDictionary>
