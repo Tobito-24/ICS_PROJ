@@ -8,16 +8,25 @@ using VUTIS2.BL.Models;
 namespace VUTIS2.App.ViewModels;
 
 [QueryProperty(nameof(Id), nameof(Id))]
-public partial class StudentDetailViewModel( IStudentFacade studentFacade, INavigationService navigationService, IMessengerService messengerService, IAlertService alertService, IEnrollmentFacade enrollmentFacade)
+public partial class StudentDetailViewModel( IStudentFacade studentFacade, INavigationService navigationService, IMessengerService messengerService, IAlertService alertService, IEnrollmentFacade enrollmentFacade, ISubjectFacade subjectFacade)
     : ViewModelBase(messengerService), IRecipient<StudentEditMessage>
 {
     public Guid Id { get; set; }
     public StudentDetailModel? Student { get; private set; }
+
+    public IEnumerable<SubjectListModel?> Subjects { get; private set; } = Enumerable.Empty<SubjectListModel>();
     protected override async Task LoadDataAsync()
     {
         await base.LoadDataAsync();
         Student = await studentFacade.GetAsync(Id);
-        IEnumerable<EnrollmentListModel> enrollments = await enrollmentFacade.GetAsync();
+        if (Student is not null)
+        {
+            foreach (EnrollmentListModel enrollment in Student.Enrollments)
+            {
+                SubjectListModel? subject = await subjectFacade.GetAsyncList(enrollment.SubjectId);
+                Subjects = Subjects.Append(subject);
+            }
+        }
     }
     [RelayCommand]
     public async Task DeleteAsync()
