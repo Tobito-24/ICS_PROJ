@@ -12,13 +12,18 @@ public partial class StudentEditViewModel(IStudentFacade studentFacade, INavigat
     : ViewModelBase(messengerService)
 {
     public Guid Id { get; set; }
-    public StudentDetailModel Student { get; init; } = StudentDetailModel.Empty;
-    
+    public StudentDetailModel Student { get; set; } = StudentDetailModel.Empty;
+
     [RelayCommand]
     public async Task SaveAsync()
     {
         await studentFacade.SaveAsync(Student with {Enrollments = default!});
         MessengerService.Send(new StudentEditMessage {StudentId = Student.Id});
         navigationService.SendBackButtonPressed();
+    }
+
+    private async Task ReloadDataAsync()
+    {
+        Student = await studentFacade.GetAsync(Id) ?? StudentDetailModel.Empty;
     }
 }
