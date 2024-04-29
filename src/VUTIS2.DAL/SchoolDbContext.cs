@@ -24,7 +24,7 @@ namespace VUTIS2.DAL
                 .WithOne(i => i.Subject);
             modelBuilder.Entity<SubjectEntity>()
                 .HasMany(i => i.Enrollments).WithOne(i=>i.Subject);
-            modelBuilder.Entity<EnrollmentEntity>();
+            //modelBuilder.Entity<EnrollmentEntity>();
             modelBuilder.Entity<ActivityEntity>()
                 .HasMany(i => i.Evaluations)
                 .WithOne(i => i.Activity);
@@ -35,13 +35,17 @@ namespace VUTIS2.DAL
 
             if (seedDemoData)
             {
-                EnrollmentSeeds.Seed(modelBuilder);
                 StudentSeeds.Seed(modelBuilder);
                 SubjectSeeds.Seed(modelBuilder);
                 ActivitySeeds.Seed(modelBuilder);
                 EvaluationSeeds.Seed(modelBuilder);
+                EnrollmentSeeds.Seed(modelBuilder);
 
             }
         }
+        // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        // {
+        //     optionsBuilder.EnableSensitiveDataLogging();
+        // }
     }
 }
