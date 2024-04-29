@@ -11,6 +11,8 @@ public static class EnrollmentSeeds
         Id = default,
         SubjectId = default,
         StudentId = default,
+        Student = default!,
+        Subject = default!,
     };
 
     public static readonly EnrollmentEntity SampleEnrollment1 = new()
@@ -18,6 +20,8 @@ public static class EnrollmentSeeds
         Id = Guid.NewGuid(),
         SubjectId = SubjectSeeds.SampleSubject1.Id,
         StudentId = StudentSeeds.SampleStudent1.Id,
+        Student = StudentSeeds.SampleStudent1,
+        Subject = SubjectSeeds.SampleSubject1,
     };
 
     public static readonly EnrollmentEntity SampleEnrollment2 = new()
@@ -25,6 +29,8 @@ public static class EnrollmentSeeds
         Id = Guid.NewGuid(),
         SubjectId = SubjectSeeds.SampleSubject2.Id,
         StudentId = StudentSeeds.SampleStudent2.Id,
+        Student = StudentSeeds.SampleStudent2,
+        Subject = SubjectSeeds.SampleSubject2,
     };
     public static void Seed(this ModelBuilder modelBuilder)
     {
