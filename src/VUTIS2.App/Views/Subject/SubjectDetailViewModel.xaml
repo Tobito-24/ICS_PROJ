@@ -5,7 +5,7 @@
             xmlns:texts="clr-namespace:VUTIS2.App.Resources.Texts"
             xmlns:vm="clr-namespace:VUTIS2.App.ViewModels"
             xmlns:views="clr-namespace:VUTIS2.App.Views"
-            xmlns:models="clr-namespace:VUTIS2.BL.Models;assembly=VUTIS2.DAL"
+            xmlns:m="clr-namespace:VUTIS2.BL.Models;assembly=VUTIS2.BL"
             x:DataType="vm:SubjectDetailViewModel"
             x:Class="VUTIS2.App.Views.Subject.SubjectDetailView">
 </views:ContentPageBase>

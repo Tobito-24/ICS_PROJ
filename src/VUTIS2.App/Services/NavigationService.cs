@@ -8,6 +8,7 @@ using VUTIS2.App.Views;
 using VUTIS2.App.Views.Student;
 using VUTIS2.App.Views.Subject;
 using VUTIS2.App.Views.Evaluation;
+using VUTIS2.App.Views.Activity;
 
 namespace VUTIS2.App.Services;
 
@@ -23,7 +24,8 @@ public class NavigationService : INavigationService
         new("//subjects/edit", typeof(SubjectEditView), typeof(SubjectEditViewModel)),
         new("//evaluation", typeof(EvaluationDetailView), typeof(EvaluationDetailViewModel)),
         new("//evaluation/edit", typeof(EvaluationEditView), typeof(EvaluationEditViewModel)),
-        new("//activity", null, null),
+        new("//activity", typeof(ActivityDetailView), typeof(ActivityDetailViewModel)),
+        new("//activity/edit", typeof(ActivityEditView), typeof(ActivityEditViewModel)),
     };
 
     public async Task GoToAsync<TViewModel>()
