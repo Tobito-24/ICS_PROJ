@@ -11,7 +11,7 @@ using VUTIS2.DAL.UnitOfWork;
 
 namespace VUTIS2.BL.Facades;
 
-public class ActivityFacade(IUnitOfWorkFactory unitOfWorkFactory, ActivityModelMapper activityModelMapper)
+public class ActivityFacade(IUnitOfWorkFactory unitOfWorkFactory, IActivityModelMapper activityModelMapper)
     : FacadeBase<ActivityEntity, ActivityListModel, ActivityDetailModel, ActivityEntityMapper>(unitOfWorkFactory,
         activityModelMapper), IActivityFacade
 {
