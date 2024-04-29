@@ -1,6 +1,10 @@
-﻿namespace VUTIS2.App.Views;
+﻿using VUTIS2.App.ViewModels;
+namespace VUTIS2.App.Views.Student;
 
-public class StudentEditViewModel
+public partial class StudentEditView
 {
-    
+    public StudentEditView(StudentEditViewModel viewModel) : base(viewModel)
+    {
+        InitializeComponent();
+    }
 }

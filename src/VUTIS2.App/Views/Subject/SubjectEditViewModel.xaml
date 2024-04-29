@@ -5,8 +5,8 @@
                        xmlns:vm="clr-namespace:VUTIS2.App.ViewModels"
                        xmlns:m="clr-namespace:VUTIS2.BL.Models;assembly=VUTIS2.BL"
                        xmlns:views="clr-namespace:VUTIS2.App.Views"
-                       x:DataType="vm:StudentEditViewModel"
-                       x:Class="VUTIS2.App.Views.Student.StudentEditView"
-                       x:Name="StudentEditViewRoot">
+                       x:DataType="vm:SubjectEditViewModel"
+                       x:Class="VUTIS2.App.Views.Subject.SubjectEditView"
+                       x:Name="SubjectEditViewRoot">
 
 </views:ContentPageBase>

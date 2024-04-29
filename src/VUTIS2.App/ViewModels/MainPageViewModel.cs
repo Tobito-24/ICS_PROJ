@@ -9,4 +9,8 @@ public partial class MainPageViewModel (INavigationService navigationService, IM
     [RelayCommand]
     private async Task GoToStudentsAsync()
         => await navigationService.GoToAsync<StudentListViewModel>();
+
+    [RelayCommand]
+    private async Task GoToSubjectsAsync()
+        => await navigationService.GoToAsync<SubjectListViewModel>();
 }

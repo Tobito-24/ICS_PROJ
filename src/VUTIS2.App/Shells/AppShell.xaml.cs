@@ -17,7 +17,7 @@ public partial class AppShell
     private async Task GoToStudentsAsync()
         => await _navigationService.GoToAsync<StudentListViewModel>();
 
-    // [RelayCommand]
-    // private async Task GoToSubjectsAsync()
-    //     => await _navigationService.GoToAsync<SubjectListViewModel>();
+    [RelayCommand]
+    private async Task GoToSubjectsAsync()
+        => await _navigationService.GoToAsync<SubjectListViewModel>();
 }

@@ -81,7 +81,6 @@
 	<ItemGroup>
 	  <Folder Include="Views\Activity\" />
 	  <Folder Include="Views\Evaluation\" />
-	  <Folder Include="Views\Subject\" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -96,6 +95,15 @@
 	  </MauiXaml>
 	  <MauiXaml Update="Resources\Styles\StudentDetailStyle.xaml">
 	    <SubType>Designer</SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Subject\SubjectEditViewModel.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Subject\SubjectDetailViewModel.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Subject\SubjectListViewModel.xaml">
+	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
 
@@ -139,6 +147,15 @@
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
 	    <DependentUpon>StudentDetailTexts.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Subject\SubjectEditViewModel.xaml.cs">
+	    <DependentUpon>SubjectEditViewModel.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Subject\SubjectDetailViewModel.xaml.cs">
+	    <DependentUpon>SubjectDetailViewModel.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Subject\SubjectListViewModel.xaml.cs">
+	    <DependentUpon>SubjectListViewModel.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Remove="Views\ContenPageBase.xaml.cs" />
 	</ItemGroup>

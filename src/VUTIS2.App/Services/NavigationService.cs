@@ -6,6 +6,7 @@ using VUTIS2.App.Models;
 using VUTIS2.App.ViewModels;
 using VUTIS2.App.Views;
 using VUTIS2.App.Views.Student;
+using VUTIS2.App.Views.Subject;
 
 namespace VUTIS2.App.Services;
 
@@ -15,10 +16,12 @@ public class NavigationService : INavigationService
     {
         new("//students", typeof(StudentListView), typeof(StudentListViewModel)),
         new("//students/detail", typeof(StudentDetailView), typeof(StudentDetailViewModel)),
+        new("//students/edit", typeof(StudentEditView), typeof(StudentEditViewModel)),
+        new("//subjects", typeof(SubjectListView), typeof(SubjectListViewModel)),
+        new("//subjects/detail", typeof(SubjectDetailView), typeof(SubjectDetailViewModel)),
+        new("//subjects/edit", typeof(SubjectEditView), typeof(SubjectEditViewModel)),
         new("//activity", null, null),
         new("//evaluation", null, null),
-        new("//subjects", null, null),
-        new("//subjects/detail", null, null),
     };
 
     public async Task GoToAsync<TViewModel>()
