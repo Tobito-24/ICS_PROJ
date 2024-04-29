@@ -18,7 +18,7 @@ public partial class SubjectDetailViewModel(ISubjectFacade subjectFacade, INavig
         await base.LoadDataAsync();
         Subject = await subjectFacade.GetAsync(Id);
         IEnumerable<EnrollmentListModel> enrollments = await enrollmentFacade.GetAsync();
-        IEnumerable<ActivityListModel> activities = await activityFacade.GetAsync();
+        //IEnumerable<ActivityListModel> activities = await activityFacade.GetAsync();
     }
     [RelayCommand]
     public async Task DeleteAsync()

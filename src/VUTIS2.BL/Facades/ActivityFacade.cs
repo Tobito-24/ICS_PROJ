@@ -31,7 +31,7 @@ public class ActivityFacade(IUnitOfWorkFactory unitOfWorkFactory, ActivityModelM
 
     protected override List<string> IncludesNavigationPathDetail => new()
     {
-        $"{nameof(ActivityEntity.Evaluations)}.{nameof(EvaluationEntity.Student)}"
+        $"{nameof(ActivityEntity.Evaluations)}"
     };
 
     public async Task<IEnumerable<ActivityListModel>> GetActivitiesStartTime(DateTime startTime, bool from,
