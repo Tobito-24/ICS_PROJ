@@ -24,7 +24,7 @@ namespace VUTIS2.DAL
                 .WithOne(i => i.Subject);
             modelBuilder.Entity<SubjectEntity>()
                 .HasMany(i => i.Enrollments).WithOne(i=>i.Subject);
-
+            modelBuilder.Entity<EnrollmentEntity>();
             modelBuilder.Entity<ActivityEntity>()
                 .HasMany(i => i.Evaluations)
                 .WithOne(i => i.Activity);
