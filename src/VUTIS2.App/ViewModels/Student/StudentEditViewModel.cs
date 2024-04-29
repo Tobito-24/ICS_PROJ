@@ -1,4 +1,5 @@
-﻿using VUTIS2.App.Messages;
+﻿using CommunityToolkit.Mvvm.Input;
+using VUTIS2.App.Messages;
 using VUTIS2.App.Services;
 using VUTIS2.BL.Facades;
 using VUTIS2.BL.Models;
@@ -12,6 +13,8 @@ public partial class StudentEditViewModel(IStudentFacade studentFacade, INavigat
 {
     public Guid Id { get; set; }
     public StudentDetailModel Student { get; init; } = StudentDetailModel.Empty;
+    
+    [RelayCommand]
     public async Task SaveAsync()
     {
         await studentFacade.SaveAsync(Student with {Enrollments = default!});
