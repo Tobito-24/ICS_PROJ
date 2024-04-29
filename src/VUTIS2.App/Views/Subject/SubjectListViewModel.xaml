@@ -23,6 +23,7 @@
                    CornerRadius="5"
                    WidthRequest="600"
                    IsClippedToBounds="True">
+
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding Source={x:Reference SubjectListViewRoot}, Path=BindingContext.GoToDetailCommand}"
                                       CommandParameter="{Binding Id}"/>

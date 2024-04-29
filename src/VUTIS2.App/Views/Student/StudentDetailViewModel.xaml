@@ -51,17 +51,23 @@
 
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="m:SubjectListModel">
+                    <Frame>
 
-                    <Grid ColumnDefinitions="*"
-                          RowDefinitions="*,*">
-                        <Label Text="{Binding Abbreviation}"
-                               Style="{StaticResource StudentSubjectLabel}"
-                               Grid.Row="0"/>
-                        <Label Text="{Binding Name}"
-                               Style="{StaticResource StudentSubjectLabel}"
-                               Grid.Row="1"/>
-                    </Grid>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={x:Reference StudentDetailViewRoot}, Path=BindingContext.GoToSubjectDetailCommand}"
+                                                  CommandParameter="{Binding Id}"/>
+                        </Frame.GestureRecognizers>
 
+                        <Grid ColumnDefinitions="*"
+                              RowDefinitions="*,*">
+                            <Label Text="{Binding Abbreviation}"
+                                   Style="{StaticResource StudentSubjectLabel}"
+                                   Grid.Row="0"/>
+                            <Label Text="{Binding Name}"
+                                   Style="{StaticResource StudentSubjectLabel}"
+                                   Grid.Row="1"/>
+                        </Grid>
+                    </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
