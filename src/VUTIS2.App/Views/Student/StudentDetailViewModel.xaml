@@ -36,6 +36,10 @@
                    Grid.Row="1"/>
         </Grid>
 
+        <Button Command="{Binding Source={x:Reference StudentDetailViewRoot}, Path=BindingContext.GoToStudentEditCommand}"
+                Grid.Column="0"
+                Grid.Row="1"/>
+
         <CollectionView ItemsSource="{Binding Subjects}"
                         Grid.Column="1"
                         Grid.RowSpan="2">

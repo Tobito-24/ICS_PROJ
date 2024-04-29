@@ -12,6 +12,7 @@
                 <ResourceDictionary Source="Resources/Styles/StudentListStyle.xaml" />
                 <ResourceDictionary Source="Resources/Styles/StudentDetailStyle.xaml"/>
                 <ResourceDictionary Source="Resources/Styles/SubjectDetailStyle.xaml" />
+                <ResourceDictionary Source="Resources/Styles/StudentEditStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

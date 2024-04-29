@@ -115,6 +115,9 @@
 	  <MauiXaml Update="Resources\Styles\SubjectDetailStyle.xaml">
 	    <SubType>Designer</SubType>
 	  </MauiXaml>
+	  <MauiXaml Update="Resources\Styles\StudentEditStyle.xaml">
+	    <SubType>Designer</SubType>
+	  </MauiXaml>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -132,6 +135,10 @@
 	  </EmbeddedResource>
 	  <None Remove="appsettings.json" />
 	  <EmbeddedResource Include="appsettings.json" />
+	  <EmbeddedResource Update="Resources\Texts\StudentEditTexts.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>StudentEditTexts.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -174,6 +181,11 @@
 	    <DependentUpon>SubjectListViewModel.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Remove="Views\ContenPageBase.xaml.cs" />
+	  <Compile Update="Resources\Texts\StudentEditTexts.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>StudentEditTexts.resx</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>

@@ -15,11 +15,40 @@
               ColumnDefinitions="*,*">
 
             <VerticalStackLayout Grid.Row="0"
-                                 >
+                                 Grid.Column="0">
+                <Label Text="{x:Static texts:StudentEditTexts.Name}"
+                       Style="{StaticResource StudentEditName}"/>
 
+                <Entry HorizontalOptions="Fill"
+                       Text="{Binding Student.FirstName}"/>
             </VerticalStackLayout>
 
+            <VerticalStackLayout Grid.Row="1"
+                                 Grid.Column="0">
+                <Label Text="{x:Static texts:StudentEditTexts.Surname}"
+                       Style="{StaticResource StudentEditName}"/>
+
+                <Entry HorizontalOptions="Fill"
+                       Text="{Binding Student.LastName}"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Row="2"
+                                 Grid.Column="0">
+                <Label Text="{x:Static texts:StudentEditTexts.PhotoText}"
+                       Style="{StaticResource StudentEditName}"/>
+
+                <Entry HorizontalOptions="Fill"
+                       Text="{Binding Student.PhotoUrl}"/>
+            </VerticalStackLayout>
+
+            <Image Grid.Column="3"
+                   Grid.RowSpan="2"
+                   Source="{Binding Student.PhotoUrl, TargetNullValue='students_picture.png'}"/>
+
         </Grid>
+
+        <Button Command="{Binding Source={x:Reference StudentEditViewRoot}, Path=BindingContext.SaveCommand}"
+                Grid.Row="1"/>
 
     </Grid>
 
