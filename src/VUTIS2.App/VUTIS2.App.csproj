@@ -80,7 +80,6 @@
 
 	<ItemGroup>
 	  <Folder Include="Views\Activity\" />
-	  <Folder Include="Views\Evaluation\" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -89,6 +88,12 @@
 	  </MauiXaml>
 	  <MauiXaml Update="Shells\AppShell.xaml">
 	    <SubType>Designer</SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Evaluation\EvaluationEditViewModel.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Evaluation\EvaluationDetailViewModel.xaml">
+	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\MainPage.xaml">
 	    <SubType>Designer</SubType>
@@ -138,6 +143,12 @@
 	  <Compile Update="Shells\AppShell.xaml.cs">
 	    <DependentUpon>AppShell.xaml</DependentUpon>
 	    <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Update="Views\Evaluation\EvaluationEditViewModel.xaml.cs">
+	    <DependentUpon>EvaluationEditViewModel.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Evaluation\EvaluationDetailViewModel.xaml.cs">
+	    <DependentUpon>EvaluationDetailViewModel.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Views\MainPage.xaml.cs">
 	    <DependentUpon>MainPage.xaml</DependentUpon>

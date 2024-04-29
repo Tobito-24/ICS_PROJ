@@ -57,6 +57,22 @@ public abstract class
             : ModelMapper.MapToDetailModel(entity);
     }
 
+    public virtual async Task<TListModel?> GetAsyncList(Guid id)
+    {
+        await using IUnitOfWork uow = UnitOfWorkFactory.Create();
+
+        IQueryable<TEntity> query = uow.GetRepository<TEntity, TEntityMapper>().Get();
+
+        foreach (string includePath in IncludesNavigationPathDetail)
+        {
+            query = query.Include(includePath);
+        }
+
+        TEntity? entity = await query.SingleOrDefaultAsync(e => e.Id == id).ConfigureAwait(false);
+
+        return ModelMapper.MapToListModel(entity);
+    }
+
     // Always use paging in production
     public virtual async Task<IEnumerable<TListModel>> GetAsync()
     {
