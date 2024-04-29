@@ -20,7 +20,7 @@ public partial class ActivityDetailViewModel(IActivityFacade activityFacade, INa
         if (Activity is not null)
         {
             SubjectDetailModel? subject = await subjectFacade.GetAsync(Activity.SubjectId);
-            IEnumerable<EvaluationListModel> evaluations = await evaluationFacade.GetAsync(); 
+            IEnumerable<EvaluationListModel> evaluations = await evaluationFacade.GetAsyncFromActivity(Activity.Id);
         }
 
     }
@@ -41,7 +41,7 @@ public partial class ActivityDetailViewModel(IActivityFacade activityFacade, INa
             }
         }
     }
-
+    [RelayCommand]
     public async Task GoToEditAsync()
     {
         await navigationService.GoToAsync("/edit",

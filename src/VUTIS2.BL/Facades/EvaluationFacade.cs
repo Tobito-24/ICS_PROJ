@@ -1,7 +1,9 @@
-﻿using VUTIS2.BL.Mappers;
+﻿using Microsoft.EntityFrameworkCore;
+using VUTIS2.BL.Mappers;
 using VUTIS2.BL.Models;
 using VUTIS2.DAL.Entities;
 using VUTIS2.DAL.Mappers;
+using VUTIS2.DAL.Repositories;
 using VUTIS2.DAL.UnitOfWork;
 
 namespace VUTIS2.BL.Facades;
@@ -12,7 +14,13 @@ public class EvaluationFacade(IUnitOfWorkFactory unitOfWorkFactory, IEvaluationM
     {
         $"{nameof(EvaluationEntity.Student)}"
     };
-
+    public async Task<IEnumerable<EvaluationListModel>> GetAsyncFromActivity(Guid Id)
+    {
+        await using IUnitOfWork uow = UnitOfWorkFactory.Create();
+        IRepository<EvaluationEntity> repository = uow.GetRepository<EvaluationEntity, EvaluationEntityMapper>();
+        List<EvaluationEntity> evaluations = await repository.Get().Where(e => e.ActivityId == Id).ToListAsync();
+        return ModelMapper.MapToListModel(evaluations);
+    }
     public IEnumerable<EvaluationListModel> GetOrderedByPointsAsc(List<EvaluationListModel> evaluations)
     {
         return evaluations.OrderBy(e => e.Points);

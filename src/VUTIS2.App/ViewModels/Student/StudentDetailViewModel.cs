@@ -30,12 +30,6 @@ public partial class StudentDetailViewModel( IStudentFacade studentFacade, INavi
     }
 
     [RelayCommand]
-    public async Task GoToSubjectDetailAsync(Guid id)
-    {
-        await navigationService.GoToAsync<SubjectDetailViewModel>(
-            new Dictionary<string, object?> { [nameof(SubjectDetailViewModel.Id)] = id });
-    }
-    [RelayCommand]
 
     public async Task GoToStudentEditAsync()
     {
