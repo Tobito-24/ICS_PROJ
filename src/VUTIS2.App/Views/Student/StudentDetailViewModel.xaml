@@ -4,13 +4,16 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:texts="clr-namespace:VUTIS2.App.Resources.Texts"
             xmlns:vm="clr-namespace:VUTIS2.App.ViewModels"
+            xmlns:m="clr-namespace:VUTIS2.BL.Models;assembly=VUTIS2.BL"
             xmlns:views="clr-namespace:VUTIS2.App.Views"
             xmlns:models="clr-namespace:VUTIS2.BL.Models;assembly=VUTIS2.DAL"
             x:DataType="vm:StudentDetailViewModel"
-            x:Class="VUTIS2.App.Views.Student.StudentDetailView">
+            x:Class="VUTIS2.App.Views.Student.StudentDetailView"
+            x:Name="StudentDetailViewRoot">
 
     <Grid ColumnDefinitions="*,*"
-          RowDefinitions="*,*">
+          RowDefinitions="*,*"
+          ColumnSpacing="10">
 
         <Grid ColumnDefinitions="*,*"
               RowDefinitions="*,*">
@@ -20,29 +23,49 @@
                    Grid.Row="0"
                    Grid.RowSpan="2"/>
 
-            <Frame Grid.Column="1"
-                   Grid.Row="0">
-                <Label Text="{Binding Student.FirstName}"
-                       Style="{StaticResource StudentDetailName}"/>
-            </Frame>
+            <Label Text="{Binding Student.FirstName}"
+                   Style="{StaticResource StudentDetailLabel}"
+                   BackgroundColor="Black"
+                   Grid.Column="1"
+                   Grid.Row="0"/>
 
-            <Frame Grid.Column="1"
-                   Grid.Row="1">
-                <Label Text="{Binding Student.LastName}"
-                       Style="{StaticResource StudentDetailName}"/>
-            </Frame>
+            <Label Text="{Binding Student.LastName}"
+                   Style="{StaticResource StudentDetailLabel}"
+                   BackgroundColor="Black"
+                   Grid.Column="1"
+                   Grid.Row="1"/>
         </Grid>
-        <!--<CollectionView ItemsSource="{Binding Student.Subjects}">
+
+        <CollectionView ItemsSource="{Binding Subjects}"
+                        Grid.Column="1"
+                        Grid.RowSpan="2">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical"
-                                 HorizontalItemSpacing="10"
-                                 VerticalItemSpacing="10"
-                                 Span="2"/>
+                                 VerticalItemSpacing="10"/>
             </CollectionView.ItemsLayout>
 
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="m:SubjectListModel">
+                    <Frame>
 
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={x:Reference StudentDetailViewRoot}, Path=BindingContext}"
+                                                  CommandParameter="{Binding Id}"/>
+                        </Frame.GestureRecognizers>
 
-        </CollectionView>-->
+                        <Grid ColumnDefinitions="*"
+                              RowDefinitions="*,*">
+                            <Label Text="{Binding Abbreviation}"
+                                   Style="{StaticResource SubjectDetailLabel}"
+                                   Grid.Row="0"/>
+                            <Label Text="{Binding Name}"
+                                   Style="{StaticResource SubjectDetailLabel}"
+                                   Grid.Row="1"/>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
 
     </Grid>
 </views:ContentPageBase>
