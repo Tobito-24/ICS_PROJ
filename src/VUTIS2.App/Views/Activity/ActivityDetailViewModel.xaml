@@ -8,5 +8,35 @@
                        x:DataType="vm:ActivityDetailViewModel"
                        x:Class="VUTIS2.App.Views.Activity.ActivityDetailView"
                        x:Name="ActivityDetailViewRoot">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
 
+        <StackLayout Grid.Column="0" Margin="50" Spacing="10" HorizontalOptions="FillAndExpand">
+            <Editor Placeholder="Activity Detail"
+                    HeightRequest="100"
+                    AutoSize="TextChanges" />
+            
+            <HorizontalStackLayout Spacing="10">
+                <Label Text="Start date:" VerticalOptions="Center" />
+                <DatePicker />
+            </HorizontalStackLayout>
+            
+            <HorizontalStackLayout Spacing="10">
+                <Label Text="End date:" VerticalOptions="Center" />
+                <DatePicker />
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout Spacing="10">
+                <Label Text="Room:" VerticalOptions="Center" />
+                <Entry Placeholder="Room Name" />
+            </HorizontalStackLayout>
+        </StackLayout>
+
+        <StackLayout>
+            
+        </StackLayout>
+    </Grid>
 </views:ContentPageBase>
