@@ -8,17 +8,28 @@ using VUTIS2.BL.Models;
 namespace VUTIS2.App.ViewModels;
 
 [QueryProperty(nameof(Id), nameof(Id))]
-public partial class SubjectDetailViewModel(ISubjectFacade subjectFacade, INavigationService navigationService, IMessengerService messengerService, IAlertService alertService, IEnrollmentFacade enrollmentFacade, IActivityFacade activityFacade)
+public partial class SubjectDetailViewModel(ISubjectFacade subjectFacade, INavigationService navigationService, IMessengerService messengerService, IAlertService alertService, IEnrollmentFacade enrollmentFacade, IActivityFacade activityFacade, IStudentFacade studentFacade)
     : ViewModelBase(messengerService), IRecipient<SubjectEditMessage>
 {
     public Guid Id { get; set; }
     public SubjectDetailModel? Subject { get; private set; }
+    private IEnumerable<StudentListModel?> students = Enumerable.Empty<StudentListModel>();
+
+    private IEnumerable<ActivityListModel> activities = Enumerable.Empty<ActivityListModel>();
     protected override async Task LoadDataAsync()
     {
         await base.LoadDataAsync();
         Subject = await subjectFacade.GetAsync(Id);
-        IEnumerable<EnrollmentListModel> enrollments = await enrollmentFacade.GetAsync();
-        //IEnumerable<ActivityListModel> activities = await activityFacade.GetAsync();
+        if (Subject is not null)
+        {
+            foreach (EnrollmentListModel enrollment in Subject.Enrollments)
+            {
+                StudentListModel? student = await studentFacade.GetAsyncList(enrollment.StudentId);
+                students = students.Append(student);
+            }
+            activities = await activityFacade.GetAsyncFromSubject(Subject.Id);
+        }
+
     }
     [RelayCommand]
     public async Task DeleteAsync()

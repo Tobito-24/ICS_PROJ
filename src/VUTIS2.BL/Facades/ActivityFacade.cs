@@ -28,7 +28,14 @@ public class ActivityFacade(IUnitOfWorkFactory unitOfWorkFactory, IActivityModel
             await uow.CommitAsync();
         }
     }*/
+    public async Task<IEnumerable<ActivityListModel>> GetAsyncFromSubject(Guid Id)
+    {
+        await using IUnitOfWork uow = UnitOfWorkFactory.Create();
+        IRepository<ActivityEntity> repository = uow.GetRepository<ActivityEntity, ActivityEntityMapper>();
 
+        List<ActivityEntity> activities = await repository.Get().Where(a => a.SubjectId == Id).ToListAsync();
+        return ModelMapper.MapToListModel(activities);
+    }
     protected override List<string> IncludesNavigationPathDetail => new()
     {
         $"{nameof(ActivityEntity.Evaluations)}"

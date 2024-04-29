@@ -8,6 +8,11 @@ namespace VUTIS2.BL.Facades;
 
 public class SubjectFacade(IUnitOfWorkFactory unitOfWorkFactory, ISubjectModelMapper modelMapper) : FacadeBase<SubjectEntity, SubjectListModel, SubjectDetailModel, SubjectEntityMapper>(unitOfWorkFactory, modelMapper), ISubjectFacade
 {
+    protected override List<string> IncludesNavigationPathDetail => new()
+    {
+        $"{nameof(SubjectEntity.Enrollments)}",
+        $"{nameof(SubjectEntity.Activities)}"
+    };
     public IEnumerable<SubjectListModel> GetOrderedByNameAsc(List<SubjectListModel> subjects)
     {
         return subjects.OrderBy(s => s.Name);

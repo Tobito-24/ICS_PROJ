@@ -39,8 +39,8 @@ namespace VUTIS2.DAL.Seeds
         public static void Seed(this ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<SubjectEntity>().HasData(
-                SampleSubject2 with { Enrollments = null!, Activities = null! },
-                SampleSubject1 with { Enrollments = null!, Activities = null! }
+                SampleSubject1 with { Enrollments = Array.Empty<EnrollmentEntity>(), Activities = Array.Empty<ActivityEntity>() },
+                SampleSubject2 with { Enrollments = Array.Empty<EnrollmentEntity>(), Activities = Array.Empty<ActivityEntity>() }
             );
         }
     }
