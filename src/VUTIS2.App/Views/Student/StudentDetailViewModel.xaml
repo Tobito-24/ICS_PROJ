@@ -56,10 +56,10 @@
                         <Grid ColumnDefinitions="*"
                               RowDefinitions="*,*">
                             <Label Text="{Binding Abbreviation}"
-                                   Style="{StaticResource SubjectDetailLabel}"
+                                   Style="{StaticResource StudentSubjectLabel}"
                                    Grid.Row="0"/>
                             <Label Text="{Binding Name}"
-                                   Style="{StaticResource SubjectDetailLabel}"
+                                   Style="{StaticResource StudentSubjectLabel}"
                                    Grid.Row="1"/>
                         </Grid>
                     </Frame>

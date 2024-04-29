@@ -13,9 +13,9 @@ public partial class SubjectDetailViewModel(ISubjectFacade subjectFacade, INavig
 {
     public Guid Id { get; set; }
     public SubjectDetailModel? Subject { get; private set; }
-    private IEnumerable<StudentListModel?> Students = Enumerable.Empty<StudentListModel>();
+    public IEnumerable<StudentListModel?> Students { get; private set; } = Enumerable.Empty<StudentListModel>();
 
-    private IEnumerable<ActivityListModel> Activities = Enumerable.Empty<ActivityListModel>();
+    public IEnumerable<ActivityListModel> Activities { get; private set; } = Enumerable.Empty<ActivityListModel>();
     protected override async Task LoadDataAsync()
     {
         await base.LoadDataAsync();
