@@ -1,6 +1,6 @@
 ﻿namespace VUTIS2.BL.Models;
 
-public class EnrollmentDetailModel : ModelBase
+public record EnrollmentDetailModel : ModelBase
 {
     public Guid SubjectId { get; init; }
     public SubjectListModel? Subject { get; init; }

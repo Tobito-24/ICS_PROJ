@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace VUTIS2.BL.Models;
 
-public class SubjectDetailModel : ModelBase
+public record SubjectDetailModel : ModelBase
 {
     public required string Name { get; set; }
     public required string Abbreviation { get; set; }

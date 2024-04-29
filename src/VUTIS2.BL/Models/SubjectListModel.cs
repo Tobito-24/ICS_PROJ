@@ -1,6 +1,6 @@
 ﻿namespace VUTIS2.BL.Models;
 
-public class SubjectListModel : ModelBase
+public record SubjectListModel : ModelBase
 {
     public required string Name { get; set; }
     public required string Abbreviation { get; set; }

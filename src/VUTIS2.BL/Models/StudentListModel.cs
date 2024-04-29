@@ -1,6 +1,6 @@
 ﻿namespace VUTIS2.BL.Models;
 
-public class StudentListModel: ModelBase
+public record StudentListModel: ModelBase
 {
     public required string FirstName { get; init; }
     public required string LastName { get; init; }

@@ -1,6 +1,6 @@
 ﻿namespace VUTIS2.BL.Models;
 
-public class EvaluationDetailModel : ModelBase
+public record EvaluationDetailModel : ModelBase
 {
     public required int Points { get; init; }
     public string? Description { get; init; }

@@ -10,10 +10,11 @@ public partial class StudentEditViewModel(IStudentFacade studentFacade, INavigat
     IMessengerService messengerService)
     : ViewModelBase(messengerService)
 {
+    public Guid Id { get; set; }
     public StudentDetailModel Student { get; init; } = StudentDetailModel.Empty;
     public async Task SaveAsync()
     {
-        await studentFacade.SaveAsync(Student);
+        await studentFacade.SaveAsync(Student with {Enrollments = default!});
         MessengerService.Send(new StudentEditMessage {StudentId = Student.Id});
         navigationService.SendBackButtonPressed();
     }

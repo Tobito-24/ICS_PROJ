@@ -3,7 +3,7 @@ using VUTIS2.Common.Enums;
 
 namespace VUTIS2.BL.Models;
 
-public class ActivityDetailModel : ModelBase
+public record ActivityDetailModel : ModelBase
 {
     public required DateTime StartTime { get; init; }
     public required DateTime EndTime { get; init; }
