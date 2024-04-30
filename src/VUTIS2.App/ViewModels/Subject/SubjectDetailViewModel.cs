@@ -29,7 +29,7 @@ public partial class SubjectDetailViewModel(ISubjectFacade subjectFacade, INavig
         {
             foreach (EnrollmentListModel enrollment in Subject.Enrollments)
             {
-                StudentListModel? student = await studentFacade.GetAsyncList(enrollment.SubjectId);
+                StudentListModel? student = await studentFacade.GetAsyncList(enrollment.StudentId);
                 studentsList.Remove(student);
                 EnrolledStudents = EnrolledStudents.Append(student);
             }
