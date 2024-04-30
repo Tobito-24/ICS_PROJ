@@ -10,15 +10,29 @@
                        x:Name="StudentListViewRoot">
 
 
-    <Grid RowDefinitions="*,*,*,*,*">
+    <Grid RowDefinitions="*,*,*,*,*"
+          ColumnDefinitions="*,*,*">
 
         <Button Grid.Row="0"
+                Grid.Column="0"
                 Command="{Binding Source={x:Reference StudentListViewRoot}, Path=BindingContext.GoToCreateCommand}"
                 Text="new stud"/>
 
+        <Button Grid.Row="0"
+                Grid.Column="1"
+                Command="{Binding Source={x:Reference StudentListViewRoot}, Path=BindingContext.SortByFirstNameCommand}"
+                Text="sort by first name"/>
+
+        <Button Grid.Row="0"
+                Grid.Column="2"
+                Command="{Binding Source={x:Reference StudentListViewRoot}, Path=BindingContext.SortByLastNameCommand}"
+                Text="sort by last name"/>
+
         <CollectionView ItemsSource="{Binding Students}"
                         Grid.Row="1"
-                        Grid.RowSpan="4">
+                        Grid.RowSpan="4"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Horizontal"
                                  HorizontalItemSpacing="5"
