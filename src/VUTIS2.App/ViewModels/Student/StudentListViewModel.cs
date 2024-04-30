@@ -36,7 +36,7 @@ public partial class StudentListViewModel(IStudentFacade studentFacade,  INaviga
         await studentFacade.DeleteAsync(id);
         MessengerService.Send(new StudentDeleteMessage());
     }
-    
+
     [RelayCommand]
     public async Task SortByLastNameAsync()
     {

@@ -11,9 +11,10 @@ public partial class ActivityEditViewModel(IActivityFacade activityFacade, INavi
     : ViewModelBase(messengerService)
 {
     public ActivityDetailModel Activity { get; init; } = ActivityDetailModel.Empty;
+    public Guid SubjectId { get; set; }
     public async Task SaveAsync()
     {
-        await activityFacade.SaveAsync(Activity);
+        await activityFacade.SaveAsync(Activity with { SubjectId = SubjectId });
         MessengerService.Send(new ActivityEditMessage { ActivityId = Activity.Id });
         navigationService.SendBackButtonPressed();
     }
