@@ -24,7 +24,7 @@
 
     <Style x:Key="EditButton" TargetType="Button">
         <Setter Property="TextColor" Value="{StaticResource White}" />
-        <Setter Property="BackgroundColor" Value="{StaticResource EditButton}" />
+        <Setter Property="BackgroundColor" Value="{StaticResource EditButtonColor}" />
         <Setter Property="Margin" Value="10, 0" />
         <Setter Property="CornerRadius" Value="5" />
         <Setter Property="FontSize" Value="20" />
@@ -32,6 +32,17 @@
         <Setter Property="HeightRequest" Value="100" />
         <Setter Property="WidthRequest" Value="200" />
         <Setter Property="Text" Value="{x:Static texts:RandomTexts.EditButton}" />
+    </Style>
 
+    <Style x:Key="AddSubjectButton" TargetType="Button">
+        <Setter Property="TextColor" Value="{StaticResource White}" />
+        <Setter Property="BackgroundColor" Value="{StaticResource EditButtonColor}" />
+        <Setter Property="Margin" Value="10, 0" />
+        <Setter Property="CornerRadius" Value="5" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontFamily" Value="MonsterratMedium" />
+        <Setter Property="HeightRequest" Value="100" />
+        <Setter Property="WidthRequest" Value="200" />
+        <Setter Property="Text" Value="{x:Static texts:RandomTexts.AddSubjectButton}" />
     </Style>
 </ResourceDictionary>

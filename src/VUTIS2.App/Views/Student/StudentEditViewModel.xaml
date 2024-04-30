@@ -53,16 +53,22 @@
               RowSpacing="10"
               ColumnSpacing="10">
 
+            
+
 
             <Button Grid.Column="2"
-                    Grid.RowSpan="2" />
+                    Grid.RowSpan="2"
+                    Style="{StaticResource AddSubjectButton}"/>
 
             <Button Grid.Column="3"
-                    Grid.Row="0" />
+                    Grid.Row="0"
+                    Command="{Binding SaveCommand}"
+                    Style="{StaticResource SaveButton}"/>
 
             <Button Grid.Column="3"
-                    Grid.RowSpan="1"
-                    Command="{Binding SaveCommand}"/>
+                    Grid.Row="1"
+                    Style="{StaticResource CancelButton}"/><!--Command="{Binding CancelCommand}"-->
+
         </Grid>
 
     </Grid>
