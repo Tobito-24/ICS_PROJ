@@ -9,15 +9,29 @@
                        x:Class="VUTIS2.App.Views.Subject.SubjectListView"
                        x:Name="SubjectListViewRoot">
 
-    <Grid RowDefinitions="*,*,*,*,*">
+    <Grid RowDefinitions="*,*,*,*,*"
+          ColumnDefinitions="*,*,*">
 
         <Button Grid.Row="0"
+                Grid.Column="0"
                 Command="{Binding Source={x:Reference SubjectListViewRoot}, Path=BindingContext.GoToCreateCommand}"
                 Text="new subj"/>
 
+        <Button Grid.Row="0"
+                Grid.Column="1"
+                Command="{Binding Source={x:Reference SubjectListViewRoot}, Path=BindingContext.SortByNameCommand}"
+                Text="sort by name"/>
+
+        <Button Grid.Row="0"
+                Grid.Column="2"
+                Command="{Binding Source={x:Reference SubjectListViewRoot}, Path=BindingContext.SortByAbbreviationCommand}"
+                Text="sort by abbr"/>
+
         <CollectionView ItemsSource="{Binding Subjects}"
                         Grid.Row="1"
-                        Grid.RowSpan="4">
+                        Grid.RowSpan="4"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Horizontal"
                              HorizontalItemSpacing="5"
