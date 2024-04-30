@@ -14,6 +14,9 @@ public partial class SubjectListViewModel(ISubjectFacade subjectFacade, INavigat
     IMessengerService messengerService, IEnrollmentFacade enrollmentFacade)
     : ViewModelBase(messengerService), IRecipient<SubjectEditMessage>, IRecipient<SubjectDeleteMessage>
 {
+    bool sortedAscendingName = true;
+    bool sortedAscendingAbr = true;
+
     public IEnumerable<SubjectListModel> Subjects { get; set; } = null!;
     protected override async Task LoadDataAsync()
     {
@@ -36,6 +39,38 @@ public partial class SubjectListViewModel(ISubjectFacade subjectFacade, INavigat
     {
         await subjectFacade.DeleteAsync(id);
         MessengerService.Send(new SubjectDeleteMessage());
+    }
+
+    [RelayCommand]
+    public async Task SortByNameAsync()
+    {
+        if (sortedAscendingName)
+        {
+            Subjects = subjectFacade.GetOrderedByNameAsc(Subjects.ToList());
+            sortedAscendingName = false;
+        }
+        else
+        {
+            Subjects = subjectFacade.GetOrderedByNameDesc(Subjects.ToList());
+            sortedAscendingName = true;
+        }
+
+        await base.LoadDataAsync();
+    }
+    [RelayCommand]
+    public async Task SortByAbbreviation()
+    {
+        if (sortedAscendingAbr)
+        {
+            Subjects = subjectFacade.GetOrderedByAbbreviationAsc(Subjects.ToList());
+            sortedAscendingAbr = false;
+        }
+        else
+        {
+            Subjects = subjectFacade.GetOrderedByAbbreviationDesc(Subjects.ToList());
+            sortedAscendingAbr = true;
+        }
+        await base.LoadDataAsync();
     }
     public async void Receive(SubjectEditMessage message)
     {
