@@ -55,7 +55,10 @@ public partial class SubjectDetailViewModel(ISubjectFacade subjectFacade, INavig
     [RelayCommand]
     public async Task AddEnrollmentAsync(Guid StudentId)
     {
-        Enrollment = EnrollmentDetailModel.Empty with {SubjectId = StudentId, StudentId = Subject.Id};
+        if (Subject is not null)
+        {
+            Enrollment = EnrollmentDetailModel.Empty with {SubjectId = StudentId, StudentId = Subject.Id};
+        }
         await enrollmentFacade.SaveAsync(Enrollment with {Student = default!, Subject = default!});
         await ReloadDataAsync();
         await LoadDataAsync();
