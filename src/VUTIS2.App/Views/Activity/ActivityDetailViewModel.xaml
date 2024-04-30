@@ -8,31 +8,42 @@
                        x:DataType="vm:ActivityDetailViewModel"
                        x:Class="VUTIS2.App.Views.Activity.ActivityDetailView"
                        x:Name="ActivityDetailViewRoot">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-
+    <Grid ColumnDefinitions="2*,*">
         <StackLayout Grid.Column="0" Margin="50" Spacing="10" HorizontalOptions="FillAndExpand">
-            <Editor Placeholder="Activity Detail"
-                    HeightRequest="100"
-                    AutoSize="TextChanges" />
+            <Label Style="{StaticResource Titleline}"
+                   Text="Activity Detail" />
 
-            <HorizontalStackLayout Spacing="10">
-                <Label Text="Start date:" VerticalOptions="Center" />
-                <DatePicker />
-            </HorizontalStackLayout>
+            <Entry Placeholder="Detail"
+                   Text="{Binding Activity.Description}"/>
 
-            <HorizontalStackLayout Spacing="10">
-                <Label Text="End date:" VerticalOptions="Center" />
-                <DatePicker />
-            </HorizontalStackLayout>
+            <Grid ColumnDefinitions="4*,2*"
+                  RowDefinitions="*,*,*" RowSpacing="10">
+                
+                <Grid Grid.Row="0" ColumnDefinitions="*,3*" ColumnSpacing="10">
+                    <Label Grid.Column="0" Text="Start date:" VerticalOptions="Center" />
+                    <HorizontalStackLayout Grid.Column="1" Spacing="10">
+                        <DatePicker Date="{Binding Activity.StartTime.Date}" />
+                        <TimePicker Time="{Binding Activity.StartTime.TimeOfDay}"
+                                    Format="HH-mm" />
+                    </HorizontalStackLayout>
+                </Grid>
 
-            <HorizontalStackLayout Spacing="10">
-                <Label Text="Room:" VerticalOptions="Center" />
-                <Entry Placeholder="Room Name" />
-            </HorizontalStackLayout>
+                <Grid Grid.Row="1" ColumnDefinitions="*,3*" ColumnSpacing="10">
+                    <Label Grid.Column="0" Text="End date:" VerticalOptions="Center" />
+                    <Grid Grid.Column="1" ColumnDefinitions="auto,*" ColumnSpacing="10"
+                          VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                        <DatePicker Grid.Column="0" Date="{Binding Activity.EndTime.Date}" />
+                        <TimePicker Grid.Column="1" Time="{Binding Activity.EndTime.TimeOfDay}"
+                                    Format="HH-mm" VerticalOptions="Center"/>
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Row="2" ColumnDefinitions="*,3*" ColumnSpacing="10">
+                    <Label Grid.Column="0" Text="Room:" VerticalOptions="Center" />
+                    <Entry Grid.Column="1" Placeholder="Room"
+                           Text="{Binding Activity.RoomName}" />
+                </Grid>
+            </Grid>
         </StackLayout>
     </Grid>
 </views:ContentPageBase>
