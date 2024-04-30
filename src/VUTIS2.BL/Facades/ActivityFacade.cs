@@ -29,9 +29,9 @@ public class ActivityFacade(IUnitOfWorkFactory unitOfWorkFactory, IActivityModel
         }
     }*/
 
-    public async Task DeleteActivityAsync(Guid Id)
+    public new async Task DeleteAsync(Guid id)
     {
-        var Activity = await GetAsync(Id);
+        var Activity = await GetAsync(id);
         if (Activity is not null)
         {
             if (Activity.Evaluations is not null)
@@ -42,6 +42,16 @@ public class ActivityFacade(IUnitOfWorkFactory unitOfWorkFactory, IActivityModel
 
                 }
             }
+        }
+        await using IUnitOfWork uow = UnitOfWorkFactory.Create();
+        try
+        {
+            await uow.GetRepository<ActivityEntity, ActivityEntityMapper>().DeleteAsync(id).ConfigureAwait(false);
+            await uow.CommitAsync().ConfigureAwait(false);
+        }
+        catch (DbUpdateException e)
+        {
+            throw new InvalidOperationException("Entity deletion failed.", e);
         }
     }
     public async Task<IEnumerable<ActivityListModel>> GetAsyncFromSubject(Guid Id)

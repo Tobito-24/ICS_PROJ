@@ -1,4 +1,5 @@
-﻿using VUTIS2.BL.Mappers;
+﻿using Microsoft.EntityFrameworkCore;
+using VUTIS2.BL.Mappers;
 using VUTIS2.BL.Models;
 using VUTIS2.DAL.Entities;
 using VUTIS2.DAL.Mappers;
@@ -6,8 +7,30 @@ using VUTIS2.DAL.UnitOfWork;
 
 namespace VUTIS2.BL.Facades;
 
-public class StudentFacade(IUnitOfWorkFactory unitOfWorkFactory, IStudentModelMapper modelMapper) : FacadeBase<StudentEntity, StudentListModel, StudentDetailModel, StudentEntityMapper>(unitOfWorkFactory, modelMapper), IStudentFacade
+public class StudentFacade(IUnitOfWorkFactory unitOfWorkFactory, IStudentModelMapper modelMapper, IEnrollmentFacade enrollmentFacade) : FacadeBase<StudentEntity, StudentListModel, StudentDetailModel, StudentEntityMapper>(unitOfWorkFactory, modelMapper), IStudentFacade
 {
+    public new async Task DeleteAsync(Guid id)
+    {
+        var Student = await GetAsync(id);
+        if (Student is not null)
+        {
+            foreach (var enrollment in Student.Enrollments)
+            {
+                await enrollmentFacade.DeleteAsync(enrollment.Id);
+            }
+
+        }
+        await using IUnitOfWork uow = UnitOfWorkFactory.Create();
+        try
+        {
+            await uow.GetRepository<StudentEntity, StudentEntityMapper>().DeleteAsync(id).ConfigureAwait(false);
+            await uow.CommitAsync().ConfigureAwait(false);
+        }
+        catch (DbUpdateException e)
+        {
+            throw new InvalidOperationException("Entity deletion failed.", e);
+        }
+    }
     protected override List<string> IncludesNavigationPathDetail => new()
     {
         $"{nameof(StudentEntity.Enrollments)}"

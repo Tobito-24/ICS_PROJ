@@ -34,8 +34,8 @@ public partial class SubjectListViewModel(ISubjectFacade subjectFacade, INavigat
     [RelayCommand]
     public async Task DeleteAsync(Guid id)
     {
-        await subjectFacade.DeleteSubjectAsync(id);
-        MessengerService.Send(new StudentDeleteMessage());
+        await subjectFacade.DeleteAsync(id);
+        MessengerService.Send(new SubjectDeleteMessage());
     }
     public async void Receive(SubjectEditMessage message)
     {

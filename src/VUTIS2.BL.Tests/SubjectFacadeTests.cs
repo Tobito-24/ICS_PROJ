@@ -14,7 +14,7 @@ public class SubjectFacadeTests : FacadeTestsBase
 
     public SubjectFacadeTests(ITestOutputHelper output) : base(output)
     {
-        _subjectFacadeSUT = new SubjectFacade(UnitOfWorkFactory, SubjectModelMapper);
+        _subjectFacadeSUT = new SubjectFacade(UnitOfWorkFactory, SubjectModelMapper,  enrollmentFacade, activityFacade);
     }
 
     [Fact]

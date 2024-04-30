@@ -6,5 +6,4 @@ namespace VUTIS2.BL.Facades;
 public interface IActivityFacade : IFacade<ActivityEntity, ActivityListModel, ActivityDetailModel>
 {
     Task<IEnumerable<ActivityListModel>> GetAsyncFromSubject(Guid Id);
-    Task DeleteActivityAsync(Guid Id);
 }

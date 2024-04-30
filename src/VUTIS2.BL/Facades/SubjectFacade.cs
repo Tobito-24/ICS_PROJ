@@ -1,4 +1,5 @@
-﻿using VUTIS2.BL.Mappers;
+﻿using Microsoft.EntityFrameworkCore;
+using VUTIS2.BL.Mappers;
 using VUTIS2.BL.Models;
 using VUTIS2.DAL.Entities;
 using VUTIS2.DAL.Mappers;
@@ -14,7 +15,7 @@ public class SubjectFacade(IUnitOfWorkFactory unitOfWorkFactory, ISubjectModelMa
         $"{nameof(SubjectEntity.Activities)}"
     };
 
-    public async Task DeleteSubjectAsync(Guid id)
+    public new async Task DeleteAsync(Guid id)
     {
         var Subject = await GetAsync(id);
         if (Subject is not null)
@@ -25,8 +26,19 @@ public class SubjectFacade(IUnitOfWorkFactory unitOfWorkFactory, ISubjectModelMa
             }
             foreach (var activity in Subject.Activities)
             {
-                await activityFacade.DeleteActivityAsync(activity.Id);
+                await activityFacade.DeleteAsync(activity.Id);
             }
+
+        }
+        await using IUnitOfWork uow = UnitOfWorkFactory.Create();
+        try
+        {
+            await uow.GetRepository<SubjectEntity, SubjectEntityMapper>().DeleteAsync(id).ConfigureAwait(false);
+            await uow.CommitAsync().ConfigureAwait(false);
+        }
+        catch (DbUpdateException e)
+        {
+            throw new InvalidOperationException("Entity deletion failed.", e);
         }
     }
 
