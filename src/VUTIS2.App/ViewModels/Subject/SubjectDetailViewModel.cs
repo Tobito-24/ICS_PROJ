@@ -23,6 +23,7 @@ public partial class SubjectDetailViewModel(ISubjectFacade subjectFacade, INavig
         Subject = await subjectFacade.GetAsync(Id);
         EnrolledStudents = Enumerable.Empty<StudentListModel>();
         Students = await studentFacade.GetAsync();
+        Activities = await activityFacade.GetAsyncFromSubject(Id);
         List<StudentListModel?> studentsList = Students.ToList();
         if (Subject is not null)
         {
