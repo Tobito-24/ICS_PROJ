@@ -60,11 +60,11 @@ namespace VUTIS2.App.Resources.Texts {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add subject.
+        ///   Looks up a localized string similar to Add subjects.
         /// </summary>
-        internal static string AddSubjectButton {
+        internal static string AddSubjectLabel {
             get {
-                return ResourceManager.GetString("AddSubjectButton", resourceCulture);
+                return ResourceManager.GetString("AddSubjectLabel", resourceCulture);
             }
         }
         

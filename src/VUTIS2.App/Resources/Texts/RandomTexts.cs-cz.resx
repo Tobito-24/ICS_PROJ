@@ -20,7 +20,7 @@
   <data name="CancelButton" xml:space="preserve">
     <value>Zrušit</value>
   </data>
-  <data name="AddSubjectButton" xml:space="preserve">
-    <value>Přidat předmět</value>
+  <data name="AddSubjectLabel" xml:space="preserve">
+    <value>Přidat předměty</value>
   </data>
 </root>

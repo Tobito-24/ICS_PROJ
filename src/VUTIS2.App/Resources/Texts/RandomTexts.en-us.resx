@@ -20,7 +20,7 @@
   <data name="CancelButton" xml:space="preserve">
     <value>Cancel</value>
   </data>
-  <data name="AddSubjectButton" xml:space="preserve">
-    <value>Add subject</value>
+  <data name="AddSubjectLabel" xml:space="preserve">
+    <value>Add subjects</value>
   </data>
 </root>
