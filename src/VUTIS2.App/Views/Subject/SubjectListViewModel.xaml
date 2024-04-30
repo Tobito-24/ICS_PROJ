@@ -9,41 +9,59 @@
                        x:Class="VUTIS2.App.Views.Subject.SubjectListView"
                        x:Name="SubjectListViewRoot">
 
-    <CollectionView ItemsSource="{Binding Subjects}">
-        <CollectionView.ItemsLayout>
-            <GridItemsLayout Orientation="Horizontal"
-                         HorizontalItemSpacing="5"
-                         VerticalItemSpacing="5"
-                         Span="5"/>
-        </CollectionView.ItemsLayout>
+    <Grid RowDefinitions="*,*,*,*,*">
 
-        <CollectionView.ItemTemplate>
-            <DataTemplate x:DataType="m:SubjectListModel">
-                <Frame Padding="0"
-                   CornerRadius="5"
-                   WidthRequest="600"
-                   IsClippedToBounds="True">
+        <Button Grid.Row="0"
+                Command="{Binding Source={x:Reference SubjectListViewRoot}, Path=BindingContext.GoToCreateCommand}"
+                Text="new subj"/>
 
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding Source={x:Reference SubjectListViewRoot}, Path=BindingContext.GoToSubjectDetailCommand}"
-                                      CommandParameter="{Binding Id}"/>
-                    </Frame.GestureRecognizers>
+        <CollectionView ItemsSource="{Binding Subjects}"
+                        Grid.Row="1"
+                        Grid.RowSpan="4">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Horizontal"
+                             HorizontalItemSpacing="5"
+                             VerticalItemSpacing="5"
+                             Span="5"/>
+            </CollectionView.ItemsLayout>
 
-                    <Grid ColumnDefinitions="*"
-                        RowDefinitions="*,*">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="m:SubjectListModel">
+                    <Frame Padding="0"
+                       CornerRadius="5"
+                       WidthRequest="600"
+                       IsClippedToBounds="True">
 
-                        <Label Grid.Column="0" Grid.Row="0"
-                           Text="{Binding Name}"
-                           Style="{StaticResource StudentName}"/>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={x:Reference SubjectListViewRoot}, Path=BindingContext.GoToSubjectDetailCommand}"
+                                          CommandParameter="{Binding Id}"/>
+                        </Frame.GestureRecognizers>
 
-                        <Label Grid.Column="0" Grid.Row="1"
-                           Text="{Binding Abbreviation}"
-                           Style="{StaticResource StudentName}"/>
-                    </Grid>
+                        <Grid ColumnDefinitions="*,*,*"
+                            RowDefinitions="*,*">
 
-                </Frame>
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
-    </CollectionView>
+                            <Label Grid.Column="0"
+                                   Grid.Row="0"
+                                   Grid.RowSpan="2"
+                                   Text="{Binding Name}"
+                                   Style="{StaticResource StudentName}"/>
 
+                            <Label Grid.Column="0"
+                                   Grid.Row="1"
+                                   Grid.RowSpan="2"
+                                   Text="{Binding Abbreviation}"
+                                   Style="{StaticResource StudentName}"/>
+
+                            <Button Grid.Column="2"
+                                    Grid.Row="0"
+                                    Grid.RowSpan="2"
+                                    Command="{Binding Source={x:Reference SubjectListViewRoot}, Path=BindingContext.DeleteCommand}"
+                                    Text="del sub"/>
+                        </Grid>
+
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
 </views:ContentPageBase>

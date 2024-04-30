@@ -30,4 +30,7 @@
   <data name="AddSubjectLabel" xml:space="preserve">
     <value>Add subjects</value>
   </data>
+  <data name="CreateButton" xml:space="preserve">
+    <value>Create</value>
+  </data>
 </root>

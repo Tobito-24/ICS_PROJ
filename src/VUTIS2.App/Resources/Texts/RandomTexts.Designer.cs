@@ -78,6 +78,15 @@ namespace VUTIS2.App.Resources.Texts {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create.
+        /// </summary>
+        internal static string CreateButton {
+            get {
+                return ResourceManager.GetString("CreateButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit.
         /// </summary>
         internal static string EditButton {

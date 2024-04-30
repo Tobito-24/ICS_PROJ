@@ -23,4 +23,7 @@
   <data name="AddSubjectLabel" xml:space="preserve">
     <value>Přidat předměty</value>
   </data>
+  <data name="CreateButton" xml:space="preserve">
+    <value>Vytvořit</value>
+  </data>
 </root>

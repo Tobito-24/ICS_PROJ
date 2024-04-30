@@ -36,4 +36,16 @@
         <Setter Property="Text" Value="{x:Static texts:RandomTexts.CancelButton}" />
     </Style>
 
+    <Style x:Key="CreateButton" TargetType="Button">
+        <Setter Property="TextColor" Value="{StaticResource White}" />
+        <Setter Property="BackgroundColor" Value="{StaticResource EditButtonColor}" />
+        <Setter Property="Margin" Value="10, 0" />
+        <Setter Property="CornerRadius" Value="5" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontFamily" Value="MonsterratMedium" />
+        <Setter Property="HeightRequest" Value="100" />
+        <Setter Property="WidthRequest" Value="200" />
+        <Setter Property="Text" Value="{x:Static texts:RandomTexts.CreateButton}" />
+    </Style>
+
 </ResourceDictionary>

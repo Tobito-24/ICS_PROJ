@@ -10,46 +10,60 @@
                        x:Name="StudentListViewRoot">
 
 
-    <CollectionView ItemsSource="{Binding Students}">
-        <CollectionView.ItemsLayout>
-            <GridItemsLayout Orientation="Horizontal"
-                             HorizontalItemSpacing="5"
-                             VerticalItemSpacing="5"
-                             Span="5"/>
-        </CollectionView.ItemsLayout>
+    <Grid RowDefinitions="*,*,*,*,*">
 
-        <CollectionView.ItemTemplate>
-            <DataTemplate x:DataType="m:StudentListModel">
-                <Frame Padding="0"
-                       CornerRadius="5"
-                       WidthRequest="600"
-                       IsClippedToBounds="True">
-                <Frame.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding Source={x:Reference StudentListViewRoot}, Path=BindingContext.GoToDetailCommand}"
-                                          CommandParameter="{Binding Id}"/>
-                </Frame.GestureRecognizers>
+        <Button Grid.Row="0"
+                Command="{Binding Source={x:Reference StudentListViewRoot}, Path=BindingContext.GoToCreateCommand}"
+                Text="new stud"/>
 
-                    <Grid ColumnDefinitions="*,*,*,*,*,*"
-                          RowDefinitions="*,*">
-                        <Image Grid.Column="0" Grid.Row="0"
-                               Grid.ColumnSpan="2" Grid.RowSpan="2"
-                               Source="{Binding PhotoUrl, TargetNullValue='students_picture.png'}"/>
+        <CollectionView ItemsSource="{Binding Students}"
+                        Grid.Row="1"
+                        Grid.RowSpan="4">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Horizontal"
+                                 HorizontalItemSpacing="5"
+                                 VerticalItemSpacing="5"
+                                 Span="5"/>
+            </CollectionView.ItemsLayout>
 
-                        <Label Grid.Column="2" Grid.Row="0"
-                               Grid.ColumnSpan="3"
-                               Text="{Binding FirstName}"
-                               Style="{StaticResource StudentName}"/>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="m:StudentListModel">
+                    <Frame Padding="0"
+                           CornerRadius="5"
+                           WidthRequest="600"
+                           IsClippedToBounds="True">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Source={x:Reference StudentListViewRoot}, Path=BindingContext.GoToDetailCommand}"
+                                              CommandParameter="{Binding Id}"/>
+                    </Frame.GestureRecognizers>
 
-                        <Label Grid.Column="2" Grid.Row="1"
-                               Grid.ColumnSpan="3"
-                               Text="{Binding LastName}"
-                               Style="{StaticResource StudentName}"/>
+                        <Grid ColumnDefinitions="*,*,*,*,*,*"
+                              RowDefinitions="*,*">
+                            <Image Grid.Column="0" Grid.Row="0"
+                                   Grid.ColumnSpan="2" Grid.RowSpan="2"
+                                   Source="{Binding PhotoUrl, TargetNullValue='students_picture.png'}"/>
 
-                    </Grid>
+                            <Label Grid.Column="2" Grid.Row="0"
+                                   Grid.ColumnSpan="3"
+                                   Text="{Binding FirstName}"
+                                   Style="{StaticResource StudentName}"/>
 
-                </Frame>
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
-    </CollectionView>
+                            <Label Grid.Column="2" Grid.Row="1"
+                                   Grid.ColumnSpan="3"
+                                   Text="{Binding LastName}"
+                                   Style="{StaticResource StudentName}"/>
 
+                            <Button Grid.Column="5"
+                                    Grid.Row="0"
+                                    Grid.RowSpan="2"
+                                    Command="{Binding Source={x:Reference StudentListViewRoot}, Path=BindingContext.DeleteCommand}"
+                                    Text="del stud"/>
+
+                        </Grid>
+
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
 </views:ContentPageBase>
