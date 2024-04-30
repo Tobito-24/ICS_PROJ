@@ -3,6 +3,7 @@ using VUTIS2.App.Messages;
 using VUTIS2.App.Services;
 using VUTIS2.BL.Facades;
 using VUTIS2.BL.Models;
+using VUTIS2.DAL.Seeds;
 
 namespace VUTIS2.App.ViewModels;
 
@@ -51,6 +52,18 @@ public partial class StudentEditViewModel(IStudentFacade studentFacade, INavigat
     {
         Enrollment = EnrollmentDetailModel.Empty with {SubjectId = SubjectId, StudentId = Student.Id};
         await enrollmentFacade.SaveAsync(Enrollment with {Student = default!, Subject = default!});
+        await ReloadDataAsync();
+        await LoadDataAsync();
+    }
+
+    [RelayCommand]
+    public async Task RemoveEnrollmentAsync(Guid SubjectId)
+    {
+        var deletedEnrollment = Student.Enrollments.FirstOrDefault(e => e.SubjectId == SubjectId);
+        if (deletedEnrollment is not null)
+        {
+            await enrollmentFacade.DeleteAsync(deletedEnrollment.Id);
+        }
         await ReloadDataAsync();
         await LoadDataAsync();
     }
