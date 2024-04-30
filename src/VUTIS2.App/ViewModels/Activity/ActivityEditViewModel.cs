@@ -3,21 +3,23 @@ using VUTIS2.App.Messages;
 using VUTIS2.App.Services;
 using VUTIS2.BL.Facades;
 using VUTIS2.BL.Models;
+using VUTIS2.Common.Enums;
 
 namespace VUTIS2.App.ViewModels;
 
-[QueryProperty(nameof(Activity), nameof(Activity))]
+[QueryProperty(nameof(SubjectId), nameof(SubjectId))]
 public partial class ActivityEditViewModel(IActivityFacade activityFacade, INavigationService navigationService,
     IMessengerService messengerService)
     : ViewModelBase(messengerService)
 {
     public ActivityDetailModel Activity { get; init; } = ActivityDetailModel.Empty;
     public Guid SubjectId { get; set; }
+    
 
     [RelayCommand]
     public async Task SaveAsync()
     {
-        await activityFacade.SaveAsync(Activity with { SubjectId = SubjectId });
+        await activityFacade.SaveAsync(Activity with { SubjectId = SubjectId});
         MessengerService.Send(new ActivityEditMessage { ActivityId = Activity.Id });
         navigationService.SendBackButtonPressed();
     }
