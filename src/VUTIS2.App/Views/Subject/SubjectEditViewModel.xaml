@@ -47,20 +47,6 @@
             </Grid>
         </Grid>
 
-        <Grid Grid.Row="1"
-              RowDefinitions="*,*,*"
-              ColumnDefinitions="*,*,*,*">
-
-            <Label Grid.Row="0"
-                   Grid.Column="0"
-                   Text="{x:Static texts:SubjectEditTexts.Students}"
-                   Style="{StaticResource StudentEditName}"/>
-
-
-
-
-        </Grid>
-
     </Grid>
 
 </views:ContentPageBase>

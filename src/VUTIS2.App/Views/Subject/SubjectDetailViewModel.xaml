@@ -33,8 +33,7 @@
                 Style="{StaticResource EditButton}"/>
 
         <CollectionView ItemsSource="{Binding EnrolledStudents}"
-                        Grid.Column="1"
-                        Grid.RowSpan="2">
+                        Grid.Column="1">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical"
                                  VerticalItemSpacing="10"/>
@@ -68,9 +67,52 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
 
+        <Grid Grid.Column="1"
+              Grid.Row="1"
+              RowDefinitions="*,*,*">
+
+            <Label Text="{x:Static texts:SubjectEditTexts.AddStudent}"
+                   Style="{StaticResource AddSubjectLabel}"/>
+
+            <CollectionView ItemsSource="{Binding Students}"
+                            Grid.Row="1"
+                            Grid.RowSpan="2">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"
+                                     VerticalItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="m:StudentListModel">
+                        <Frame>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={x:Reference SubjectDetailViewRoot}, Path=BindingContext.AddEnrollmentCommand}"
+                                                      CommandParameter="{Binding Id}"/>
+                            </Frame.GestureRecognizers>
+                            <Grid ColumnDefinitions="*,*"
+                                  RowDefinitions="*,*">
+
+                                <Image Grid.Column="0" Grid.Row="0"
+                                       Grid.RowSpan="2"
+                                       Source="{Binding PhotoUrl, TargetNullValue='students_picture.png'}"/>
+
+                                <Label Grid.Column="1" Grid.Row="0"
+                                       Text="{Binding FirstName}"
+                                       Style="{StaticResource SubjectStudentActivityLabel}"/>
+
+                                <Label Grid.Column="1" Grid.Row="1"
+                                       Text="{Binding LastName}"
+                                       Style="{StaticResource SubjectStudentActivityLabel}"/>
+
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+
         <CollectionView ItemsSource="{Binding Activities}"
-                        Grid.Column="2"
-                        Grid.RowSpan="2">
+                        Grid.Column="2">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical"
                                  VerticalItemSpacing="10"/>
