@@ -9,7 +9,7 @@ namespace VUTIS2.App.ViewModels;
 
 [QueryProperty(nameof(Id), nameof(Id))]
 public partial class SubjectDetailViewModel(ISubjectFacade subjectFacade, INavigationService navigationService, IMessengerService messengerService, IAlertService alertService, IEnrollmentFacade enrollmentFacade, IActivityFacade activityFacade, IStudentFacade studentFacade)
-    : ViewModelBase(messengerService), IRecipient<SubjectEditMessage>
+    : ViewModelBase(messengerService), IRecipient<SubjectEditMessage>, IRecipient<SubjectDeleteMessage>, IRecipient<StudentDeleteMessage>, IRecipient<ActivityDeleteMessage>, IRecipient<ActivityEditMessage>
 {
     public Guid Id { get; set; }
     public SubjectDetailModel? Subject { get; private set; }
@@ -125,16 +125,31 @@ public partial class SubjectDetailViewModel(ISubjectFacade subjectFacade, INavig
         }
     }
 
-    public async Task GoToEditAsync()
-    {
-        await navigationService.GoToAsync("/edit",
-            new Dictionary<string, object?> { [nameof(SubjectEditViewModel.Subject)] = Subject });
-    }
     public async void Receive(SubjectEditMessage message)
     {
         if (message.SubjectId == Id)
         {
             await LoadDataAsync();
         }
+    }
+
+    public void Receive(SubjectDeleteMessage message)
+    {
+        navigationService.SendBackButtonPressed();
+    }
+
+    public async void Receive(StudentDeleteMessage message)
+    {
+        await LoadDataAsync();
+    }
+
+    public async void Receive(ActivityDeleteMessage message)
+    {
+        await LoadDataAsync();
+    }
+
+    public async void Receive(ActivityEditMessage message)
+    {
+       await LoadDataAsync();
     }
 }
