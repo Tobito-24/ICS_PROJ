@@ -12,7 +12,7 @@ public partial class ActivityEditViewModel(IActivityFacade activityFacade, INavi
     IMessengerService messengerService)
     : ViewModelBase(messengerService)
 {
-    public ActivityDetailModel Activity { get; init; } = ActivityDetailModel.Empty;
+    public ActivityDetailModel Activity { get; init; } = ActivityDetailModel.Empty with { StartTime = DateTime.Now, EndTime = DateTime.Now };
 
     public List<ActivityType> ActivityTypes { get; } = Enum.GetValues<ActivityType>().ToList();
     public Guid SubjectId { get; set; }
