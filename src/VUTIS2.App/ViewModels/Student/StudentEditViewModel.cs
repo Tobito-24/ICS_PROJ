@@ -19,6 +19,7 @@ public partial class StudentEditViewModel(IStudentFacade studentFacade, INavigat
     public IEnumerable<SubjectListModel?> EnrolledSubjects { get; private set; } = Enumerable.Empty<SubjectListModel>();
     protected override async Task LoadDataAsync()
     {
+        EnrolledSubjects = Enumerable.Empty<SubjectListModel>();
         Subjects = await subjectFacade.GetAsync();
         List<SubjectListModel?> subjectsList = Subjects.ToList();
         foreach (EnrollmentListModel enrollment in Student.Enrollments)
