@@ -19,7 +19,6 @@ public partial class StudentEditViewModel(IStudentFacade studentFacade, INavigat
     public IEnumerable<SubjectListModel?> EnrolledSubjects { get; private set; } = Enumerable.Empty<SubjectListModel>();
     protected override async Task LoadDataAsync()
     {
-        EnrolledSubjects = Enumerable.Empty<SubjectListModel>();
         Subjects = await subjectFacade.GetAsync();
         List<SubjectListModel?> subjectsList = Subjects.ToList();
         foreach (EnrollmentListModel enrollment in Student.Enrollments)
@@ -51,6 +50,7 @@ public partial class StudentEditViewModel(IStudentFacade studentFacade, INavigat
     {
         Enrollment = EnrollmentDetailModel.Empty with {SubjectId = SubjectId, StudentId = Student.Id};
         await enrollmentFacade.SaveAsync(Enrollment with {Student = default!, Subject = default!});
+        await ReloadDataAsync();
         await LoadDataAsync();
     }
 
