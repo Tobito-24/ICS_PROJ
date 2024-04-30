@@ -117,54 +117,63 @@
             </CollectionView>
         </Grid>
 
-        <CollectionView ItemsSource="{Binding Activities}"
-                        Grid.Column="2">
-            <CollectionView.ItemsLayout>
-                <GridItemsLayout Orientation="Vertical"
-                                 VerticalItemSpacing="10"/>
-            </CollectionView.ItemsLayout>
+        <Grid RowDefinitions="*,*,*,*"
+              Grid.Column="2">
+            <CollectionView ItemsSource="{Binding Activities}"
+                            Grid.Row="0"
+                            Grid.RowSpan="3">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"
+                                     VerticalItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
 
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="m:ActivityListModel">
-                    <Frame>
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding Source={x:Reference SubjectDetailViewRoot}, Path=BindingContext.GoToActivityDetailCommand}"
-                                                  CommandParameter="{Binding Id}"/>
-                        </Frame.GestureRecognizers>
-                        <Grid ColumnDefinitions="*,*,*,*"
-                              RowDefinitions="*,*">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="m:ActivityListModel">
+                        <Frame>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={x:Reference SubjectDetailViewRoot}, Path=BindingContext.GoToActivityDetailCommand}"
+                                                      CommandParameter="{Binding Id}"/>
+                            </Frame.GestureRecognizers>
+                            <Grid ColumnDefinitions="*,*,*,*"
+                                  RowDefinitions="*,*">
 
-                            <Label Grid.Column="0"
-                                   Grid.Row="0"
-                                   Grid.ColumnSpan="4"
-                                   Text="{Binding Description}"
-                                   Style="{StaticResource SubjectStudentActivityLabel}"/>
+                                <Label Grid.Column="0"
+                                       Grid.Row="0"
+                                       Grid.ColumnSpan="4"
+                                       Text="{Binding Description}"
+                                       Style="{StaticResource SubjectStudentActivityLabel}"/>
 
-                            <Label Grid.Column="0"
-                                   Grid.Row="1"
-                                   Text="{Binding StartTime}"
-                                   Style="{StaticResource SubjectStudentActivityLabel}"/>
+                                <Label Grid.Column="0"
+                                       Grid.Row="1"
+                                       Text="{Binding StartTime}"
+                                       Style="{StaticResource SubjectStudentActivityLabel}"/>
 
-                            <Label Grid.Column="1"
-                                   Grid.Row="1"
-                                   Text="{Binding EndTime}"
-                                   Style="{StaticResource SubjectStudentActivityLabel}"/>
+                                <Label Grid.Column="1"
+                                       Grid.Row="1"
+                                       Text="{Binding EndTime}"
+                                       Style="{StaticResource SubjectStudentActivityLabel}"/>
 
-                            <Label Grid.Column="2"
-                                   Grid.Row="1"
-                                   Text="{Binding RoomName}"
-                                   Style="{StaticResource SubjectStudentActivityLabel}"/>
+                                <Label Grid.Column="2"
+                                       Grid.Row="1"
+                                       Text="{Binding RoomName}"
+                                       Style="{StaticResource SubjectStudentActivityLabel}"/>
 
-                            <Label Grid.Column="3"
-                                   Grid.Row="1"
-                                   Text="{Binding ActivityType}"
-                                   Style="{StaticResource SubjectStudentActivityLabel}"/>
+                                <Label Grid.Column="3"
+                                       Grid.Row="1"
+                                       Text="{Binding ActivityType}"
+                                       Style="{StaticResource SubjectStudentActivityLabel}"/>
 
-                        </Grid>
-                    </Frame>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Button Grid.Row="3"
+                    Command="{Binding Source={x:Reference SubjectDetailViewRoot}, Path=BindingContext.GoToActivityCreateCommand}"
+                    Text="new activity"/>
+
+        </Grid>
 
 
     </Grid>
