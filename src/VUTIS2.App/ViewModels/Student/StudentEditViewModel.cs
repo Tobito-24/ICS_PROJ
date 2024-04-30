@@ -56,6 +56,6 @@ public partial class StudentEditViewModel(IStudentFacade studentFacade, INavigat
 
     private async Task ReloadDataAsync()
     {
-        Student = await studentFacade.GetAsync(Id) ?? StudentDetailModel.Empty;
+        Student = await studentFacade.GetAsync(Student.Id) ?? StudentDetailModel.Empty;
     }
 }
