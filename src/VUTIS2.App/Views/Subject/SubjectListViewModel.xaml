@@ -25,7 +25,7 @@
                    IsClippedToBounds="True">
 
                     <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding Source={x:Reference SubjectListViewRoot}, Path=BindingContext.GoToDetailCommand}"
+                        <TapGestureRecognizer Command="{Binding Source={x:Reference SubjectListViewRoot}, Path=BindingContext.GoToSubjectDetailCommand}"
                                       CommandParameter="{Binding Id}"/>
                     </Frame.GestureRecognizers>
 

@@ -16,16 +16,16 @@ public class NavigationService : INavigationService
 {
     public IEnumerable<RouteModel> Routes { get; } = new List<RouteModel>
     {
-        new("/students", typeof(StudentListView), typeof(StudentListViewModel)),
-        new("/students/detail", typeof(StudentDetailView), typeof(StudentDetailViewModel)),
-        new("/students/edit", typeof(StudentEditView), typeof(StudentEditViewModel)),
-        new("/subjects", typeof(SubjectListView), typeof(SubjectListViewModel)),
-        new("/subjects/detail", typeof(SubjectDetailView), typeof(SubjectDetailViewModel)),
-        new("/subjects/edit", typeof(SubjectEditView), typeof(SubjectEditViewModel)),
-        new("/evaluation", typeof(EvaluationDetailView), typeof(EvaluationDetailViewModel)),
-        new("/evaluation/edit", typeof(EvaluationEditView), typeof(EvaluationEditViewModel)),
-        new("/activity", typeof(ActivityDetailView), typeof(ActivityDetailViewModel)),
-        new("/activity/edit", typeof(ActivityEditView), typeof(ActivityEditViewModel)),
+        new("//students", typeof(StudentListView), typeof(StudentListViewModel)),
+        new("//students/detail", typeof(StudentDetailView), typeof(StudentDetailViewModel)),
+        new("//students/edit", typeof(StudentEditView), typeof(StudentEditViewModel)),
+        new("//subjects", typeof(SubjectListView), typeof(SubjectListViewModel)),
+        new("//subjects/detail", typeof(SubjectDetailView), typeof(SubjectDetailViewModel)),
+        new("//subjects/edit", typeof(SubjectEditView), typeof(SubjectEditViewModel)),
+        new("//evaluation", typeof(EvaluationDetailView), typeof(EvaluationDetailViewModel)),
+        new("//evaluation/edit", typeof(EvaluationEditView), typeof(EvaluationEditViewModel)),
+        new("//activity", typeof(ActivityDetailView), typeof(ActivityDetailViewModel)),
+        new("//activity/edit", typeof(ActivityEditView), typeof(ActivityEditViewModel)),
     };
 
     public async Task GoToAsync<TViewModel>()
