@@ -50,7 +50,7 @@ public partial class StudentEditViewModel(IStudentFacade studentFacade, INavigat
     {
         Enrollment = EnrollmentDetailModel.Empty with {SubjectId = SubjectId, StudentId = Student.Id};
         await enrollmentFacade.SaveAsync(Enrollment with {Student = default!, Subject = default!});
-        await ReloadDataAsync();
+        await LoadDataAsync();
     }
 
     private async Task ReloadDataAsync()
