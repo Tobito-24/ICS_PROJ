@@ -18,11 +18,14 @@ public partial class StudentEditViewModel(IStudentFacade studentFacade, INavigat
     public IEnumerable<SubjectListModel?> Subjects { get; private set; } = Enumerable.Empty<SubjectListModel>();
     protected override async Task LoadDataAsync()
     {
+        Subjects = await subjectFacade.GetAsync();
+        List<SubjectListModel?> subjectsList = Subjects.ToList();
         foreach (EnrollmentListModel enrollment in Student.Enrollments)
         {
             SubjectListModel? subject = await subjectFacade.GetAsyncList(enrollment.SubjectId);
-            Subjects = Subjects.Append(subject);
+            subjectsList.Remove(subject);
         }
+        Subjects = subjectsList;
     }
 
     [RelayCommand]
