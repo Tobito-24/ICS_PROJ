@@ -1,4 +1,5 @@
-﻿using VUTIS2.App.Messages;
+﻿using CommunityToolkit.Mvvm.Input;
+using VUTIS2.App.Messages;
 using VUTIS2.App.Services;
 using VUTIS2.BL.Facades;
 using VUTIS2.BL.Models;
@@ -12,10 +13,18 @@ public partial class ActivityEditViewModel(IActivityFacade activityFacade, INavi
 {
     public ActivityDetailModel Activity { get; init; } = ActivityDetailModel.Empty;
     public Guid SubjectId { get; set; }
+
+    [RelayCommand]
     public async Task SaveAsync()
     {
         await activityFacade.SaveAsync(Activity with { SubjectId = SubjectId });
         MessengerService.Send(new ActivityEditMessage { ActivityId = Activity.Id });
+        navigationService.SendBackButtonPressed();
+    }
+
+    [RelayCommand]
+    public void Cancel()
+    {
         navigationService.SendBackButtonPressed();
     }
 }
