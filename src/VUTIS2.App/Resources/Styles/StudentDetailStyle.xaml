@@ -38,7 +38,7 @@
         <Setter Property="TextColor" Value="{StaticResource White}" />
         <Setter Property="FontSize" Value="40" />
         <Setter Property="FontFamily" Value="MonsterratMedium" />
-        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="HorizontalOptions" Value="End" />
         <Setter Property="VerticalOptions" Value="End" />
         <Setter Property="Text" Value="{x:Static texts:RandomTexts.AddSubjectLabel}" />
     </Style>

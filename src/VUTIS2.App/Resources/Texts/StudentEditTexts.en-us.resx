@@ -20,4 +20,7 @@
   <data name="PhotoText" xml:space="preserve">
     <value>Image URL</value>
   </data>
+  <data name="AddSubject" xml:space="preserve">
+    <value>Add subjects</value>
+  </data>
 </root>

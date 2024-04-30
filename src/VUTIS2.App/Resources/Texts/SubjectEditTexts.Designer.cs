@@ -21,14 +21,14 @@ namespace VUTIS2.App.Resources.Texts {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class StudentEditTexts {
+    internal class SubjectEditTexts {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal StudentEditTexts() {
+        internal SubjectEditTexts() {
         }
         
         /// <summary>
@@ -38,7 +38,7 @@ namespace VUTIS2.App.Resources.Texts {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("VUTIS2.App.Resources.Texts.StudentEditTexts", typeof(StudentEditTexts).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("VUTIS2.App.Resources.Texts.SubjectEditTexts", typeof(SubjectEditTexts).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -60,11 +60,38 @@ namespace VUTIS2.App.Resources.Texts {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add subjects.
+        ///   Looks up a localized string similar to Abbreviation.
         /// </summary>
-        internal static string AddSubject {
+        internal static string Abbreviation {
             get {
-                return ResourceManager.GetString("AddSubject", resourceCulture);
+                return ResourceManager.GetString("Abbreviation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Activities.
+        /// </summary>
+        internal static string Activities {
+            get {
+                return ResourceManager.GetString("Activities", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add activities.
+        /// </summary>
+        internal static string AddActivities {
+            get {
+                return ResourceManager.GetString("AddActivities", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add students.
+        /// </summary>
+        internal static string AddStudent {
+            get {
+                return ResourceManager.GetString("AddStudent", resourceCulture);
             }
         }
         
@@ -78,20 +105,11 @@ namespace VUTIS2.App.Resources.Texts {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Image URL.
+        ///   Looks up a localized string similar to Students.
         /// </summary>
-        internal static string PhotoText {
+        internal static string Students {
             get {
-                return ResourceManager.GetString("PhotoText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Surname.
-        /// </summary>
-        internal static string Surname {
-            get {
-                return ResourceManager.GetString("Surname", resourceCulture);
+                return ResourceManager.GetString("Students", resourceCulture);
             }
         }
     }

@@ -143,6 +143,10 @@
 	    <Generator>ResXFileCodeGenerator</Generator>
 	    <LastGenOutput>RandomTexts.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>
+	  <EmbeddedResource Update="Resources\Texts\SubjectEditTexts.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>SubjectEditTexts.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -194,6 +198,11 @@
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
 	    <DependentUpon>RandomTexts.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="Resources\Texts\SubjectEditTexts.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>SubjectEditTexts.resx</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 

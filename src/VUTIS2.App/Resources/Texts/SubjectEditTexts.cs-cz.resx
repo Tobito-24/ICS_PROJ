@@ -1,4 +1,4 @@
-<root>
+﻿<root>
   <resheader name="resmimetype">
     <value>text/microsoft-resx</value>
   </resheader>
@@ -12,15 +12,21 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Name" xml:space="preserve">
-    <value>Jméno</value>
+    <value>Název</value>
   </data>
-  <data name="Surname" xml:space="preserve">
-    <value>Příjmení</value>
+  <data name="Abbreviation" xml:space="preserve">
+    <value>Zkratka</value>
   </data>
-  <data name="PhotoText" xml:space="preserve">
-    <value>URL Obrázku</value>
+  <data name="Students" xml:space="preserve">
+    <value>Studenti</value>
   </data>
-  <data name="AddSubject" xml:space="preserve">
-    <value>Přidat předměty</value>
+  <data name="Activities" xml:space="preserve">
+    <value>Aktivity</value>
+  </data>
+  <data name="AddStudent" xml:space="preserve">
+    <value>Přidat studenty</value>
+  </data>
+  <data name="AddActivities" xml:space="preserve">
+    <value>Přidat aktivity</value>
   </data>
 </root>

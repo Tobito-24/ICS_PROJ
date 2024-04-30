@@ -21,13 +21,19 @@
   <data name="Name" xml:space="preserve">
     <value>Name</value>
   </data>
-  <data name="Surname" xml:space="preserve">
-    <value>Surname</value>
+  <data name="Abbreviation" xml:space="preserve">
+    <value>Abbreviation</value>
   </data>
-  <data name="PhotoText" xml:space="preserve">
-    <value>Image URL</value>
+  <data name="Students" xml:space="preserve">
+    <value>Students</value>
   </data>
-  <data name="AddSubject" xml:space="preserve">
-    <value>Add subjects</value>
+  <data name="Activities" xml:space="preserve">
+    <value>Activities</value>
+  </data>
+  <data name="AddStudent" xml:space="preserve">
+    <value>Add students</value>
+  </data>
+  <data name="AddActivities" xml:space="preserve">
+    <value>Add activities</value>
   </data>
 </root>

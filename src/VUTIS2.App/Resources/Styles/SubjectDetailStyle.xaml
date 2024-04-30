@@ -10,7 +10,6 @@
         <Setter Property="VerticalTextAlignment" Value="Center"/>
         <Setter Property="HorizontalTextAlignment" Value="Start"/>
         <Setter Property="BackgroundColor" Value="Black"/>
-
     </Style>
 
     <Style x:Key="SubjectDetailLabel" TargetType="Label">
