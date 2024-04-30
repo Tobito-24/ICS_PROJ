@@ -11,7 +11,7 @@ using VUTIS2.DAL.UnitOfWork;
 
 namespace VUTIS2.BL.Facades;
 
-public class ActivityFacade(IUnitOfWorkFactory unitOfWorkFactory, IActivityModelMapper activityModelMapper)
+public class ActivityFacade(IUnitOfWorkFactory unitOfWorkFactory, IActivityModelMapper activityModelMapper, IEvaluationFacade evaluationFacade)
     : FacadeBase<ActivityEntity, ActivityListModel, ActivityDetailModel, ActivityEntityMapper>(unitOfWorkFactory,
         activityModelMapper), IActivityFacade
 {
@@ -28,6 +28,22 @@ public class ActivityFacade(IUnitOfWorkFactory unitOfWorkFactory, IActivityModel
             await uow.CommitAsync();
         }
     }*/
+
+    public async Task DeleteActivityAsync(Guid Id)
+    {
+        var Activity = await GetAsync(Id);
+        if (Activity is not null)
+        {
+            if (Activity.Evaluations is not null)
+            {
+                foreach (var evaluation in Activity.Evaluations)
+                {
+                    await evaluationFacade.DeleteAsync(evaluation.Id);
+
+                }
+            }
+        }
+    }
     public async Task<IEnumerable<ActivityListModel>> GetAsyncFromSubject(Guid Id)
     {
         await using IUnitOfWork uow = UnitOfWorkFactory.Create();

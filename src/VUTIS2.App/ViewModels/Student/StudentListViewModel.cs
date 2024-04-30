@@ -11,7 +11,7 @@ namespace VUTIS2.App.ViewModels;
 
 
 public partial class StudentListViewModel(IStudentFacade studentFacade,  INavigationService navigationService,
-    IMessengerService messengerService)
+    IMessengerService messengerService, IEnrollmentFacade enrollmentFacade)
     : ViewModelBase(messengerService), IRecipient<StudentEditMessage>, IRecipient<StudentDeleteMessage>
 {
     public IEnumerable<StudentListModel> Students { get; set; } = null!;
@@ -25,6 +25,13 @@ public partial class StudentListViewModel(IStudentFacade studentFacade,  INaviga
     {
         await navigationService.GoToAsync<StudentDetailViewModel>(
             new Dictionary<string, object?> { [nameof(StudentDetailViewModel.Id)] = id });
+    }
+
+    [RelayCommand]
+    public async Task DeleteAsync(Guid id)
+    {
+        await studentFacade.DeleteAsync(id);
+        MessengerService.Send(new StudentDeleteMessage());
     }
 
     [RelayCommand]

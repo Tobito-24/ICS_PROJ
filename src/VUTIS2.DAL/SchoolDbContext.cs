@@ -43,9 +43,5 @@ namespace VUTIS2.DAL
 
             }
         }
-        // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        // {
-        //     optionsBuilder.EnableSensitiveDataLogging();
-        // }
     }
 }
