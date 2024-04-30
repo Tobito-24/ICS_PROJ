@@ -61,8 +61,8 @@
             <Label Text="{x:Static texts:ActivityTexts.Type}"
                    Style="{StaticResource StudentEditName}"/>
 
-            <Entry HorizontalOptions="Fill"
-                   Text="{Binding Activity.Description}"/>
+            <Picker ItemsSource="{Binding ActivityTypes}"
+                    SelectedItem="{Binding Activity.ActivityType}"/>
         </VerticalStackLayout>
 
         <Button Grid.Row="5"
