@@ -8,11 +8,22 @@ namespace VUTIS2.App.ViewModels;
 
 [QueryProperty(nameof(Student), nameof(Student))]
 public partial class StudentEditViewModel(IStudentFacade studentFacade, INavigationService navigationService,
-    IMessengerService messengerService)
+    IMessengerService messengerService, IEnrollmentFacade enrollmentFacade, ISubjectFacade subjectFacade)
     : ViewModelBase(messengerService)
 {
     public Guid Id { get; set; }
+    public EnrollmentDetailModel Enrollment { get; set; } = EnrollmentDetailModel.Empty;
     public StudentDetailModel Student { get; set; } = StudentDetailModel.Empty;
+
+    public IEnumerable<SubjectListModel?> Subjects { get; private set; } = Enumerable.Empty<SubjectListModel>();
+    protected override async Task LoadDataAsync()
+    {
+        foreach (EnrollmentListModel enrollment in Student.Enrollments)
+        {
+            SubjectListModel? subject = await subjectFacade.GetAsyncList(enrollment.SubjectId);
+            Subjects = Subjects.Append(subject);
+        }
+    }
 
     [RelayCommand]
     public async Task SaveAsync()
@@ -20,6 +31,14 @@ public partial class StudentEditViewModel(IStudentFacade studentFacade, INavigat
         await studentFacade.SaveAsync(Student with {Enrollments = default!});
         MessengerService.Send(new StudentEditMessage {StudentId = Student.Id});
         navigationService.SendBackButtonPressed();
+    }
+
+    [RelayCommand]
+    public async Task AddEnrollmentAsync(Guid SubjectId)
+    {
+        Enrollment = EnrollmentDetailModel.Empty with {SubjectId = SubjectId, StudentId = Student.Id};
+        await enrollmentFacade.SaveAsync(Enrollment with {Student = default!, Subject = default!});
+        await ReloadDataAsync();
     }
 
     private async Task ReloadDataAsync()
