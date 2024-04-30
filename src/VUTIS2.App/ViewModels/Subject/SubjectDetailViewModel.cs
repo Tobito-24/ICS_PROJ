@@ -19,6 +19,8 @@ public partial class SubjectDetailViewModel(ISubjectFacade subjectFacade, INavig
     public EnrollmentDetailModel Enrollment { get; set; } = EnrollmentDetailModel.Empty;
     protected override async Task LoadDataAsync()
     {
+        await base.LoadDataAsync();
+        Subject = await subjectFacade.GetAsync(Id);
         EnrolledStudents = Enumerable.Empty<StudentListModel>();
         Students = await studentFacade.GetAsync();
         List<StudentListModel?> studentsList = Students.ToList();

@@ -101,11 +101,6 @@ public partial class StudentDetailViewModel( IStudentFacade studentFacade, INavi
             Student = await studentFacade.GetAsync(Student.Id) ?? StudentDetailModel.Empty;
         }
     }
-    public async Task GoToEditAsync()
-    {
-        await navigationService.GoToAsync("/edit",
-            new Dictionary<string, object?> { [nameof(StudentEditViewModel.Student)] = Student });
-    }
     public async void Receive(StudentEditMessage message)
     {
         if (message.StudentId == Id)
