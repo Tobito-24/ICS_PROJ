@@ -15,18 +15,26 @@ public partial class StudentDetailViewModel( IStudentFacade studentFacade, INavi
     public StudentDetailModel? Student { get; private set; }
 
     public IEnumerable<SubjectListModel?> Subjects { get; private set; } = Enumerable.Empty<SubjectListModel>();
+
+    public IEnumerable<SubjectListModel?> EnrolledSubjects { get; private set; } = Enumerable.Empty<SubjectListModel>();
+    public EnrollmentDetailModel Enrollment { get; set; } = EnrollmentDetailModel.Empty;
     protected override async Task LoadDataAsync()
     {
         await base.LoadDataAsync();
         Student = await studentFacade.GetAsync(Id);
+        EnrolledSubjects = Enumerable.Empty<SubjectListModel>();
+        Subjects = await subjectFacade.GetAsync();
+        List<SubjectListModel?> subjectsList = Subjects.ToList();
         if (Student is not null)
         {
             foreach (EnrollmentListModel enrollment in Student.Enrollments)
             {
                 SubjectListModel? subject = await subjectFacade.GetAsyncList(enrollment.SubjectId);
-                Subjects = Subjects.Append(subject);
+                subjectsList.Remove(subject);
+                EnrolledSubjects = EnrolledSubjects.Append(subject);
             }
         }
+        Subjects = subjectsList;
     }
     [RelayCommand]
     public async Task GoToSubjectDetailAsync(Guid id)
@@ -58,7 +66,41 @@ public partial class StudentDetailViewModel( IStudentFacade studentFacade, INavi
             }
         }
     }
+    [RelayCommand]
+    public async Task AddEnrollmentAsync(Guid SubjectId)
+    {
+        if (Student is not null)
+        {
+            Enrollment = EnrollmentDetailModel.Empty with {SubjectId = SubjectId, StudentId = Student.Id};
+        }
+        await enrollmentFacade.SaveAsync(Enrollment with {Student = default!, Subject = default!});
+        await ReloadDataAsync();
+        await LoadDataAsync();
+    }
 
+    [RelayCommand]
+    public async Task RemoveEnrollmentAsync(Guid SubjectId)
+    {
+        EnrollmentListModel? deletedEnrollment = null;
+        if (Student is not null)
+        {
+            deletedEnrollment = Student.Enrollments.FirstOrDefault(e => e.SubjectId == SubjectId);
+        }
+        if (deletedEnrollment is not null)
+        {
+            await enrollmentFacade.DeleteAsync(deletedEnrollment.Id);
+        }
+        await ReloadDataAsync();
+        await LoadDataAsync();
+    }
+
+    private async Task ReloadDataAsync()
+    {
+        if (Student is not null)
+        {
+            Student = await studentFacade.GetAsync(Student.Id) ?? StudentDetailModel.Empty;
+        }
+    }
     public async Task GoToEditAsync()
     {
         await navigationService.GoToAsync("/edit",

@@ -13,14 +13,18 @@ public partial class ActivityDetailViewModel(IActivityFacade activityFacade, INa
 {
     public Guid Id { get; set; }
     public ActivityDetailModel? Activity { get; private set; }
+
+    public SubjectDetailModel? Subject { get; private set; }
+
+    public IEnumerable<EvaluationListModel> Evaluations { get; private set; } = Enumerable.Empty<EvaluationListModel>();
     protected override async Task LoadDataAsync()
     {
         await base.LoadDataAsync();
         Activity = await activityFacade.GetAsync(Id);
         if (Activity is not null)
         {
-            SubjectDetailModel? subject = await subjectFacade.GetAsync(Activity.SubjectId);
-            IEnumerable<EvaluationListModel> evaluations = await evaluationFacade.GetAsyncFromActivity(Activity.Id);
+            Subject = await subjectFacade.GetAsync(Activity.SubjectId);
+            Evaluations = await evaluationFacade.GetAsyncFromActivity(Activity.Id);
         }
 
     }
