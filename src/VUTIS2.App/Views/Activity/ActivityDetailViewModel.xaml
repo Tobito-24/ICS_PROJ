@@ -18,12 +18,12 @@
             <Editor Placeholder="Activity Detail"
                     HeightRequest="100"
                     AutoSize="TextChanges" />
-            
+
             <HorizontalStackLayout Spacing="10">
                 <Label Text="Start date:" VerticalOptions="Center" />
                 <DatePicker />
             </HorizontalStackLayout>
-            
+
             <HorizontalStackLayout Spacing="10">
                 <Label Text="End date:" VerticalOptions="Center" />
                 <DatePicker />
@@ -33,10 +33,6 @@
                 <Label Text="Room:" VerticalOptions="Center" />
                 <Entry Placeholder="Room Name" />
             </HorizontalStackLayout>
-        </StackLayout>
-
-        <StackLayout>
-            
         </StackLayout>
     </Grid>
 </views:ContentPageBase>

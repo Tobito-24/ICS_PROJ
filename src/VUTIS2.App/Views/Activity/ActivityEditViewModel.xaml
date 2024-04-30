@@ -26,9 +26,9 @@
                    Style="{StaticResource StudentEditName}"/>
 
             <HorizontalStackLayout>
-                <DatePicker Date="{Binding Activity.StartTime.Date}"
-                            Format="yyyy-MM-dd-HH-mm"/>
-                <TimePicker Time="{Binding Activity.StartTime.TimeOfDay}"
+                <DatePicker Date="{Binding StartTimeDate}"
+                            Format="yyyy-MM-dd"/>
+                <TimePicker Time="{Binding StartTimeTimeSpan}"
                             Format="HH-mm"/>
             </HorizontalStackLayout>
         </VerticalStackLayout>
@@ -39,9 +39,9 @@
                    Style="{StaticResource StudentEditName}"/>
 
             <HorizontalStackLayout>
-                <DatePicker Date="{Binding Activity.EndTime.Date}"
-                            Format="yyyy-MM-dd-HH-mm"/>
-                <TimePicker Time="{Binding Activity.EndTime.TimeOfDay}"
+                <DatePicker Date="{Binding EndTimeDate}"
+                            Format="yyyy-MM-dd"/>
+                <TimePicker Time="{Binding EndTimeTimeSpan}"
                             Format="HH-mm"/>
 
             </HorizontalStackLayout>
@@ -53,7 +53,7 @@
                    Style="{StaticResource StudentEditName}"/>
 
             <Entry HorizontalOptions="Fill"
-                   Text="{Binding Activity.Description}"/>
+                   Text="{Binding Activity.RoomName}"/>
         </VerticalStackLayout>
 
         <VerticalStackLayout Grid.Row="4"
