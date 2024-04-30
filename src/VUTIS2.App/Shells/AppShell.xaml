@@ -11,7 +11,7 @@
 
     <ShellContent
                 ContentTemplate="{DataTemplate local:MainPage}"
-                Route="MainPageRoot" />
+                Route="mainpage" />
 
     <Shell.TitleView>
         <Grid ColumnDefinitions="*,*,*,*,*,*">
