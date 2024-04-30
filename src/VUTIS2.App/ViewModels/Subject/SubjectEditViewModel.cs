@@ -12,8 +12,10 @@ public partial class SubjectEditViewModel(ISubjectFacade subjectFacade, INavigat
     : ViewModelBase(messengerService)
 {   public Guid Id { get; set; }
     public IEnumerable<StudentListModel?> Students { get; private set; } = Enumerable.Empty<StudentListModel>();
+    public IEnumerable<StudentListModel?> EnrolledStudents { get; private set; } = Enumerable.Empty<StudentListModel>();
     public EnrollmentDetailModel Enrollment { get; set; } = EnrollmentDetailModel.Empty;
     public SubjectDetailModel Subject { get; set; } = SubjectDetailModel.Empty;
+
     protected override async Task LoadDataAsync()
     {
         Students = await studentFacade.GetAsync();
@@ -22,6 +24,7 @@ public partial class SubjectEditViewModel(ISubjectFacade subjectFacade, INavigat
         {
             StudentListModel? student = await studentFacade.GetAsyncList(enrollment.SubjectId);
             studentsList.Remove(student);
+            EnrolledStudents = EnrolledStudents.Append(student);
         }
         Students = studentsList;
     }
@@ -32,6 +35,13 @@ public partial class SubjectEditViewModel(ISubjectFacade subjectFacade, INavigat
         await subjectFacade.SaveAsync(Subject);
         MessengerService.Send(new SubjectEditMessage { SubjectId = Subject.Id });
         navigationService.SendBackButtonPressed();
+    }
+
+    [RelayCommand]
+    public Task CancelAsync()
+    {
+        navigationService.SendBackButtonPressed();
+        return Task.CompletedTask;
     }
 
     [RelayCommand]
