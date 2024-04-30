@@ -53,12 +53,75 @@
               RowSpacing="10"
               ColumnSpacing="10">
 
-            
+            <CollectionView ItemsSource="{Binding EnrolledSubjects}"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Grid.Row="0"
+                            Grid.RowSpan="2">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Horizontal"
+                             HorizontalItemSpacing="3"
+                             VerticalItemSpacing="3"
+                             Span="3"/>
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="m:SubjectListModel">
+
+                    <Grid ColumnDefinitions="*,*"
+                          RowDefinitions="*,*">
+
+                        <Label Grid.Column="0"
+                               Grid.Row="0"
+                               Text="{Binding Name}" />
+
+                        <Label Grid.Column="0"
+                               Grid.Row="1"
+                               Text="{Binding Abbreviation}" />
+
+                        <Button Grid.Column="1"
+                                Grid.Row="0"
+                                Grid.RowSpan="2"
+                                Text="bus"/>
+                                <!--Command="{Binding RemoveEnrollmentCommand}"/>-->
+
+                    </Grid>
+
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            </CollectionView>
 
 
             <Button Grid.Column="2"
-                    Grid.RowSpan="2"
+                    Grid.Row="0"
                     Style="{StaticResource AddSubjectButton}"/>
+
+            <CollectionView ItemsSource="{Binding Subjects}"
+                      Grid.Column="2"
+                      Grid.Row="1">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="m:SubjectListModel">
+                        <Frame>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={x:Reference StudentEditViewRoot}, Path=BindingContext.AddEnrollmentCommand}"
+                                                      CommandParameter="{Binding Id}"/>
+                            </Frame.GestureRecognizers>
+                            <Grid ColumnDefinitions="*,*"
+                                  RowDefinitions="*,*">
+
+                                <Label Grid.Column="0"
+                                       Grid.Row="0"
+                                       Text="{Binding Name}" />
+
+                                <Label Grid.Column="0"
+                                       Grid.Row="1"
+                                       Text="{Binding Abbreviation}" />
+
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
             <Button Grid.Column="3"
                     Grid.Row="0"
@@ -67,7 +130,8 @@
 
             <Button Grid.Column="3"
                     Grid.Row="1"
-                    Style="{StaticResource CancelButton}"/><!--Command="{Binding CancelCommand}"-->
+                    Style="{StaticResource CancelButton}"
+                    Command="{Binding CancelCommand}"/>
 
         </Grid>
 
