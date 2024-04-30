@@ -10,7 +10,8 @@ namespace VUTIS2.App.ViewModels;
 public partial class SubjectEditViewModel(ISubjectFacade subjectFacade, INavigationService navigationService,
     IMessengerService messengerService, IStudentFacade studentFacade, IEnrollmentFacade enrollmentFacade)
     : ViewModelBase(messengerService)
-{   public Guid Id { get; set; }
+{
+    public Guid Id { get; set; }
     public IEnumerable<StudentListModel?> Students { get; private set; } = Enumerable.Empty<StudentListModel>();
     public IEnumerable<StudentListModel?> EnrolledStudents { get; private set; } = Enumerable.Empty<StudentListModel>();
     public EnrollmentDetailModel Enrollment { get; set; } = EnrollmentDetailModel.Empty;
@@ -18,6 +19,7 @@ public partial class SubjectEditViewModel(ISubjectFacade subjectFacade, INavigat
 
     protected override async Task LoadDataAsync()
     {
+        EnrolledStudents = Enumerable.Empty<StudentListModel>();
         Students = await studentFacade.GetAsync();
         List<StudentListModel?> studentsList = Students.ToList();
         foreach (EnrollmentListModel enrollment in Subject.Enrollments)
@@ -49,6 +51,18 @@ public partial class SubjectEditViewModel(ISubjectFacade subjectFacade, INavigat
     {
         Enrollment = EnrollmentDetailModel.Empty with {SubjectId = StudentId, StudentId = Subject.Id};
         await enrollmentFacade.SaveAsync(Enrollment with {Student = default!, Subject = default!});
+        await ReloadDataAsync();
+        await LoadDataAsync();
+    }
+    [RelayCommand]
+    public async Task RemoveEnrollmentAsync(Guid StudentId)
+    {
+        var deletedEnrollment = Subject.Enrollments.FirstOrDefault(e => e.StudentId == StudentId);
+        if (deletedEnrollment is not null)
+        {
+            await enrollmentFacade.DeleteAsync(deletedEnrollment.Id);
+        }
+        await ReloadDataAsync();
         await LoadDataAsync();
     }
     private async Task ReloadDataAsync()
