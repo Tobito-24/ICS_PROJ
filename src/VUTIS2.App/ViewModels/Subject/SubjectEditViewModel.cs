@@ -12,15 +12,12 @@ public partial class SubjectEditViewModel(ISubjectFacade subjectFacade, INavigat
     : ViewModelBase(messengerService)
 {
     public Guid Id { get; set; }
-    public IEnumerable<StudentListModel?> Students { get; private set; } = Enumerable.Empty<StudentListModel>();
-
-    public IEnumerable<ActivityListModel?> Activities { get; private set; } = Enumerable.Empty<ActivityListModel>();
     public SubjectDetailModel Subject { get; set; } = SubjectDetailModel.Empty;
 
     [RelayCommand]
     public async Task SaveAsync()
     {
-        await subjectFacade.SaveAsync(Subject);
+        await subjectFacade.SaveAsync(Subject with {Enrollments = default!, Activities = default!});
         MessengerService.Send(new SubjectEditMessage { SubjectId = Subject.Id });
         navigationService.SendBackButtonPressed();
     }
