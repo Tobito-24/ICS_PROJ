@@ -13,8 +13,10 @@ public partial class ActivityEditViewModel(IActivityFacade activityFacade, INavi
     : ViewModelBase(messengerService)
 {
     public ActivityDetailModel Activity { get; init; } = ActivityDetailModel.Empty;
+
+    public List<ActivityType> ActivityTypes { get; } = Enum.GetValues<ActivityType>().ToList();
     public Guid SubjectId { get; set; }
-    
+
 
     [RelayCommand]
     public async Task SaveAsync()
