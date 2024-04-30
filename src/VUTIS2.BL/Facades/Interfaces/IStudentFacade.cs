@@ -5,5 +5,8 @@ namespace VUTIS2.BL.Facades;
 
 public interface IStudentFacade : IFacade<StudentEntity, StudentListModel, StudentDetailModel>
 {
-
+    IEnumerable<StudentListModel> GetOrderedByLastNameAsc(List<StudentListModel> students);
+    IEnumerable<StudentListModel> GetOrderedByLastNameDesc(List<StudentListModel> students);
+    IEnumerable<StudentListModel> GetOrderedByFirstNameAsc(List<StudentListModel> students);
+    IEnumerable<StudentListModel> GetOrderedByFirstNameDesc(List<StudentListModel> students);
 }

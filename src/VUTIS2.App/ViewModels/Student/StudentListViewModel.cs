@@ -15,6 +15,9 @@ public partial class StudentListViewModel(IStudentFacade studentFacade,  INaviga
     : ViewModelBase(messengerService), IRecipient<StudentEditMessage>, IRecipient<StudentDeleteMessage>
 {
     public IEnumerable<StudentListModel> Students { get; set; } = null!;
+
+    bool sortedAscendingLastName = true;
+    bool sortedAscendingFirstName = true;
     protected override async Task LoadDataAsync()
     {
         await base.LoadDataAsync();
@@ -32,6 +35,38 @@ public partial class StudentListViewModel(IStudentFacade studentFacade,  INaviga
     {
         await studentFacade.DeleteAsync(id);
         MessengerService.Send(new StudentDeleteMessage());
+    }
+    
+    [RelayCommand]
+    public async Task SortByLastNameAsync()
+    {
+        if(sortedAscendingLastName)
+        {
+            Students = studentFacade.GetOrderedByLastNameAsc(Students.ToList());
+            sortedAscendingLastName = false;
+        }
+        else
+        {
+            Students = studentFacade.GetOrderedByLastNameDesc(Students.ToList());
+            sortedAscendingLastName = true;
+        }
+        await base.LoadDataAsync();
+    }
+
+    [RelayCommand]
+    public async Task SortByFirstNameAsync()
+    {
+        if (sortedAscendingFirstName)
+        {
+            Students = studentFacade.GetOrderedByFirstNameAsc(Students.ToList());
+            sortedAscendingFirstName = false;
+        }
+        else
+        {
+            Students = studentFacade.GetOrderedByFirstNameDesc(Students.ToList());
+            sortedAscendingFirstName = true;
+        }
+        await base.LoadDataAsync();
     }
 
     [RelayCommand]
