@@ -147,6 +147,10 @@
 	    <Generator>ResXFileCodeGenerator</Generator>
 	    <LastGenOutput>SubjectEditTexts.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>
+	  <EmbeddedResource Update="Resources\Texts\ActivityTexts.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>ActivityTexts.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -203,6 +207,11 @@
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
 	    <DependentUpon>SubjectEditTexts.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="Resources\Texts\ActivityTexts.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>ActivityTexts.resx</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 

@@ -9,4 +9,70 @@
                        x:Class="VUTIS2.App.Views.Activity.ActivityEditView"
                        x:Name="ActivityEditViewRoot">
 
+    <Grid RowDefinitions="*,*,*,*,*,*,*">
+
+        <VerticalStackLayout Grid.Row="0"
+                             Grid.Column="0">
+            <Label Text="{x:Static texts:ActivityTexts.Description}"
+                   Style="{StaticResource StudentEditName}"/>
+
+            <Entry HorizontalOptions="Fill"
+                   Text="{Binding Activity.Description}"/>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout Grid.Row="1"
+                             Grid.Column="0">
+            <Label Text="{x:Static texts:ActivityTexts.StartTime}"
+                   Style="{StaticResource StudentEditName}"/>
+
+            <HorizontalStackLayout>
+                <DatePicker Date="{Binding Activity.StartTime.Date}"
+                            Format="yyyy-MM-dd-HH-mm"/>
+                <TimePicker Time="{Binding Activity.StartTime.TimeOfDay}"
+                            Format="HH-mm"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout Grid.Row="2"
+                             Grid.Column="0">
+            <Label Text="{x:Static texts:ActivityTexts.EndTime}"
+                   Style="{StaticResource StudentEditName}"/>
+
+            <HorizontalStackLayout>
+                <DatePicker Date="{Binding Activity.EndTime.Date}"
+                            Format="yyyy-MM-dd-HH-mm"/>
+                <TimePicker Time="{Binding Activity.EndTime.TimeOfDay}"
+                            Format="HH-mm"/>
+
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout Grid.Row="3"
+                             Grid.Column="0">
+            <Label Text="{x:Static texts:ActivityTexts.Room}"
+                   Style="{StaticResource StudentEditName}"/>
+
+            <Entry HorizontalOptions="Fill"
+                   Text="{Binding Activity.Description}"/>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout Grid.Row="4"
+                             Grid.Column="0">
+            <Label Text="{x:Static texts:ActivityTexts.Type}"
+                   Style="{StaticResource StudentEditName}"/>
+
+            <Entry HorizontalOptions="Fill"
+                   Text="{Binding Activity.Description}"/>
+        </VerticalStackLayout>
+
+        <Button Grid.Row="5"
+                Command="{Binding SaveCommand}"
+                Style="{StaticResource SaveButton}"/>
+
+        <Button Grid.Row="6"
+                Command="{Binding CancelCommand}"
+                Style="{StaticResource CancelButton}"/>
+
+    </Grid>
+
 </views:ContentPageBase>
