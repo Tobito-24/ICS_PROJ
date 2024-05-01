@@ -21,15 +21,20 @@ public class NavigationService : INavigationService
         new("//mainpage/students/detail", typeof(StudentDetailView), typeof(StudentDetailViewModel)),
         new("//mainpage/students/edit", typeof(StudentEditView), typeof(StudentEditViewModel)),
         new("//mainpage/students/detail/edit", typeof(StudentEditView), typeof(StudentEditViewModel)),
+        new("//mainpage/students/detail/subjectdetail", typeof(SubjectDetailView), typeof(SubjectDetailViewModel)),
+        new("//mainpage/students/detail/subjectdetail/edit", typeof(SubjectEditView), typeof(SubjectEditViewModel)),
+        new("//mainpage/students/detail/subjectdetail/activityedit", typeof(ActivityEditView), typeof(ActivityEditViewModel)),
+        new("//mainpage/students/detail/subjectdetail/activitydetail", typeof(ActivityDetailView), typeof(ActivityDetailViewModel)),
         new("//mainpage/subjects", typeof(SubjectListView), typeof(SubjectListViewModel)),
         new("//mainpage/subjects/detail", typeof(SubjectDetailView), typeof(SubjectDetailViewModel)),
         new("//mainpage/subjects/edit", typeof(SubjectEditView), typeof(SubjectEditViewModel)),
         new("//mainpage/subjects/detail/edit", typeof(SubjectEditView), typeof(SubjectEditViewModel)),
-        new("//mainpage/subjects/detail/activity/edit", typeof(ActivityEditView), typeof(ActivityEditViewModel)),
+        new("//mainpage/subjects/detail/studentdetail", typeof(StudentDetailView), typeof(ActivityDetailViewModel)),
+        new("//mainpage/subjects/detail/activityedit", typeof(ActivityEditView), typeof(ActivityEditViewModel)),
+        new("//mainpage/subjects/detail/activitydetail", typeof(ActivityDetailView), typeof(ActivityDetailViewModel)),
+
         new("//mainpage/evaluation", typeof(EvaluationDetailView), typeof(EvaluationDetailViewModel)),
         new("//mainpage/evaluation/edit", typeof(EvaluationEditView), typeof(EvaluationEditViewModel)),
-        new("//mainpage/activity", typeof(ActivityDetailView), typeof(ActivityDetailViewModel)),
-        new("//mainpage/activity/edit", typeof(ActivityEditView), typeof(ActivityEditViewModel)),
     };
 
     public async Task GoToAsync<TViewModel>()
