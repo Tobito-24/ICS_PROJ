@@ -35,6 +35,7 @@ public partial class EvaluationEditViewModel(IEvaluationFacade evaluationFacade,
     {
         if (Evaluation.StudentId != Guid.Empty)
         {
+            Evaluation.ActivityId = activityId;
             await evaluationFacade.SaveAsync(Evaluation with {Student = default!, Activity = default!});
             MessengerService.Send(new EvaluationEditMessage { EvaluationId = Evaluation.Id });
             navigationService.SendBackButtonPressed();
@@ -51,7 +52,6 @@ public partial class EvaluationEditViewModel(IEvaluationFacade evaluationFacade,
     public async Task AddStudent(Guid StudentId)
     {
             Evaluation.StudentId = StudentId;
-            Evaluation.ActivityId = activityId;
             Student = Students.First(s => s.Id == StudentId);
             await base.LoadDataAsync();
     }
