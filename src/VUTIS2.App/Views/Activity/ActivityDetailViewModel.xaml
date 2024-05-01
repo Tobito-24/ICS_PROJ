@@ -50,7 +50,8 @@
                            IsEnabled="False" />
                 </Grid>
             </Grid>
-            <Button Text="Delete Activity" />
+            <Button Text="Delete Activity"
+                    Command="{Binding DeleteCommand}"/>
         </StackLayout>
 
         <CollectionView Margin="15, 15, 30, 30"
