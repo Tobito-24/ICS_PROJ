@@ -27,7 +27,7 @@ public partial class EvaluationEditViewModel(IEvaluationFacade evaluationFacade,
     [RelayCommand]
     public async Task SaveAsync()
     {
-        await evaluationFacade.SaveAsync(Evaluation);
+        await evaluationFacade.SaveAsync(Evaluation with {Student = default, Activity = default});
         MessengerService.Send(new EvaluationEditMessage { EvaluationId = Evaluation.Id });
         navigationService.SendBackButtonPressed();
     }
