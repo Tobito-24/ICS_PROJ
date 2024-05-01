@@ -66,7 +66,7 @@ public partial class SubjectDetailViewModel(ISubjectFacade subjectFacade, INavig
     [RelayCommand]
     public async Task GoToActivityListAsync()
     {
-        await navigationService.GoToAsync("activities",
+        await navigationService.GoToAsync("/activities",
             new Dictionary<string, object?> { [nameof(ActivityListViewModel.subjectId)] = Id });
     }
 

@@ -24,7 +24,7 @@ public partial class ActivityListViewModel(IActivityFacade activityFacade, INavi
     [RelayCommand]
     public async Task GoToActivityDetailAsync(Guid id)
     {
-        await navigationService.GoToAsync("/detail",
+        await navigationService.GoToAsync("/activitydetail",
             new Dictionary<string, object?> { [nameof(ActivityDetailViewModel.Id)] = id });
     }
 
