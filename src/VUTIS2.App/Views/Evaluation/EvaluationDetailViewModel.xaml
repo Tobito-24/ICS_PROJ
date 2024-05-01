@@ -14,12 +14,12 @@
         <Label Text="{Binding Evaluation.Points}"/>
         <Label Text="{Binding Evaluation.Description}"
                Grid.Column="1"/>
-        <Label Text="{Binding Evaluation.ActivityId}"
-               Grid.Column="2"/>
         <Label Text="{Binding Evaluation.Student.FirstName}"
-               Grid.Column="3"/>
+               Grid.Column="2"/>
         <Label Text="{Binding Evaluation.Student.LastName}"
-               Grid.Column="4"/>
+               Grid.Column="3"/>
+        <Button Text="edit"
+                Command="{Binding Source={x:Reference EvaluationDetailViewRoot}, Path=BindingContext.GoToEditCommand}"/>
 
     </Grid>
 </views:ContentPageBase>

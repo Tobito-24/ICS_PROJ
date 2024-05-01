@@ -158,6 +158,10 @@
 	    <Generator>ResXFileCodeGenerator</Generator>
 	    <LastGenOutput>ActivityTexts.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>
+	  <EmbeddedResource Update="Resources\Texts\EvaluationEditViewTexts.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>EvaluationEditViewTexts.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -223,6 +227,11 @@
 	  <Compile Update="Views\Activity\ActivityListViewModel.xaml.cs">
 	    <DependentUpon>ActivityListViewModel.xaml</DependentUpon>
 	    <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Update="Resources\Texts\EvaluationEditViewTexts.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>EvaluationEditViewTexts.resx</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
