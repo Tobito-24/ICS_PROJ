@@ -78,11 +78,11 @@ namespace VUTIS2.App.Resources.Texts {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Students.
+        ///   Looks up a localized string similar to Student.
         /// </summary>
-        internal static string Students {
+        internal static string Student {
             get {
-                return ResourceManager.GetString("Students", resourceCulture);
+                return ResourceManager.GetString("Student", resourceCulture);
             }
         }
     }

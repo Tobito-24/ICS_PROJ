@@ -17,7 +17,7 @@
   <data name="Description" xml:space="preserve">
     <value>Popis</value>
   </data>
-  <data name="Students" xml:space="preserve">
-    <value>Studenti</value>
+  <data name="Student" xml:space="preserve">
+    <value>Student</value>
   </data>
 </root>
