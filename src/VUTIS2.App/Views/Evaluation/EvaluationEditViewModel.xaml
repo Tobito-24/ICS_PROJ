@@ -53,45 +53,61 @@
                     Text="del stud"/>
         </Grid>
 
-        <CollectionView ItemsSource="{Binding Students}"
-                        Grid.Column="1">
-            <CollectionView.ItemsLayout>
-                <GridItemsLayout Orientation="Horizontal"
-                                 HorizontalItemSpacing="5"
-                                 VerticalItemSpacing="5"
-                                 Span="5"/>
-            </CollectionView.ItemsLayout>
-        <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="m:StudentListModel">
-                    <Frame Padding="0"
-                           IsClippedToBounds="True">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding Source={x:Reference EvaluationEditViewRoot}, Path=BindingContext.AddStudentCommand}"
-                                              CommandParameter="{Binding Id}"/>
-                    </Frame.GestureRecognizers>
+        <Grid Grid.Column="1"
+              RowDefinitions="*,*"
+              RowSpan="4">
 
-                        <Grid ColumnDefinitions="*,*,*,*,*"
-                              RowDefinitions="*,*">
-                            <Image Grid.Column="0" Grid.Row="0"
-                                   Grid.ColumnSpan="2" Grid.RowSpan="2"
-                                   Source="{Binding PhotoUrl, TargetNullValue='students_picture.png'}"/>
+            <CollectionView ItemsSource="{Binding Students}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Horizontal"
+                                     HorizontalItemSpacing="5"
+                                     VerticalItemSpacing="5"
+                                     Span="5"/>
+                </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="m:StudentListModel">
+                        <Frame Padding="0"
+                               IsClippedToBounds="True">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={x:Reference EvaluationEditViewRoot}, Path=BindingContext.AddStudentCommand}"
+                                                  CommandParameter="{Binding Id}"/>
+                        </Frame.GestureRecognizers>
 
-                            <Label Grid.Column="2" Grid.Row="0"
-                                   Grid.ColumnSpan="3"
-                                   Text="{Binding FirstName}"
-                                   Style="{StaticResource StudentName}"/>
+                            <Grid ColumnDefinitions="*,*,*,*,*"
+                                  RowDefinitions="*,*">
+                                <Image Grid.Column="0" Grid.Row="0"
+                                       Grid.ColumnSpan="2" Grid.RowSpan="2"
+                                       Source="{Binding PhotoUrl, TargetNullValue='students_picture.png'}"/>
 
-                            <Label Grid.Column="2" Grid.Row="1"
-                                   Grid.ColumnSpan="3"
-                                   Text="{Binding LastName}"
-                                   Style="{StaticResource StudentName}"/>
-                        </Grid>
+                                <Label Grid.Column="2" Grid.Row="0"
+                                       Grid.ColumnSpan="3"
+                                       Text="{Binding FirstName}"
+                                       Style="{StaticResource StudentName}"/>
 
-                    </Frame>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                                <Label Grid.Column="2" Grid.Row="1"
+                                       Grid.ColumnSpan="3"
+                                       Text="{Binding LastName}"
+                                       Style="{StaticResource StudentName}"/>
+                            </Grid>
 
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Grid RowDefinitions="*,*"
+                  Grid.Row="1">
+
+                <Button Grid.Row="0"
+                        Command="{Binding SaveCommand}"
+                        Style="{StaticResource SaveButton}"/>
+
+                <Button Grid.Row="1"
+                        Style="{StaticResource CancelButton}"
+                        Command="{Binding CancelCommand}"/>
+
+            </Grid>
+        </Grid>
     </Grid>
 
 
