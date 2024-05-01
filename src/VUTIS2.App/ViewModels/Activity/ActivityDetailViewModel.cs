@@ -9,7 +9,7 @@ namespace VUTIS2.App.ViewModels;
 
 [QueryProperty(nameof(Id), nameof(Id))]
 public partial class ActivityDetailViewModel(IActivityFacade activityFacade, INavigationService navigationService, IMessengerService messengerService, IAlertService alertService, IEvaluationFacade evaluationFacade, ISubjectFacade subjectFacade)
-    : ViewModelBase(messengerService), IRecipient<ActivityEditMessage>
+    : ViewModelBase(messengerService), IRecipient<ActivityEditMessage>, IRecipient<EvaluationEditMessage>
 {
     public Guid Id { get; set; }
     public ActivityDetailModel? Activity { get; private set; }
@@ -71,5 +71,10 @@ public partial class ActivityDetailViewModel(IActivityFacade activityFacade, INa
         {
             await LoadDataAsync();
         }
+    }
+
+    public async void Receive(EvaluationEditMessage message)
+    {
+        await LoadDataAsync();
     }
 }

@@ -8,13 +8,15 @@ using VUTIS2.BL.Models;
 namespace VUTIS2.App.ViewModels;
 
 [QueryProperty(nameof(Id), nameof(Id))]
-public partial class EvaluationDetailViewModel(IEvaluationFacade evaluationFacade, INavigationService navigationService, IMessengerService messengerService, IAlertService alertService, IStudentFacade studentFacade, IActivityFacade activityFacade)
+public partial class EvaluationDetailViewModel(IEvaluationFacade evaluationFacade, INavigationService navigationService, IMessengerService messengerService, IAlertService alertService, IActivityFacade activityFacade)
     : ViewModelBase(messengerService), IRecipient<EvaluationEditMessage>
 {
     public Guid Id { get; set; }
 
     public Guid activityId { get; set; }
     public EvaluationDetailModel? Evaluation { get; private set; }
+
+    public ActivityListModel? Activity { get; private set; } = ActivityListModel.Empty;
     protected override async Task LoadDataAsync()
     {
         await base.LoadDataAsync();
@@ -23,7 +25,7 @@ public partial class EvaluationDetailViewModel(IEvaluationFacade evaluationFacad
         {
             activityId = Evaluation.ActivityId;
         }
-
+        Activity = await activityFacade.GetAsyncList(activityId);
     }
     [RelayCommand]
     public async Task DeleteAsync()

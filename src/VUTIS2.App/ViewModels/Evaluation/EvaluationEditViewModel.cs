@@ -16,6 +16,8 @@ public partial class EvaluationEditViewModel(IEvaluationFacade evaluationFacade,
     public Guid activityId { get; set; }
     public EvaluationDetailModel Evaluation { get; set; } = EvaluationDetailModel.Empty;
 
+    public StudentListModel Student { get; set; } = StudentListModel.Empty;
+
     public IEnumerable<StudentListModel> Students { get; set; } = null!;
 
     protected override async Task LoadDataAsync()
@@ -27,7 +29,7 @@ public partial class EvaluationEditViewModel(IEvaluationFacade evaluationFacade,
     [RelayCommand]
     public async Task SaveAsync()
     {
-        await evaluationFacade.SaveAsync(Evaluation with {Student = default, Activity = default});
+        await evaluationFacade.SaveAsync(Evaluation with {Student = default!, Activity = default!});
         MessengerService.Send(new EvaluationEditMessage { EvaluationId = Evaluation.Id });
         navigationService.SendBackButtonPressed();
     }
@@ -39,22 +41,12 @@ public partial class EvaluationEditViewModel(IEvaluationFacade evaluationFacade,
     }
 
     [RelayCommand]
-    public async Task AddStudentAsync(Guid StudentId)
+    public async Task AddStudent(Guid StudentId)
     {
-        if (Evaluation.Student is null)
-        {
             Evaluation.StudentId = StudentId;
-            await evaluationFacade.SaveAsync(Evaluation with {Student = default, Activity = default});
-            MessengerService.Send(new EvaluationEditMessage { EvaluationId = Evaluation.Id });
-        }
-    }
-
-    [RelayCommand]
-    public async Task RemoveStudentAsync()
-    {
-        Evaluation.StudentId = default;
-        await evaluationFacade.SaveAsync(Evaluation with {Student = default, Activity = default});
-        MessengerService.Send(new EvaluationEditMessage { EvaluationId = Evaluation.Id });
+            Evaluation.ActivityId = activityId;
+            Student = Students.First(s => s.Id == StudentId);
+            await base.LoadDataAsync();
     }
 
     public async void Receive(EvaluationEditMessage message)
