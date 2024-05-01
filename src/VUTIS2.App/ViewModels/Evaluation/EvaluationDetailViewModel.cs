@@ -22,7 +22,7 @@ public partial class EvaluationDetailViewModel(IEvaluationFacade evaluationFacad
             StudentListModel? student = await studentFacade.GetAsyncList(Evaluation.StudentId);
             ActivityDetailModel? activity = await activityFacade.GetAsync(Evaluation.ActivityId);
         }
-        
+
     }
     [RelayCommand]
     public async Task DeleteAsync()
@@ -47,6 +47,7 @@ public partial class EvaluationDetailViewModel(IEvaluationFacade evaluationFacad
         await navigationService.GoToAsync("/edit",
             new Dictionary<string, object?> { [nameof(EvaluationEditViewModel.Evaluation)] = Evaluation });
     }
+
     public async void Receive(EvaluationEditMessage message)
     {
         if (message.EvaluationId == Id)
