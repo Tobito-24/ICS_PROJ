@@ -64,8 +64,26 @@ public class ActivityFacade(IUnitOfWorkFactory unitOfWorkFactory, IActivityModel
     }
     protected override List<string> IncludesNavigationPathDetail => new()
     {
-        $"{nameof(ActivityEntity.Evaluations)}"
+        $"{nameof(ActivityEntity.Evaluations)}.{nameof(EvaluationEntity.Student)}"
     };
+
+    public new async Task<ActivityDetailModel?> GetAsync(Guid id)
+    {
+        await using IUnitOfWork uow = UnitOfWorkFactory.Create();
+
+        IQueryable<ActivityEntity> query = uow.GetRepository<ActivityEntity, ActivityEntityMapper>().Get();
+
+        foreach (string includePath in IncludesNavigationPathDetail)
+        {
+            query = query.Include(includePath);
+        }
+
+        ActivityEntity? entity = await query.SingleOrDefaultAsync(e => e.Id == id).ConfigureAwait(false);
+
+        return entity is null
+            ? null
+            : ModelMapper.MapToDetailModel(entity);
+    }
 
     public async Task<IEnumerable<ActivityListModel>> GetActivitiesStartTime(DateTime startTime, bool from,
         Guid SubjectId)

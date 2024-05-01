@@ -16,15 +16,15 @@ public partial class ActivityDetailViewModel(IActivityFacade activityFacade, INa
 
     public SubjectDetailModel? Subject { get; private set; }
 
-    public IEnumerable<EvaluationListModel> Evaluations { get; private set; } = Enumerable.Empty<EvaluationListModel>();
+    public IEnumerable<EvaluationListModel>? Evaluations { get; private set; } = Enumerable.Empty<EvaluationListModel>();
     protected override async Task LoadDataAsync()
     {
         await base.LoadDataAsync();
         Activity = await activityFacade.GetAsync(Id);
         if (Activity is not null)
         {
-            Subject = await subjectFacade.GetAsync(Activity.SubjectId);
-            Evaluations = await evaluationFacade.GetAsyncFromActivity(Activity.Id);
+            Subject = Activity.Subject;
+            Evaluations = Activity.Evaluations;
         }
 
     }
@@ -53,13 +53,14 @@ public partial class ActivityDetailViewModel(IActivityFacade activityFacade, INa
         MessengerService.Send(new EvaluationDeleteMessage());
         await base.LoadDataAsync();
     }
-    
+
     [RelayCommand]
     public async Task GoToEditAsync()
     {
         await navigationService.GoToAsync("/activityedit",
             new Dictionary<string, object?> { [nameof(ActivityEditViewModel.SubjectId)] = Activity.SubjectId, [nameof(ActivityEditViewModel.Activity)] = Activity });
     }
+
     [RelayCommand]
     public async Task GoToCreateEvaluationAsync()
     {

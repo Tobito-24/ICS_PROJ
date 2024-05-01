@@ -5,7 +5,7 @@ public record EvaluationDetailModel : ModelBase
     public required int Points { get; init; }
     public string? Description { get; init; }
     public Guid ActivityId { get; set; }
-    public ActivityDetailModel? Activity { get; init; }
+    public ActivityListModel? Activity { get; init; }
     public Guid StudentId { get; set; }
     public StudentListModel? Student { get; init; }
     public static EvaluationDetailModel Empty => new()
@@ -13,7 +13,7 @@ public record EvaluationDetailModel : ModelBase
         Id = Guid.Empty,
         Points = int.MinValue,
         Description = string.Empty,
-        Activity = ActivityDetailModel.Empty,
+        Activity = ActivityListModel.Empty,
         Student = StudentListModel.Empty
     };
 }
