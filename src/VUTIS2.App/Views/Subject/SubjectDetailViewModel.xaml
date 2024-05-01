@@ -42,10 +42,6 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="m:StudentListModel">
                     <Frame>
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding Source={x:Reference SubjectDetailViewRoot}, Path=BindingContext.GoToStudentDetailCommand}"
-                                                  CommandParameter="{Binding Id}"/>
-                        </Frame.GestureRecognizers>
                         <Grid ColumnDefinitions="*,*,*"
                               RowDefinitions="*,*">
 
