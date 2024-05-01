@@ -28,11 +28,13 @@ public class NavigationService : INavigationService
         new("//mainpage/students/detail/subjectdetail/activitydetail", typeof(ActivityDetailView), typeof(ActivityDetailViewModel)),
         new("//mainpage/students/detail/subjectdetail/activitydetail/evaluationedit", typeof(EvaluationEditView), typeof(EvaluationEditViewModel)),
         new("//mainpage/students/detail/subjectdetail/activitydetail/evaluationdetail", typeof(EvaluationDetailView), typeof(EvaluationDetailViewModel)),
+        new("//mainpage/students/detail/subjectdetail/activitydetail/evaluationdetail/evaluationedit", typeof(EvaluationEditView), typeof(EvaluationEditViewModel)),
         new("//mainpage/students/detail/subjectdetail/activities", typeof(ActivityListView), typeof(ActivityListViewModel)),
         new("//mainpage/students/detail/subjectdetail/activities/activityedit", typeof(ActivityEditView), typeof(ActivityEditViewModel)),
         new("//mainpage/students/detail/subjectdetail/activities/activitydetail", typeof(ActivityDetailView), typeof(ActivityDetailViewModel)),
         new("//mainpage/students/detail/subjectdetail/activities/activitydetail/evaluationedit", typeof(EvaluationEditView), typeof(EvaluationEditViewModel)),
         new("//mainpage/students/detail/subjectdetail/activities/activitydetail/evaluationdetail", typeof(EvaluationDetailView), typeof(EvaluationDetailViewModel)),
+        new("//mainpage/students/detail/subjectdetail/activities/activitydetail/evaluationdetail/evaluationedit", typeof(EvaluationEditView), typeof(EvaluationEditViewModel)),
 
         new("//mainpage/subjects", typeof(SubjectListView), typeof(SubjectListViewModel)),
         new("//mainpage/subjects/edit", typeof(SubjectEditView), typeof(SubjectEditViewModel)),
@@ -42,12 +44,13 @@ public class NavigationService : INavigationService
         new("//mainpage/subjects/detail/activitydetail", typeof(ActivityDetailView), typeof(ActivityDetailViewModel)),
         new("//mainpage/subjects/detail/activitydetail/evaluationedit", typeof(EvaluationEditView), typeof(EvaluationEditViewModel)),
         new("//mainpage/subjects/detail/activitydetail/evaluationdetail", typeof(EvaluationDetailView), typeof(EvaluationDetailViewModel)),
+        new("//mainpage/subjects/detail/activitydetail/evaluationdetail/evaluationedit", typeof(EvaluationEditView), typeof(EvaluationEditViewModel)),
         new("//mainpage/subjects/detail/activities", typeof(ActivityListView), typeof(ActivityListViewModel)),
         new("//mainpage/subjects/detail/activities/activityedit", typeof(ActivityEditView), typeof(ActivityEditViewModel)),
         new("//mainpage/subjects/detail/activities/activitydetail", typeof(ActivityDetailView), typeof(ActivityDetailViewModel)),
         new("//mainpage/subjects/detail/activities/activitydetail/evaluationedit", typeof(EvaluationEditView), typeof(EvaluationEditViewModel)),
         new("//mainpage/subjects/detail/activities/activitydetail/evaluationdetail", typeof(EvaluationDetailView), typeof(EvaluationDetailViewModel)),
-        new("//mainpage/subjects/detail/activities/activitydetail/evaluationdetail/evaluationedit", typeof(EvaluationDetailView), typeof(EvaluationDetailViewModel)),
+        new("//mainpage/subjects/detail/activities/activitydetail/evaluationdetail/evaluationedit", typeof(EvaluationEditView), typeof(EvaluationEditViewModel)),
 
     };
 
