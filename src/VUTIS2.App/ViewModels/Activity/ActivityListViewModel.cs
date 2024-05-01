@@ -18,59 +18,59 @@ public partial class ActivityListViewModel(IActivityFacade activityFacade, INavi
     public bool FilterStartAscending { get; set; } = true;
     public bool FilterEndAscending { get; set; } = true;
 
-    DateTime StartTime = DateTime.Now;
-    DateTime EndTime = DateTime.Now;
+    DateTime startTime = DateTime.Now;
+    DateTime endTime = DateTime.Now;
     public IEnumerable<ActivityListModel> Activities { get; set; } = null!;
     public DateTime StartTimeDate
     {
-        get => StartTime;
+        get => startTime;
         set
         {
-            if (StartTime.Date != value)
+            if (startTime.Date != value)
             {
-                StartTime = new DateTime(value.Year, value.Month, value.Day,
+                startTime = new DateTime(value.Year, value.Month, value.Day,
                     StartTimeDate.Hour, StartTimeDate.Minute, StartTimeDate.Second);
-                OnPropertyChanged(nameof(StartTime));
+                OnPropertyChanged(nameof(startTime));
             }
         }
     }
     public TimeSpan StartTimeTimeSpan
     {
-        get => StartTime.TimeOfDay;
+        get => startTime.TimeOfDay;
         set
         {
-            if (StartTime.TimeOfDay != value)
+            if (startTime.TimeOfDay != value)
             {
-                StartTime = new DateTime(StartTimeDate.Year, StartTimeDate.Month, StartTimeDate.Day,
+                startTime = new DateTime(StartTimeDate.Year, StartTimeDate.Month, StartTimeDate.Day,
                     value.Hours, value.Minutes, value.Seconds);
-                OnPropertyChanged(nameof(StartTime));
+                OnPropertyChanged(nameof(startTime));
             }
         }
     }
 
     public DateTime EndTimeDate
     {
-        get => EndTime.Date;
+        get => endTime.Date;
         set
         {
-            if (EndTime.Date != value.Date)
+            if (endTime.Date != value.Date)
             {
-                EndTime = new DateTime(value.Year, value.Month, value.Day,
+                endTime = new DateTime(value.Year, value.Month, value.Day,
                     EndTimeTimeSpan.Hours, EndTimeTimeSpan.Minutes, EndTimeTimeSpan.Seconds);
-                OnPropertyChanged(nameof(EndTime));
+                OnPropertyChanged(nameof(endTime));
             }
         }
     }
     public TimeSpan EndTimeTimeSpan
     {
-        get => EndTime.TimeOfDay;
+        get => endTime.TimeOfDay;
         set
         {
-            if (EndTime.TimeOfDay != value)
+            if (endTime.TimeOfDay != value)
             {
-                EndTime = new DateTime(EndTimeDate.Year, EndTimeDate.Month, EndTimeDate.Day,
+                endTime = new DateTime(EndTimeDate.Year, EndTimeDate.Month, EndTimeDate.Day,
                     value.Hours, value.Minutes, value.Seconds);
-                OnPropertyChanged(nameof(EndTime));
+                OnPropertyChanged(nameof(endTime));
             }
         }
     }
@@ -119,20 +119,20 @@ public partial class ActivityListViewModel(IActivityFacade activityFacade, INavi
     [RelayCommand]
     public async Task FilterByStartTimeAsync()
     {
-        Activities = await activityFacade.GetActivitiesStartTime(StartTime, FilterStartAscending, subjectId);
+        Activities = await activityFacade.GetActivitiesStartTime(startTime, FilterStartAscending, subjectId);
         await base.LoadDataAsync();
     }
 
     [RelayCommand]
     public async Task FilterByEndTimeAsync()
     {
-        Activities = await activityFacade.GetActivitiesEndTime(EndTime, FilterEndAscending, subjectId);
+        Activities = await activityFacade.GetActivitiesEndTime(endTime, FilterEndAscending, subjectId);
         await base.LoadDataAsync();
     }
     [RelayCommand]
     public async Task FilterByBothAsync()
     {
-        Activities = await activityFacade.GetActivitiesByBoth(StartTime, FilterStartAscending, EndTime, FilterEndAscending, subjectId);
+        Activities = await activityFacade.GetActivitiesByBoth(startTime, FilterStartAscending, endTime, FilterEndAscending, subjectId);
         await base.LoadDataAsync();
     }
 
