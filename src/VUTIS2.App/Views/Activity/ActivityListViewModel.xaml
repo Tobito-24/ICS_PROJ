@@ -41,7 +41,7 @@
                 </CollectionView.ItemsLayout>
 
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="m:SubjectListModel">
+                    <DataTemplate x:DataType="m:ActivityListModel">
                         <Frame Padding="0"
                            CornerRadius="5"
                            WidthRequest="600"
@@ -52,27 +52,34 @@
                                               CommandParameter="{Binding Id}"/>
                             </Frame.GestureRecognizers>
 
-                            <Grid ColumnDefinitions="*,*,*"
-                                RowDefinitions="*,*">
+                            <Grid ColumnDefinitions="*,*,*,*"
+                                  RowDefinitions="*,*">
 
                                 <Label Grid.Column="0"
                                        Grid.Row="0"
-                                       Grid.RowSpan="2"
-                                       Text="{Binding Name}"
-                                       Style="{StaticResource StudentName}"/>
+                                       Grid.ColumnSpan="4"
+                                       Text="{Binding Description}"
+                                       Style="{StaticResource SubjectStudentActivityLabel}"/>
 
                                 <Label Grid.Column="0"
                                        Grid.Row="1"
-                                       Grid.RowSpan="2"
-                                       Text="{Binding Abbreviation}"
-                                       Style="{StaticResource StudentName}"/>
+                                       Text="{Binding StartTime}"
+                                       Style="{StaticResource SubjectStudentActivityLabel}"/>
 
-                                <Button Grid.Column="2"
-                                        Grid.Row="0"
-                                        Grid.RowSpan="2"
-                                        Command="{Binding Source={x:Reference ActivityListViewRoot}, Path=BindingContext.DeleteCommand}"
-                                        CommandParameter="{Binding Id}"
-                                        Text="del act"/>
+                                <Label Grid.Column="1"
+                                       Grid.Row="1"
+                                       Text="{Binding EndTime}"
+                                       Style="{StaticResource SubjectStudentActivityLabel}"/>
+
+                                <Label Grid.Column="2"
+                                       Grid.Row="1"
+                                       Text="{Binding RoomName}"
+                                       Style="{StaticResource SubjectStudentActivityLabel}"/>
+
+                                <Label Grid.Column="3"
+                                       Grid.Row="1"
+                                       Text="{Binding ActivityType}"
+                                       Style="{StaticResource SubjectStudentActivityLabel}"/>
                             </Grid>
 
                         </Frame>

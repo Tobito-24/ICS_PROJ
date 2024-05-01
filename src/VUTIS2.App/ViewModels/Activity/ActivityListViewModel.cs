@@ -6,19 +6,19 @@ using VUTIS2.BL.Facades;
 using VUTIS2.BL.Models;
 
 namespace VUTIS2.App.ViewModels;
-[QueryProperty(nameof(Subject), nameof(Subject))]
+[QueryProperty(nameof(subjectId), nameof(subjectId))]
 public partial class ActivityListViewModel(IActivityFacade activityFacade, INavigationService navigationService,
     IMessengerService messengerService)
     : ViewModelBase(messengerService), IRecipient<ActivityEditMessage>, IRecipient<ActivityDeleteMessage>
 {
-    public SubjectDetailModel Subject { get; set; } = SubjectDetailModel.Empty;
+    public Guid subjectId { get; set; }
     private bool sortedStartTimeAscending = true;
     private bool sortedEndTimeAscending = true;
     public IEnumerable<ActivityListModel> Activities { get; set; } = null!;
     protected override async Task LoadDataAsync()
     {
         await base.LoadDataAsync();
-        Activities = await activityFacade.GetAsyncBySubject(Subject.Id);
+        Activities = await activityFacade.GetAsyncBySubject(subjectId);
     }
 
     [RelayCommand]
