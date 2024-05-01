@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
+
 <views:ContentPageBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                        xmlns:texts="clr-namespace:VUTIS2.App.Resources.Texts"
@@ -9,25 +10,25 @@
                        x:Class="VUTIS2.App.Views.Activity.ActivityDetailView"
                        x:Name="ActivityDetailViewRoot">
     <Grid ColumnDefinitions="2*,*">
-        <StackLayout Grid.Column="0" Margin="50" Spacing="10" HorizontalOptions="FillAndExpand">
+        <StackLayout Grid.Column="0" Margin="30, 15, 30, 30" Spacing="10" HorizontalOptions="FillAndExpand">
             <Label Style="{StaticResource Titleline}"
                    Text="Activity Detail" />
 
             <Entry Placeholder="Detail"
                    Text="{Binding Activity.Description}"
-                   IsEnabled="False"/>
+                   IsEnabled="False" />
 
             <Grid ColumnDefinitions="4*,2*"
                   RowDefinitions="*,*,*" RowSpacing="10">
-                
+
                 <Grid Grid.Row="0" ColumnDefinitions="80,*" ColumnSpacing="10">
                     <Label Grid.Column="0" Text="Start date:" VerticalOptions="Center" />
                     <HorizontalStackLayout Grid.Column="1" Spacing="10">
                         <DatePicker Date="{Binding Activity.StartTime.Date}"
-                                    IsEnabled="False"/>
+                                    IsEnabled="False" />
                         <TimePicker Time="{Binding Activity.StartTime.TimeOfDay}"
                                     Format="HH-mm"
-                                    IsEnabled="False"/>
+                                    IsEnabled="False" />
                     </HorizontalStackLayout>
                 </Grid>
 
@@ -35,10 +36,10 @@
                     <Label Grid.Column="0" Text="End date:" VerticalOptions="Center" />
                     <HorizontalStackLayout Grid.Column="1" Spacing="10">
                         <DatePicker Date="{Binding Activity.EndTime.Date}"
-                                    IsEnabled="False"/>
+                                    IsEnabled="False" />
                         <TimePicker Time="{Binding Activity.EndTime.TimeOfDay}"
                                     Format="HH-mm"
-                                    IsEnabled="False"/>
+                                    IsEnabled="False" />
                     </HorizontalStackLayout>
                 </Grid>
 
@@ -46,9 +47,51 @@
                     <Label Grid.Column="0" Text="Room:" VerticalOptions="Center" />
                     <Entry Grid.Column="1" Placeholder="Room"
                            Text="{Binding Activity.RoomName}"
-                           IsEnabled="False"/>
+                           IsEnabled="False" />
                 </Grid>
             </Grid>
         </StackLayout>
+
+        <CollectionView ItemsSource="{Binding Evaluations}"
+                        Grid.Column="1">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"
+                                 VerticalItemSpacing="10" />
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="m:EvaluationListModel">
+                    <Frame>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding Source={x:Reference SubjectDetailViewRoot}, Path=BindingContext.GoToStudentDetailCommand}"
+                                CommandParameter="{Binding Id}" />
+                        </Frame.GestureRecognizers>
+                        <Grid ColumnDefinitions="*,*,*"
+                              RowDefinitions="*,*">
+
+                            <Image Grid.Column="0" Grid.Row="0"
+                                   Grid.RowSpan="2"
+                                   Source="{Binding Student.PhotoUrl, TargetNullValue='students_picture.png'}" />
+
+                            <Label Grid.Column="1" Grid.Row="0"
+                                   Text="{Binding Student.FirstName}"
+                                   Style="{StaticResource SubjectStudentActivityLabel}" />
+
+                            <Label Grid.Column="1" Grid.Row="1"
+                                   Text="{Binding Student.LastName}"
+                                   Style="{StaticResource SubjectStudentActivityLabel}" />
+
+                            <Button Grid.Column="2"
+                                    Grid.RowSpan="2"
+                                    Command="{Binding Source={x:Reference SubjectDetailViewRoot}, Path=BindingContext.RemoveEnrollmentCommand}"
+                                    CommandParameter="{Binding Id}"
+                                    Text="rn stud" />
+
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </Grid>
 </views:ContentPageBase>
