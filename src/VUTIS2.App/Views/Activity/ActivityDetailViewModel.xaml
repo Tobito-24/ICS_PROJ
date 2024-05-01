@@ -67,7 +67,7 @@
                     <Frame HeightRequest="150">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer
-                                Command="{Binding Source={x:Reference ActivityDetailViewRoot}, Path=BindingContext.GoToStudentDetailCommand}"
+                                Command="{Binding Source={x:Reference EvaluationDetailViewRoot}, Path=BindingContext.GoToEvaluationDetailAsync}"
                                 CommandParameter="{Binding Id}" />
                         </Frame.GestureRecognizers>
                         <Grid RowDefinitions="3*,*" RowSpacing="10">
