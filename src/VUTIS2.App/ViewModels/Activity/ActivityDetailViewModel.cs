@@ -48,8 +48,8 @@ public partial class ActivityDetailViewModel(IActivityFacade activityFacade, INa
     [RelayCommand]
     public async Task GoToEditAsync()
     {
-        await navigationService.GoToAsync("/edit",
-            new Dictionary<string, object?> { [nameof(ActivityEditViewModel.Activity)] = Activity });
+        await navigationService.GoToAsync("/activityedit",
+            new Dictionary<string, object?> { [nameof(ActivityEditViewModel.SubjectId)] = Activity.SubjectId, [nameof(ActivityEditViewModel.Activity)] = Activity });
     }
     public async void Receive(ActivityEditMessage message)
     {

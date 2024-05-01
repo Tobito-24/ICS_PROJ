@@ -56,13 +56,13 @@
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Grid.Row="1">
-                    <Label Text="Before"/>
+                    <Label Text="After"/>
                     <CheckBox IsChecked="{Binding FilterStartAscending}"/>
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Grid.Row="1"
                                      Grid.Column="1">
-                    <Label Text="Before"/>
+                    <Label Text="After"/>
                     <CheckBox IsChecked="{Binding FilterEndAscending}"/>
                 </VerticalStackLayout>
 

@@ -8,11 +8,12 @@ using VUTIS2.Common.Enums;
 namespace VUTIS2.App.ViewModels;
 
 [QueryProperty(nameof(SubjectId), nameof(SubjectId))]
+[QueryProperty(nameof(Activity), nameof(Activity))]
 public partial class ActivityEditViewModel(IActivityFacade activityFacade, INavigationService navigationService,
     IMessengerService messengerService)
     : ViewModelBase(messengerService)
 {
-    public ActivityDetailModel Activity { get; init; } = ActivityDetailModel.Empty with { StartTime = DateTime.Now, EndTime = DateTime.Now };
+    public ActivityDetailModel Activity { get; set; } = ActivityDetailModel.Empty with { StartTime = DateTime.Now, EndTime = DateTime.Now };
 
     public DateTime StartTimeDate
     {
