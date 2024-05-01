@@ -18,8 +18,12 @@ public class EvaluationFacade(IUnitOfWorkFactory unitOfWorkFactory, IEvaluationM
     public async Task<IEnumerable<EvaluationListModel>> GetAsyncFromActivity(Guid Id)
     {
         await using IUnitOfWork uow = UnitOfWorkFactory.Create();
-        IRepository<EvaluationEntity> repository = uow.GetRepository<EvaluationEntity, EvaluationEntityMapper>();
-        List<EvaluationEntity> evaluations = await repository.Get().Where(e => e.ActivityId == Id).ToListAsync();
+        IQueryable<EvaluationEntity> query = uow.GetRepository<EvaluationEntity, EvaluationEntityMapper>().Get();
+        foreach (string includePath in IncludesNavigationPathDetail)
+        {
+            query = query.Include(includePath);
+        }
+        List<EvaluationEntity> evaluations = await query.Where(e => e.ActivityId == Id).ToListAsync();
         return ModelMapper.MapToListModel(evaluations);
     }
     public IEnumerable<EvaluationListModel> GetOrderedByPointsAsc(List<EvaluationListModel> evaluations)
