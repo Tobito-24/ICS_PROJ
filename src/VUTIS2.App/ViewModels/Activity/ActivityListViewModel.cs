@@ -14,7 +14,62 @@ public partial class ActivityListViewModel(IActivityFacade activityFacade, INavi
     public Guid subjectId { get; set; }
     private bool sortedStartTimeAscending = true;
     private bool sortedEndTimeAscending = true;
+    DateTime StartTime = DateTime.Now;
+    DateTime EndTime = DateTime.Now;
     public IEnumerable<ActivityListModel> Activities { get; set; } = null!;
+    public DateTime StartTimeDate
+    {
+        get => StartTime;
+        set
+        {
+            if (StartTime.Date != value)
+            {
+                StartTime = new DateTime(value.Year, value.Month, value.Day,
+                    StartTimeDate.Hour, StartTimeDate.Minute, StartTimeDate.Second);
+                OnPropertyChanged(nameof(StartTime));
+            }
+        }
+    }
+    public TimeSpan StartTimeTimeSpan
+    {
+        get => StartTime.TimeOfDay;
+        set
+        {
+            if (StartTime.TimeOfDay != value)
+            {
+                StartTime = new DateTime(StartTimeDate.Year, StartTimeDate.Month, StartTimeDate.Day,
+                    value.Hours, value.Minutes, value.Seconds);
+                OnPropertyChanged(nameof(StartTime));
+            }
+        }
+    }
+
+    public DateTime EndTimeDate
+    {
+        get => EndTime.Date;
+        set
+        {
+            if (EndTime.Date != value.Date)
+            {
+                EndTime = new DateTime(value.Year, value.Month, value.Day,
+                    EndTimeTimeSpan.Hours, EndTimeTimeSpan.Minutes, EndTimeTimeSpan.Seconds);
+                OnPropertyChanged(nameof(EndTime));
+            }
+        }
+    }
+    public TimeSpan EndTimeTimeSpan
+    {
+        get => EndTime.TimeOfDay;
+        set
+        {
+            if (EndTime.TimeOfDay != value)
+            {
+                EndTime = new DateTime(EndTimeDate.Year, EndTimeDate.Month, EndTimeDate.Day,
+                    value.Hours, value.Minutes, value.Seconds);
+                OnPropertyChanged(nameof(EndTime));
+            }
+        }
+    }
     protected override async Task LoadDataAsync()
     {
         await base.LoadDataAsync();
