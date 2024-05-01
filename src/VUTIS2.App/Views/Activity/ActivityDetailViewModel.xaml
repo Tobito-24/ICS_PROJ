@@ -60,7 +60,7 @@
               Margin="15, 15, 30, 30">
             <Button Grid.Row="0"
                     Text="Add Evaluation"
-                    Command="{Binding GoToCreateEvaluationCommand}"/>
+                    Command="{Binding GoToCreateEvaluationCommand}" />
             <CollectionView ItemsSource="{Binding Evaluations}"
                             Grid.Row="1">
                 <CollectionView.ItemsLayout>
@@ -77,7 +77,7 @@
                                     CommandParameter="{Binding Id}" />
                             </Frame.GestureRecognizers>
                             <Grid RowDefinitions="3*,*" RowSpacing="10">
-                                <Grid Grid.Row="0" ColumnDefinitions="auto,*,*" ColumnSpacing="10"
+                                <Grid Grid.Row="0" ColumnDefinitions="auto,*,*,80" ColumnSpacing="10"
                                       RowDefinitions="*,*" RowSpacing="10">
 
                                     <Image Grid.Column="0" Grid.Row="0"
@@ -96,6 +96,10 @@
                                     <Label Grid.Column="2" Grid.Row="1"
                                            Text="{Binding Points, StringFormat='Points: {0:F0}'}"
                                            Style="{StaticResource SubjectStudentActivityLabel}" />
+
+                                    <Button Grid.Column="3"
+                                            Grid.RowSpan="2"
+                                            Text="Remove"/>
                                 </Grid>
 
                                 <Label Grid.Row="1"
