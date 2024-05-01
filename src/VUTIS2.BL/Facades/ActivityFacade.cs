@@ -134,4 +134,16 @@ public class ActivityFacade(IUnitOfWorkFactory unitOfWorkFactory, IActivityModel
         return activities.OrderByDescending(a => a.EndTime);
     }
 
+    public async Task<IEnumerable<ActivityListModel>> GetAsyncBySubject(Guid subjectId)
+    {
+        await using IUnitOfWork uow = UnitOfWorkFactory.Create();
+        IRepository<ActivityEntity> repository = uow.GetRepository<ActivityEntity, ActivityEntityMapper>();
+
+        // Filter and sort the activities
+        List<ActivityEntity> activities = await repository
+            .Get()
+            .Where(a => a.SubjectId == subjectId)
+            .ToListAsync();
+        return ModelMapper.MapToListModel(activities);
+    }
 }

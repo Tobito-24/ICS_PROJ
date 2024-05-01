@@ -12,7 +12,8 @@ public class EvaluationFacade(IUnitOfWorkFactory unitOfWorkFactory, IEvaluationM
 {
     protected override List<string> IncludesNavigationPathDetail => new()
     {
-        $"{nameof(EvaluationEntity.Student)}"
+        $"{nameof(EvaluationEntity.Student)}",
+        $"{nameof(EvaluationEntity.Activity)}"
     };
     public async Task<IEnumerable<EvaluationListModel>> GetAsyncFromActivity(Guid Id)
     {
