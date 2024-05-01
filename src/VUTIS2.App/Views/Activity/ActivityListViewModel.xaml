@@ -66,17 +66,17 @@
                     <CheckBox IsChecked="{Binding FilterEndAscending}"/>
                 </VerticalStackLayout>
 
-                <Button Text="sort by start"
+                <Button Text="filter by start"
                         Command="{Binding Source={x:Reference ActivityListViewRoot}, Path=BindingContext.FilterByStartTimeCommand}"
                         Grid.Row="2"
                         Grid.Column="0"/>
 
-                <Button Text="sort by end"
+                <Button Text="filter by end"
                         Command="{Binding Source={x:Reference ActivityListViewRoot}, Path=BindingContext.FilterByEndTimeCommand}"
                         Grid.Row="2"
                         Grid.Column="1"/>
 
-                <Button Text="sort"
+                <Button Text="filter"
                         Command="{Binding Source={x:Reference ActivityListViewRoot}, Path=BindingContext.FilterByBothCommand}"
                         Grid.Row="3"
                         Grid.ColumnSpan="2"/>
