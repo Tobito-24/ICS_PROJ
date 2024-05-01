@@ -9,4 +9,12 @@
                        x:Class="VUTIS2.App.Views.Evaluation.EvaluationDetailView"
                        x:Name="EvaluationDetailViewRoot">
 
+    <Grid ColumnDefinitions="*,*,*,*">
+
+        <Label Text="{Binding Evaluation.Points}"/>
+        <Label Text="{Binding Evaluation.Description}"/>
+        <Label Text="{Binding Evaluation.ActivityId}"/>
+        <Label Text="{Binding Evaluation.StudentId}"/>
+
+    </Grid>
 </views:ContentPageBase>
