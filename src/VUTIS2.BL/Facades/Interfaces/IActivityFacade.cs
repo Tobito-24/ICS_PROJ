@@ -12,4 +12,12 @@ public interface IActivityFacade : IFacade<ActivityEntity, ActivityListModel, Ac
     IEnumerable<ActivityListModel> GetOrderedByEndTimeDesc(IEnumerable<ActivityListModel> activities);
 
     public Task<IEnumerable<ActivityListModel>> GetAsyncBySubject(Guid subjectId);
+
+    public Task<IEnumerable<ActivityListModel>> GetActivitiesStartTime(DateTime startTime, bool from,
+        Guid SubjectId);
+
+    public Task<IEnumerable<ActivityListModel>> GetActivitiesEndTime(DateTime endTime, bool from, Guid SubjectId);
+
+    public Task<IEnumerable<ActivityListModel>> GetActivitiesByBoth(DateTime startTime, DateTime endTime,
+        Guid subjectId);
 }
