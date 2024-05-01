@@ -33,9 +33,12 @@ public partial class EvaluationEditViewModel(IEvaluationFacade evaluationFacade,
     [RelayCommand]
     public async Task SaveAsync()
     {
-        await evaluationFacade.SaveAsync(Evaluation with {Student = default!, Activity = default!});
-        MessengerService.Send(new EvaluationEditMessage { EvaluationId = Evaluation.Id });
-        navigationService.SendBackButtonPressed();
+        if (Evaluation.StudentId != Guid.Empty)
+        {
+            await evaluationFacade.SaveAsync(Evaluation with {Student = default!, Activity = default!});
+            MessengerService.Send(new EvaluationEditMessage { EvaluationId = Evaluation.Id });
+            navigationService.SendBackButtonPressed();
+        }
     }
 
     [RelayCommand]
@@ -51,6 +54,14 @@ public partial class EvaluationEditViewModel(IEvaluationFacade evaluationFacade,
             Evaluation.ActivityId = activityId;
             Student = Students.First(s => s.Id == StudentId);
             await base.LoadDataAsync();
+    }
+
+    [RelayCommand]
+    public async Task RemoveStudent()
+    {
+        Evaluation.StudentId = Guid.Empty;
+        Student = StudentListModel.Empty;
+        await base.LoadDataAsync();
     }
 
     public async void Receive(EvaluationEditMessage message)
