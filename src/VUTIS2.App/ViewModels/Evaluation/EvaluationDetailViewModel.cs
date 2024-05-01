@@ -12,6 +12,8 @@ public partial class EvaluationDetailViewModel(IEvaluationFacade evaluationFacad
     : ViewModelBase(messengerService), IRecipient<EvaluationEditMessage>
 {
     public Guid Id { get; set; }
+
+    public Guid activityId { get; set; }
     public EvaluationDetailModel? Evaluation { get; private set; }
     protected override async Task LoadDataAsync()
     {
@@ -19,8 +21,7 @@ public partial class EvaluationDetailViewModel(IEvaluationFacade evaluationFacad
         Evaluation = await evaluationFacade.GetAsync(Id);
         if(Evaluation is not null)
         {
-            StudentListModel? student = await studentFacade.GetAsyncList(Evaluation.StudentId);
-            ActivityDetailModel? activity = await activityFacade.GetAsync(Evaluation.ActivityId);
+            activityId = Evaluation.ActivityId;
         }
 
     }
@@ -41,11 +42,11 @@ public partial class EvaluationDetailViewModel(IEvaluationFacade evaluationFacad
             }
         }
     }
-
+    [RelayCommand]
     public async Task GoToEditAsync()
     {
-        await navigationService.GoToAsync("/edit",
-            new Dictionary<string, object?> { [nameof(EvaluationEditViewModel.Evaluation)] = Evaluation });
+        await navigationService.GoToAsync("/evaluationedit",
+            new Dictionary<string, object?> { [nameof(EvaluationEditViewModel.Evaluation)] = Evaluation, [nameof(EvaluationEditViewModel.activityId)] = activityId });
     }
 
     public async void Receive(EvaluationEditMessage message)
