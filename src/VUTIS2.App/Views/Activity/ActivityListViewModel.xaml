@@ -11,7 +11,7 @@
 
 
     <Grid RowDefinitions="*,*,*,*,*"
-              ColumnDefinitions="*,*,*,*">
+              ColumnDefinitions="*,*,*">
 
             <Button Grid.Row="0"
                     Grid.Column="0"
@@ -28,52 +28,11 @@
                     Command="{Binding Source={x:Reference ActivityListViewRoot}, Path=BindingContext.SortByEndTimeCommand}"
                     Text="sort by end time"/>
 
-            <Grid Grid.Column="3"
-                  Grid.Row="0"
-                  RowDefinitions="*,*"
-                  ColumnDefinitions="*,*">
-
-                <VerticalStackLayout Grid.Row="0"
-                                       Grid.Column="0">
-                    <Label Text="StartTime"/>
-                    <HorizontalStackLayout>
-                        <DatePicker Date="{Binding StartTimeDate}"
-                                    Format="yyyy-MM-dd"/>
-                        <TimePicker Time="{Binding StartTimeTimeSpan}"
-                                    Format="HH-mm"/>
-                    </HorizontalStackLayout>
-                </VerticalStackLayout>
-
-                <VerticalStackLayout Grid.Row="0"
-                                     Grid.Column="1">
-                    <Label Text="EndTime"/>
-                    <HorizontalStackLayout>
-                        <DatePicker Date="{Binding EndTimeDate}"
-                                    Format="yyyy-MM-dd"/>
-                        <TimePicker Time="{Binding EndTimeTimeSpan}"
-                                    Format="HH-mm"/>
-                    </HorizontalStackLayout>
-                </VerticalStackLayout>
-
-                <VerticalStackLayout Grid.Row="1">
-                    <Label Text="Before"/>
-                    <CheckBox IsChecked="{Binding SortByStartTimeCommand}"/>
-                </VerticalStackLayout>
-
-
-                <VerticalStackLayout Grid.Row="1"
-                                     Grid.Column="1">
-                    <Label Text="Before"/>
-                    <CheckBox IsChecked="{Binding SortByEndTimeCommand}"/>
-                </VerticalStackLayout>
-
-            </Grid>
-
             <CollectionView ItemsSource="{Binding Activities}"
                             Grid.Row="1"
                             Grid.RowSpan="4"
                             Grid.Column="0"
-                            Grid.ColumnSpan="4">
+                            Grid.ColumnSpan="3">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Horizontal"
                                  HorizontalItemSpacing="5"
