@@ -175,6 +175,10 @@
 
         </Grid>
 
+        <Button Grid.Column="2"
+                Grid.Row="1"
+                Text="show sub list"
+                Command="{Binding Source={x:Reference SubjectDetailViewRoot}, Path=BindingContext.GoToActivityListCommand}"/>
 
     </Grid>
 </views:ContentPageBase>
