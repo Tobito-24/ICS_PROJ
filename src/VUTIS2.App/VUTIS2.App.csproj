@@ -121,6 +121,10 @@
 	  <MauiXaml Update="Resources\Styles\StudentEditStyle.xaml">
 	    <SubType>Designer</SubType>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\Activity\ActivityListViewModel.xaml">
+	    <SubType>Designer</SubType>
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -215,6 +219,10 @@
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
 	    <DependentUpon>ActivityTexts.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Activity\ActivityListViewModel.xaml.cs">
+	    <DependentUpon>ActivityListViewModel.xaml</DependentUpon>
+	    <SubType>Code</SubType>
 	  </Compile>
 	</ItemGroup>
 
