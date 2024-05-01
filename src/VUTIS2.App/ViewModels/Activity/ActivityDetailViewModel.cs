@@ -51,6 +51,26 @@ public partial class ActivityDetailViewModel(IActivityFacade activityFacade, INa
         await navigationService.GoToAsync("/activityedit",
             new Dictionary<string, object?> { [nameof(ActivityEditViewModel.SubjectId)] = Activity.SubjectId, [nameof(ActivityEditViewModel.Activity)] = Activity });
     }
+    [RelayCommand]
+    public async Task GoToCreateEvaluationAsync()
+    {
+        await navigationService.GoToAsync("/evaluationedit",
+            new Dictionary<string, object?> { [nameof(EvaluationEditViewModel.activityId)] = Activity.Id, [nameof(EvaluationEditViewModel.Evaluation)] = EvaluationDetailModel.Empty });
+    }
+
+    [RelayCommand]
+    public async Task GoToEvaluationDetailAsync(Guid evaluationId)
+    {
+        await navigationService.GoToAsync("/evaluationdetail",
+            new Dictionary<string, object?> { [nameof(EvaluationDetailViewModel.Id)] = evaluationId });
+    }
+
+    [RelayCommand]
+    public async Task GoToEvaluationsAsync()
+    {
+        await navigationService.GoToAsync("/evaluations",
+            new Dictionary<string, object?> { [nameof(EvaluationListViewModel.activityId)] = Activity.Id });
+    }
     public async void Receive(ActivityEditMessage message)
     {
         if (message.ActivityId == Id)

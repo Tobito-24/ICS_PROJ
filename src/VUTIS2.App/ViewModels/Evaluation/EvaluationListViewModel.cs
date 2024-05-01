@@ -23,14 +23,14 @@ public partial class EvaluationListViewModel(IEvaluationFacade evaluationFacade,
     [RelayCommand]
     public async Task GoToCreateAsync()
     {
-        await navigationService.GoToAsync("/edit",
+        await navigationService.GoToAsync("/evaluationedit",
             new Dictionary<string, object?> { [nameof(EvaluationEditViewModel.activityId)] = activityId , [nameof(EvaluationEditViewModel.Evaluation)] = EvaluationDetailModel.Empty});
     }
 
     [RelayCommand]
     public async Task GoToDetailAsync(Guid evaluationId)
     {
-        await navigationService.GoToAsync("/detail",
+        await navigationService.GoToAsync("/evaluationdetail",
             new Dictionary<string, object?> { [nameof(EvaluationDetailViewModel.Id)] = evaluationId });
     }
 
