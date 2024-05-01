@@ -90,7 +90,7 @@ public partial class ActivityListViewModel(IActivityFacade activityFacade, INavi
     [RelayCommand]
     public async Task GoToCreateAsync()
     {
-        await navigationService.GoToAsync("/edit");
+        await navigationService.GoToAsync("/activityedit");
     }
 
     [RelayCommand]
