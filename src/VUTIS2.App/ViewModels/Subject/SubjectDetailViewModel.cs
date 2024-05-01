@@ -62,6 +62,14 @@ public partial class SubjectDetailViewModel(ISubjectFacade subjectFacade, INavig
         await navigationService.GoToAsync("/edit",
             new Dictionary<string, object?> { [nameof(SubjectEditViewModel.Subject)] = Subject });
     }
+
+    [RelayCommand]
+    public async Task GoToActivityListAsync()
+    {
+        await navigationService.GoToAsync("activities",
+            new Dictionary<string, object?> { [nameof(ActivityListViewModel.Subject)] = Subject });
+    }
+
     [RelayCommand]
     public async Task AddEnrollmentAsync(Guid StudentId)
     {

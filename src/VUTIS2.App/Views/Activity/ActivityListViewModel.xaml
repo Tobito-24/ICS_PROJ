@@ -5,7 +5,7 @@
                        xmlns:vm="clr-namespace:VUTIS2.App.ViewModels"
                        xmlns:m="clr-namespace:VUTIS2.BL.Models;assembly=VUTIS2.BL"
                        xmlns:views="clr-namespace:VUTIS2.App.Views"
-                       x:DataType="vm:AcitvityListViewModel"
+                       x:DataType="vm:ActivityListViewModel"
                        x:Class="VUTIS2.App.Views.Activity.ActivityListView"
                        x:Name="ActivityListViewRoot">
 
