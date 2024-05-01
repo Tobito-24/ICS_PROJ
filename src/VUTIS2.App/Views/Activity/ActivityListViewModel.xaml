@@ -30,7 +30,7 @@
 
             <Grid Grid.Column="3"
                   Grid.Row="0"
-                  RowDefinitions="*,*"
+                  RowDefinitions="*,*,*,*"
                   ColumnDefinitions="*,*">
 
                 <VerticalStackLayout Grid.Row="0"
@@ -57,15 +57,29 @@
 
                 <VerticalStackLayout Grid.Row="1">
                     <Label Text="Before"/>
-                    <CheckBox IsChecked="{Binding SortByStartTimeCommand}"/>
+                    <CheckBox IsChecked="{Binding FilterStartAscending}"/>
                 </VerticalStackLayout>
-
 
                 <VerticalStackLayout Grid.Row="1"
                                      Grid.Column="1">
                     <Label Text="Before"/>
-                    <CheckBox IsChecked="{Binding SortByEndTimeCommand}"/>
+                    <CheckBox IsChecked="{Binding FilterEndAscending}"/>
                 </VerticalStackLayout>
+
+                <Button Text="sort by start"
+                        Command="{Binding Source={x:Reference ActivityListViewRoot}, Path=BindingContext.FilterByStartTimeCommand}"
+                        Grid.Row="2"
+                        Grid.Column="0"/>
+
+                <Button Text="sort by end"
+                        Command="{Binding Source={x:Reference ActivityListViewRoot}, Path=BindingContext.FilterByEndTimeCommand}"
+                        Grid.Row="2"
+                        Grid.Column="1"/>
+
+                <Button Text="sort"
+                        Command="{Binding Source={x:Reference ActivityListViewRoot}, Path=BindingContext.FilterByBothCommand}"
+                        Grid.Row="3"
+                        Grid.ColumnSpan="2"/>
 
             </Grid>
 
