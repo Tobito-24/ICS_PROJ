@@ -44,7 +44,7 @@ public partial class EvaluationEditViewModel(IEvaluationFacade evaluationFacade,
         if (Evaluation.Student is null)
         {
             Evaluation.StudentId = StudentId;
-            await evaluationFacade.SaveAsync(Evaluation);
+            await evaluationFacade.SaveAsync(Evaluation with {Student = default, Activity = default});
             MessengerService.Send(new EvaluationEditMessage { EvaluationId = Evaluation.Id });
         }
     }
@@ -53,7 +53,7 @@ public partial class EvaluationEditViewModel(IEvaluationFacade evaluationFacade,
     public async Task RemoveStudentAsync()
     {
         Evaluation.StudentId = default;
-        await evaluationFacade.SaveAsync(Evaluation);
+        await evaluationFacade.SaveAsync(Evaluation with {Student = default, Activity = default});
         MessengerService.Send(new EvaluationEditMessage { EvaluationId = Evaluation.Id });
     }
 
