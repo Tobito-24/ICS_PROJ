@@ -18,6 +18,9 @@ public partial class StudentListViewModel(IStudentFacade studentFacade,  INaviga
 
     bool sortedAscendingLastName = true;
     bool sortedAscendingFirstName = true;
+
+    public string SearchText { get; set; } = string.Empty;
+
     protected override async Task LoadDataAsync()
     {
         await base.LoadDataAsync();
@@ -35,6 +38,13 @@ public partial class StudentListViewModel(IStudentFacade studentFacade,  INaviga
     {
         await studentFacade.DeleteAsync(id);
         MessengerService.Send(new StudentDeleteMessage());
+    }
+
+    [RelayCommand]
+    public async Task SearchAsync()
+    {
+        Students = await studentFacade.SearchAsync(SearchText);
+        await base.LoadDataAsync();
     }
 
     [RelayCommand]

@@ -31,6 +31,15 @@ public class StudentFacade(IUnitOfWorkFactory unitOfWorkFactory, IStudentModelMa
             throw new InvalidOperationException("Entity deletion failed.", e);
         }
     }
+
+    public async Task<IEnumerable<StudentListModel>> SearchAsync(string name)
+    {
+        await using IUnitOfWork uow = UnitOfWorkFactory.Create();
+        var repository = uow.GetRepository<StudentEntity, StudentEntityMapper>();
+        var students = await repository.Get().Where(s => s.FirstName.Contains(name) || s.LastName.Contains(name)).ToListAsync();
+        return modelMapper.MapToListModel(students);
+    }
+
     protected override List<string> IncludesNavigationPathDetail => new()
     {
         $"{nameof(StudentEntity.Enrollments)}"

@@ -17,6 +17,8 @@ public partial class SubjectListViewModel(ISubjectFacade subjectFacade, INavigat
     bool sortedAscendingName = true;
     bool sortedAscendingAbr = true;
 
+    public string SearchText { get; set; } = string.Empty;
+
     public IEnumerable<SubjectListModel> Subjects { get; set; } = null!;
     protected override async Task LoadDataAsync()
     {
@@ -39,6 +41,13 @@ public partial class SubjectListViewModel(ISubjectFacade subjectFacade, INavigat
     {
         await subjectFacade.DeleteAsync(id);
         MessengerService.Send(new SubjectDeleteMessage());
+    }
+
+    [RelayCommand]
+    public async Task SearchAsync()
+    {
+        Subjects = await subjectFacade.SearchAsync(SearchText);
+        await base.LoadDataAsync();
     }
 
     [RelayCommand]

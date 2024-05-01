@@ -41,7 +41,13 @@ public class SubjectFacade(IUnitOfWorkFactory unitOfWorkFactory, ISubjectModelMa
             throw new InvalidOperationException("Entity deletion failed.", e);
         }
     }
-
+    public async Task<IEnumerable<SubjectListModel>> SearchAsync(string name)
+    {
+        await using IUnitOfWork uow = UnitOfWorkFactory.Create();
+        var repository = uow.GetRepository<SubjectEntity, SubjectEntityMapper>();
+        var subjects = await repository.Get().Where(s => s.Name.Contains(name) || s.Abbreviation.Contains(name)).ToListAsync();
+        return modelMapper.MapToListModel(subjects);
+    }
     public IEnumerable<SubjectListModel> GetOrderedByNameAsc(List<SubjectListModel> subjects)
     {
         return subjects.OrderBy(s => s.Name);
