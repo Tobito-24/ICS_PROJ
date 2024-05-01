@@ -125,10 +125,6 @@
 	    <SubType>Designer</SubType>
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\Evaluation\EvaluationListViewModel.xaml">
-	    <SubType>Designer</SubType>
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -226,10 +222,6 @@
 	  </Compile>
 	  <Compile Update="Views\Activity\ActivityListViewModel.xaml.cs">
 	    <DependentUpon>ActivityListViewModel.xaml</DependentUpon>
-	    <SubType>Code</SubType>
-	  </Compile>
-	  <Compile Update="Views\Evaluation\EvaluationListViewModel.xaml.cs">
-	    <DependentUpon>EvaluationListViewModel.xaml</DependentUpon>
 	    <SubType>Code</SubType>
 	  </Compile>
 	</ItemGroup>

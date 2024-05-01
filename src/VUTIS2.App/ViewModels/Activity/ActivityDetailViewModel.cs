@@ -65,12 +65,6 @@ public partial class ActivityDetailViewModel(IActivityFacade activityFacade, INa
             new Dictionary<string, object?> { [nameof(EvaluationDetailViewModel.Id)] = evaluationId });
     }
 
-    [RelayCommand]
-    public async Task GoToEvaluationsAsync()
-    {
-        await navigationService.GoToAsync("/evaluations",
-            new Dictionary<string, object?> { [nameof(EvaluationListViewModel.activityId)] = Activity.Id });
-    }
     public async void Receive(ActivityEditMessage message)
     {
         if (message.ActivityId == Id)
