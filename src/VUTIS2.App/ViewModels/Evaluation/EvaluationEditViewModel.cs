@@ -49,6 +49,14 @@ public partial class EvaluationEditViewModel(IEvaluationFacade evaluationFacade,
         }
     }
 
+    [RelayCommand]
+    public async Task RemoveStudentAsync()
+    {
+        Evaluation.StudentId = default;
+        await evaluationFacade.SaveAsync(Evaluation);
+        MessengerService.Send(new EvaluationEditMessage { EvaluationId = Evaluation.Id });
+    }
+
     public async void Receive(EvaluationEditMessage message)
     {
         if (message.EvaluationId == Evaluation.Id)
