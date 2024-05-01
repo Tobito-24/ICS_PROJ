@@ -51,33 +51,25 @@
 
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="m:SubjectListModel">
-                    <Frame>
+                    <Grid ColumnDefinitions="*,*"
+                          RowDefinitions="*,*">
 
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding Source={x:Reference StudentDetailViewRoot}, Path=BindingContext.GoToSubjectDetailCommand}"
-                                                  CommandParameter="{Binding Id}"/>
-                        </Frame.GestureRecognizers>
+                        <Label Text="{Binding Abbreviation}"
+                               Style="{StaticResource StudentSubjectLabel}"
+                               Grid.Row="0"
+                               Grid.Column="1"/>
 
-                        <Grid ColumnDefinitions="*,*"
-                              RowDefinitions="*,*">
+                        <Label Text="{Binding Name}"
+                               Style="{StaticResource StudentSubjectLabel}"
+                               Grid.Row="1"
+                               Grid.Column="1"/>
 
-                            <Label Text="{Binding Abbreviation}"
-                                   Style="{StaticResource StudentSubjectLabel}"
-                                   Grid.Row="0"
-                                   Grid.Column="1"/>
-
-                            <Label Text="{Binding Name}"
-                                   Style="{StaticResource StudentSubjectLabel}"
-                                   Grid.Row="1"
-                                   Grid.Column="1"/>
-
-                            <Button Grid.RowSpan="2"
-                                    Grid.Column="0"
-                                    Command="{Binding Source={x:Reference StudentDetailViewRoot}, Path=BindingContext.RemoveEnrollmentCommand}"
-                                    CommandParameter="{Binding Id}"
-                                    Text="rm sub"/>
-                        </Grid>
-                    </Frame>
+                        <Button Grid.RowSpan="2"
+                                Grid.Column="0"
+                                Command="{Binding Source={x:Reference StudentDetailViewRoot}, Path=BindingContext.RemoveEnrollmentCommand}"
+                                CommandParameter="{Binding Id}"
+                                Text="rm sub"/>
+                    </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

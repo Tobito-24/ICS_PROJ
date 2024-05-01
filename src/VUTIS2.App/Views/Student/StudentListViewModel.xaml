@@ -11,7 +11,7 @@
 
 
     <Grid RowDefinitions="*,*,*,*,*"
-          ColumnDefinitions="*,*,*">
+          ColumnDefinitions="*,*,*,*">
 
         <Button Grid.Row="0"
                 Grid.Column="0"
@@ -27,6 +27,13 @@
                 Grid.Column="2"
                 Command="{Binding Source={x:Reference StudentListViewRoot}, Path=BindingContext.SortByLastNameCommand}"
                 Text="sort by last name"/>
+
+        <VerticalStackLayout Grid.Column="3">
+            <Label Text="Search"/>
+            <Entry Text="{Binding SearchText, Mode=TwoWay}"/>
+            <Button Command="{Binding Source={x:Reference StudentListViewRoot}, Path=BindingContext.SearchCommand}"
+                    Text="search"/>
+        </VerticalStackLayout>
 
         <CollectionView ItemsSource="{Binding Students}"
                         Grid.Row="1"

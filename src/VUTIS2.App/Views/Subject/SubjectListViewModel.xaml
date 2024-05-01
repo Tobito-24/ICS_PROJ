@@ -10,7 +10,7 @@
                        x:Name="SubjectListViewRoot">
 
     <Grid RowDefinitions="*,*,*,*,*"
-          ColumnDefinitions="*,*,*">
+          ColumnDefinitions="*,*,*,*">
 
         <Button Grid.Row="0"
                 Grid.Column="0"
@@ -26,6 +26,13 @@
                 Grid.Column="2"
                 Command="{Binding Source={x:Reference SubjectListViewRoot}, Path=BindingContext.SortByAbbreviationCommand}"
                 Text="sort by abbr"/>
+
+        <VerticalStackLayout Grid.Column="3">
+            <Label Text="Search"/>
+            <Entry Text="{Binding SearchText, Mode=TwoWay}"/>
+            <Button Command="{Binding Source={x:Reference SubjectListViewRoot}, Path=BindingContext.SearchCommand}"
+                    Text="search"/>
+        </VerticalStackLayout>
 
         <CollectionView ItemsSource="{Binding Subjects}"
                         Grid.Row="1"
