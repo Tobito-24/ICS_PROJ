@@ -47,6 +47,7 @@ public class NavigationService : INavigationService
         new("//mainpage/subjects/detail/activities/activitydetail", typeof(ActivityDetailView), typeof(ActivityDetailViewModel)),
         new("//mainpage/subjects/detail/activities/activitydetail/evaluationedit", typeof(EvaluationEditView), typeof(EvaluationEditViewModel)),
         new("//mainpage/subjects/detail/activities/activitydetail/evaluationdetail", typeof(EvaluationDetailView), typeof(EvaluationDetailViewModel)),
+        new("//mainpage/subjects/detail/activities/activitydetail/evaluationdetail/evaluationedit", typeof(EvaluationDetailView), typeof(EvaluationDetailViewModel)),
 
     };
 
