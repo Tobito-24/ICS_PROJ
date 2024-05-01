@@ -7,7 +7,7 @@ using VUTIS2.BL.Models;
 
 namespace VUTIS2.App.ViewModels;
 [QueryProperty(nameof(Subject), nameof(Subject))]
-public partial class AcitvityListViewModel(IActivityFacade activityFacade, INavigationService navigationService,
+public partial class ActivityListViewModel(IActivityFacade activityFacade, INavigationService navigationService,
     IMessengerService messengerService)
     : ViewModelBase(messengerService), IRecipient<ActivityEditMessage>, IRecipient<ActivityDeleteMessage>
 {
