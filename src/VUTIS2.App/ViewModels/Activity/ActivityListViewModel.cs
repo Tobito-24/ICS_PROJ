@@ -112,19 +112,25 @@ public partial class ActivityListViewModel(IActivityFacade activityFacade, INavi
         await base.LoadDataAsync();
     }
 
-    /*[RelayCommand]
-    public async Task FilterByStartTimeAsync(DateTime startTime, bool from)
+    [RelayCommand]
+    public async Task FilterByStartTimeAsync()
     {
-        Activities = await activityFacade.GetActivitiesStartTime(startTime, from);
+        Activities = await activityFacade.GetActivitiesStartTime(StartTime, sortedStartTimeAscending, subjectId);
         await base.LoadDataAsync();
     }
 
     [RelayCommand]
-    public async Task FilterByEndTimeAsync(DateTime endTime, bool from)
+    public async Task FilterByEndTimeAsync()
     {
-        Activities = await activityFacade.GetActivitiesEndTime(endTime, from);
+        Activities = await activityFacade.GetActivitiesEndTime(EndTime, sortedEndTimeAscending, subjectId);
         await base.LoadDataAsync();
-    }*/
+    }
+    [RelayCommand]
+    public async Task FilterByBothAsync()
+    {
+        Activities = await activityFacade.GetActivitiesByBoth(StartTime, EndTime, subjectId);
+        await base.LoadDataAsync();
+    }
 
     [RelayCommand]
     public async Task SortByEndTimeAsync()
