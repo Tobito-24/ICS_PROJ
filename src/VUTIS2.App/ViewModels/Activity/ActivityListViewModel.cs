@@ -14,6 +14,10 @@ public partial class ActivityListViewModel(IActivityFacade activityFacade, INavi
     public Guid subjectId { get; set; }
     private bool sortedStartTimeAscending = true;
     private bool sortedEndTimeAscending = true;
+
+    public bool filterStartAscending = true;
+    public bool filterEndAscending = true;
+
     DateTime StartTime = DateTime.Now;
     DateTime EndTime = DateTime.Now;
     public IEnumerable<ActivityListModel> Activities { get; set; } = null!;
@@ -115,20 +119,20 @@ public partial class ActivityListViewModel(IActivityFacade activityFacade, INavi
     [RelayCommand]
     public async Task FilterByStartTimeAsync()
     {
-        Activities = await activityFacade.GetActivitiesStartTime(StartTime, sortedStartTimeAscending, subjectId);
+        Activities = await activityFacade.GetActivitiesStartTime(StartTime, filterStartAscending, subjectId);
         await base.LoadDataAsync();
     }
 
     [RelayCommand]
     public async Task FilterByEndTimeAsync()
     {
-        Activities = await activityFacade.GetActivitiesEndTime(EndTime, sortedEndTimeAscending, subjectId);
+        Activities = await activityFacade.GetActivitiesEndTime(EndTime, filterEndAscending, subjectId);
         await base.LoadDataAsync();
     }
     [RelayCommand]
     public async Task FilterByBothAsync()
     {
-        Activities = await activityFacade.GetActivitiesByBoth(StartTime, EndTime, subjectId);
+        Activities = await activityFacade.GetActivitiesByBoth(StartTime, filterStartAscending, EndTime, filterEndAscending, subjectId);
         await base.LoadDataAsync();
     }
 

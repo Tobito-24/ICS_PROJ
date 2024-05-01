@@ -78,7 +78,6 @@ public class ActivityFacade(IUnitOfWorkFactory unitOfWorkFactory, IActivityModel
             .Get()
             .Where(a => from ? a.StartTime <= startTime : a.StartTime >= startTime)
             .Where(a => a.SubjectId == SubjectId)
-            .OrderBy(a => a.StartTime)
             .ToListAsync();
         return ModelMapper.MapToListModel(activities);
     }
@@ -91,14 +90,13 @@ public class ActivityFacade(IUnitOfWorkFactory unitOfWorkFactory, IActivityModel
         // Filter and sort the activities
         List<ActivityEntity> activities = await repository
             .Get()
-            .Where(a => from ? a.StartTime <= endTime : a.StartTime >= endTime)
+            .Where(a => from ? a.EndTime <= endTime : a.EndTime >= endTime)
             .Where(a => a.SubjectId == SubjectId)
-            .OrderBy(a => a.StartTime)
             .ToListAsync();
         return ModelMapper.MapToListModel(activities);
     }
 
-    public async Task<IEnumerable<ActivityListModel>> GetActivitiesByBoth(DateTime startTime, DateTime endTime,
+    public async Task<IEnumerable<ActivityListModel>> GetActivitiesByBoth(DateTime startTime, bool startFrom, DateTime endTime, bool endFrom,
         Guid subjectId)
     {
         await using IUnitOfWork uow = UnitOfWorkFactory.Create();
@@ -108,8 +106,7 @@ public class ActivityFacade(IUnitOfWorkFactory unitOfWorkFactory, IActivityModel
         List<ActivityEntity> activities = await repository
             .Get()
             .Where(a => a.SubjectId == subjectId)
-            .Where(a => a.StartTime >= startTime && a.EndTime <= endTime)
-            .OrderBy(a => a.StartTime)
+            .Where(a => endFrom ? a.EndTime <= endTime : a.EndTime >= endTime && startFrom ? a.StartTime <= startTime : a.StartTime >= startTime)
             .ToListAsync();
         return ModelMapper.MapToListModel(activities);
     }

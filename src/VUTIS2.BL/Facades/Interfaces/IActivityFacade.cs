@@ -18,6 +18,7 @@ public interface IActivityFacade : IFacade<ActivityEntity, ActivityListModel, Ac
 
     public Task<IEnumerable<ActivityListModel>> GetActivitiesEndTime(DateTime endTime, bool from, Guid SubjectId);
 
-    public Task<IEnumerable<ActivityListModel>> GetActivitiesByBoth(DateTime startTime, DateTime endTime,
+    public Task<IEnumerable<ActivityListModel>> GetActivitiesByBoth(DateTime startTime, bool startFrom,
+        DateTime endTime, bool endFrom,
         Guid subjectId);
 }
