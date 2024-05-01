@@ -41,10 +41,12 @@ public partial class EvaluationEditViewModel(IEvaluationFacade evaluationFacade,
     [RelayCommand]
     public async Task AddStudentAsync(Guid StudentId)
     {
-        Evaluation.StudentId = StudentId;
-        await evaluationFacade.SaveAsync(Evaluation);
-        MessengerService.Send(new EvaluationEditMessage { EvaluationId = Evaluation.Id });
-        navigationService.SendBackButtonPressed();
+        if (Evaluation.Student is null)
+        {
+            Evaluation.StudentId = StudentId;
+            await evaluationFacade.SaveAsync(Evaluation);
+            MessengerService.Send(new EvaluationEditMessage { EvaluationId = Evaluation.Id });
+        }
     }
 
     public async void Receive(EvaluationEditMessage message)
