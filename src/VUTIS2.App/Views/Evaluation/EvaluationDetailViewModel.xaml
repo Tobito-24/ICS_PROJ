@@ -9,17 +9,46 @@
                        x:Class="VUTIS2.App.Views.Evaluation.EvaluationDetailView"
                        x:Name="EvaluationDetailViewRoot">
 
-    <Grid ColumnDefinitions="*,*,*,*,*">
+    <Grid ColumnDefinitions="5*,3*" Margin="30, 15, 30, 30">
+        <VerticalStackLayout Grid.Column="0" Spacing="10">
+            <Label Text="Evaluation Detail"
+                   Style="{StaticResource Titleline}" />
 
-        <Label Text="{Binding Evaluation.Points}"/>
-        <Label Text="{Binding Evaluation.Description}"
-               Grid.Column="1"/>
-        <Label Text="{Binding Evaluation.Student.FirstName}"
-               Grid.Column="2"/>
-        <Label Text="{Binding Evaluation.Student.LastName}"
-               Grid.Column="3"/>
-        <Button Text="edit"
-                Command="{Binding Source={x:Reference EvaluationDetailViewRoot}, Path=BindingContext.GoToEditCommand}"/>
+            <HorizontalStackLayout Spacing="10">
+                <Label Text="Activity: "
+                       Style="{StaticResource Heading}" />
+                <Label Text="{Binding Activity.Description}"
+                       Style="{StaticResource TextParent}" />
+            </HorizontalStackLayout>
 
+            <HorizontalStackLayout Spacing="10">
+                <Label Text="Student: "
+                       Style="{StaticResource Heading}"/>
+                <Label Text="{Binding Evaluation.Student.FirstName}"
+                       Style="{StaticResource TextParent}" />
+                <Label Text="{Binding Evaluation.Student.LastName}"
+                       Style="{StaticResource TextParent}" />
+            </HorizontalStackLayout>
+
+            <Grid ColumnDefinitions="*,*">
+                <Grid Grid.Column="0" ColumnDefinitions="auto,*" ColumnSpacing="10">
+                    <Label Grid.Column="0" Text="Description:"
+                           Style="{StaticResource Heading}" />
+                    <Label Grid.Column="1"
+                           Text="{Binding Evaluation.Description}"
+                           Style="{StaticResource TextParent}" />
+                </Grid>
+
+                <Grid Grid.Column="1" ColumnDefinitions="auto,*" ColumnSpacing="10">
+                    <Label Grid.Column="0" Text="Points:"
+                           Style="{StaticResource Heading}" />
+                    <Label Grid.Column="1" Text="{Binding Evaluation.Points}"
+                           Style="{StaticResource TextParent}" />
+                </Grid>
+            </Grid>
+
+            <Button Text="Edit Evaluation"
+                    Command="{Binding GoToEditCommand}"/>
+        </VerticalStackLayout>
     </Grid>
 </views:ContentPageBase>
