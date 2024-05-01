@@ -16,12 +16,16 @@ public partial class EvaluationEditViewModel(IEvaluationFacade evaluationFacade,
     public Guid activityId { get; set; }
     public EvaluationDetailModel Evaluation { get; set; } = EvaluationDetailModel.Empty;
 
-    public StudentListModel Student { get; set; } = StudentListModel.Empty;
+    public StudentListModel? Student { get; set; } = StudentListModel.Empty;
 
     public IEnumerable<StudentListModel> Students { get; set; } = null!;
 
     protected override async Task LoadDataAsync()
     {
+        if (Evaluation.StudentId != Guid.Empty)
+        {
+            Student = await studentFacade.GetAsyncList(Evaluation.StudentId);
+        }
         await base.LoadDataAsync();
         Students = await studentFacade.GetAsync();
     }
