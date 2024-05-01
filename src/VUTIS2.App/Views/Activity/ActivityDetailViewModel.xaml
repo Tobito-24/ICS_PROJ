@@ -14,29 +14,39 @@
                    Text="Activity Detail" />
 
             <Entry Placeholder="Detail"
-                   Text="{Binding Activity.Description}"/>
+                   Text="{Binding Activity.Description}"
+                   IsEnabled="False"/>
 
             <Grid ColumnDefinitions="4*,2*"
                   RowDefinitions="*,*,*" RowSpacing="10">
                 
-                <HorizontalStackLayout Grid.Row="0" Spacing="10">
-                    <Label Text="Start date:" VerticalOptions="Center" />
-                    <DatePicker Date="{Binding Activity.StartTime.Date}" />
-                    <TimePicker Time="{Binding Activity.StartTime.TimeOfDay}"
-                                Format="HH-mm" />
-                </HorizontalStackLayout>
+                <Grid Grid.Row="0" ColumnDefinitions="80,*" ColumnSpacing="10">
+                    <Label Grid.Column="0" Text="Start date:" VerticalOptions="Center" />
+                    <HorizontalStackLayout Grid.Column="1" Spacing="10">
+                        <DatePicker Date="{Binding Activity.StartTime.Date}"
+                                    IsEnabled="False"/>
+                        <TimePicker Time="{Binding Activity.StartTime.TimeOfDay}"
+                                    Format="HH-mm"
+                                    IsEnabled="False"/>
+                    </HorizontalStackLayout>
+                </Grid>
 
-                <HorizontalStackLayout Grid.Row="1" Spacing="10">
-                    <Label Text="Start date:" VerticalOptions="Center" />
-                    <DatePicker Date="{Binding Activity.EndTime.Date}" />
-                    <TimePicker Time="{Binding Activity.EndTime.TimeOfDay}"
-                                Format="HH-mm" />
-                </HorizontalStackLayout>
+                <Grid Grid.Row="1" ColumnDefinitions="80,*" ColumnSpacing="10">
+                    <Label Grid.Column="0" Text="End date:" VerticalOptions="Center" />
+                    <HorizontalStackLayout Grid.Column="1" Spacing="10">
+                        <DatePicker Date="{Binding Activity.EndTime.Date}"
+                                    IsEnabled="False"/>
+                        <TimePicker Time="{Binding Activity.EndTime.TimeOfDay}"
+                                    Format="HH-mm"
+                                    IsEnabled="False"/>
+                    </HorizontalStackLayout>
+                </Grid>
 
-                <Grid Grid.Row="2" ColumnDefinitions="*,6*" ColumnSpacing="10">
+                <Grid Grid.Row="2" ColumnDefinitions="80,*" ColumnSpacing="10">
                     <Label Grid.Column="0" Text="Room:" VerticalOptions="Center" />
                     <Entry Grid.Column="1" Placeholder="Room"
-                           Text="{Binding Activity.RoomName}" />
+                           Text="{Binding Activity.RoomName}"
+                           IsEnabled="False"/>
                 </Grid>
             </Grid>
         </StackLayout>
