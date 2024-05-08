@@ -35,4 +35,13 @@
         <Setter Property="IsClippedToBounds" Value="True" />
         <Setter Property="Background" Value="{StaticResource Gray100}" />
     </Style>
+
+    <Style TargetType="Button" x:Key="BoldText">
+        <Setter Property="FontSize" Value="20" />
+    </Style>
+
+    <Style TargetType="Label" x:Key="SubjectListViewFrame">
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+    </Style>
 </ResourceDictionary>
