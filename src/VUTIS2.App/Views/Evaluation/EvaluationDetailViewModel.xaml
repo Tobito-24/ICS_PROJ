@@ -18,16 +18,16 @@
                 <Label Text="Activity: "
                        Style="{StaticResource Heading}" />
                 <Label Text="{Binding Activity.Description}"
-                       Style="{StaticResource TextParent}" />
+                       Style="{StaticResource Parent}" />
             </HorizontalStackLayout>
 
             <HorizontalStackLayout Spacing="10">
                 <Label Text="Student: "
                        Style="{StaticResource Heading}"/>
                 <Label Text="{Binding Evaluation.Student.FirstName}"
-                       Style="{StaticResource TextParent}" />
+                       Style="{StaticResource Parent}" />
                 <Label Text="{Binding Evaluation.Student.LastName}"
-                       Style="{StaticResource TextParent}" />
+                       Style="{StaticResource Parent}" />
             </HorizontalStackLayout>
 
             <Grid ColumnDefinitions="*,*">
@@ -36,14 +36,14 @@
                            Style="{StaticResource Heading}" />
                     <Label Grid.Column="1"
                            Text="{Binding Evaluation.Description}"
-                           Style="{StaticResource TextParent}" />
+                           Style="{StaticResource Parent}" />
                 </Grid>
 
                 <Grid Grid.Column="1" ColumnDefinitions="auto,*" ColumnSpacing="10">
                     <Label Grid.Column="0" Text="Points:"
                            Style="{StaticResource Heading}" />
                     <Label Grid.Column="1" Text="{Binding Evaluation.Points}"
-                           Style="{StaticResource TextParent}" />
+                           Style="{StaticResource Parent}" />
                 </Grid>
             </Grid>
 

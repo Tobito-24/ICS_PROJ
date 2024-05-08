@@ -10,23 +10,20 @@
     Background="{StaticResource Gray100}">
 
     <ShellContent
-                ContentTemplate="{DataTemplate local:MainPage}"
-                Route="mainpage" />
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="mainpage" />
 
     <Shell.TitleView>
-        <Grid ColumnDefinitions="*,*,*,*,*,*">
+        <HorizontalStackLayout>
             <Button Text="{x:Static text:AppShellTexts.StudentsView}"
-                    Grid.Column="0"
                     Style="{StaticResource ShellButtonStyle}"
-                    Command = "{Binding Source ={x:Reference AppShellRoot}, Path = GoToStudentsCommand}"/>
+                    Command="{Binding Source ={x:Reference AppShellRoot}, Path = GoToStudentsCommand}" />
 
             <Button Text="{x:Static text:AppShellTexts.SubjectsView}"
-                    Grid.Column="1"
                     Style="{StaticResource ShellButtonStyle}"
-                    Command = "{Binding Source ={x:Reference AppShellRoot}, Path = GoToSubjectsCommand}"/>
-        </Grid>
+                    Command="{Binding Source ={x:Reference AppShellRoot}, Path = GoToSubjectsCommand}" />
+        </HorizontalStackLayout>
     </Shell.TitleView>
-
 
 
 </Shell>

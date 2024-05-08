@@ -1,90 +1,57 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
+
 <views:ContentPageBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:vm="clr-namespace:VUTIS2.App.ViewModels"
-             xmlns:views="clr-namespace:VUTIS2.App.Views"
-             x:Class="VUTIS2.App.Views.MainPage"
-             x:DataType="vm:MainPageViewModel"
-             xmlns:text="clr-namespace:VUTIS2.App.Resources.Texts"
-             x:Name="MainPageRoot"
-             Background="Black">
+                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       xmlns:vm="clr-namespace:VUTIS2.App.ViewModels"
+                       xmlns:views="clr-namespace:VUTIS2.App.Views"
+                       x:Class="VUTIS2.App.Views.MainPage"
+                       x:DataType="vm:MainPageViewModel"
+                       xmlns:text="clr-namespace:VUTIS2.App.Resources.Texts"
+                       x:Name="MainPageRoot"
+                       Background="Black">
 
 
-    <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*" ColumnSpacing="20">
+    <Grid ColumnDefinitions="*,*" RowDefinitions="100, 3*, 4*" ColumnSpacing="20" Margin="30,30,30,30">
         <Label Text="{x:Static text:MainPage.WelcomeView}"
                VerticalOptions="Start"
                HorizontalOptions="Start"
-               FontSize="50"
-               Padding="40, 20"
-               TextColor="White"
                Grid.Row="0"
-               Grid.Column="0"/>
+               Grid.Column="0"
+               Style="{StaticResource Titleline}" />
 
         <Frame Grid.Row="1"
                Grid.Column="0"
-               CornerRadius="5"
-               IsClippedToBounds="True"
-               Padding="2"
-               BackgroundColor="Red">
+               Style="{StaticResource ModuleSelect}">
 
             <Frame.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding Source={x:Reference MainPageRoot}, Path=BindingContext.GoToSubjectsCommand}" />
+                <TapGestureRecognizer
+                    Command="{Binding Source={x:Reference MainPageRoot}, Path=BindingContext.GoToSubjectsCommand}" />
             </Frame.GestureRecognizers>
 
-            <Grid ColumnDefinitions="*,*"
-                  RowDefinitions="*,*"
-                  Background="{StaticResource Gray100}">
-
-                <Image Source="subjects_image.jpg"
-                       Grid.Column="0"
-                       Grid.Row="0"
-                       Grid.RowSpan="2"
-                       Grid.ColumnSpan="2"
-                       HorizontalOptions="Start"
-                       Margin="10"/>
-                <Label Text="{x:Static text:MainPage.SubjectsView}"
-                       Grid.Column="1"
-                       Grid.Row="1"
+            <HorizontalStackLayout Spacing="10">
+                <Image Source="subjects_image.jpg" />
+                <Label Text="Subjects"
                        TextColor="Black"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center"
-                       FontSize="40"/>
-
-            </Grid>
+                       Style="{StaticResource Heading}" />
+            </HorizontalStackLayout>
         </Frame>
 
         <Frame Grid.Row="1"
                Grid.Column="1"
-               CornerRadius="5"
-               IsClippedToBounds="True"
-               Padding="2"
-               BackgroundColor="Red">
+               Style="{StaticResource ModuleSelect}">
 
             <Frame.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding Source={x:Reference MainPageRoot}, Path=BindingContext.GoToStudentsCommand}" />
+                <TapGestureRecognizer
+                    Command="{Binding Source={x:Reference MainPageRoot}, Path=BindingContext.GoToStudentsCommand}" />
             </Frame.GestureRecognizers>
 
-            <Grid ColumnDefinitions="*,*"
-                  RowDefinitions="*,*"
-                  Background="{StaticResource Gray100}"
-                  Margin="0">
-
-                <Image Source="students_picture.png"
-                       Grid.Column="0"
+            <HorizontalStackLayout Spacing="10">
+                <Image Source="students_picture.png" />
+                <Label Text="Students"
                        Grid.Row="0"
-                       Grid.RowSpan="2"
-                       Grid.ColumnSpan="2"
-                       HorizontalOptions="Start"
-                       Margin="10"/>
-                <Label Text="{x:Static text:MainPage.StudentsView}"
-                       Grid.Column="1"
-                       Grid.Row="1"
                        TextColor="Black"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center"
-                       FontSize="40"/>
-
-            </Grid>
+                       Style="{StaticResource Heading}" />
+            </HorizontalStackLayout>
         </Frame>
     </Grid>
 
