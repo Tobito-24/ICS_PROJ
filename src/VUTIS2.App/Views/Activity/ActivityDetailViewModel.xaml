@@ -9,9 +9,10 @@
                        x:DataType="vm:ActivityDetailViewModel"
                        x:Class="VUTIS2.App.Views.Activity.ActivityDetailView"
                        x:Name="ActivityDetailViewRoot">
-    <Grid ColumnDefinitions="5*,3*">
+    <Grid ColumnDefinitions="5*,3*" ColumnSpacing="10"
+          Margin="30,30,30,30">
         <StackLayout Grid.Column="0"
-                     Margin="30, 15, 15, 30" Spacing="10" HorizontalOptions="FillAndExpand">
+                     Spacing="10" HorizontalOptions="FillAndExpand">
             <Label Style="{StaticResource Titleline}"
                    Text="Activity Detail" />
 
@@ -56,8 +57,7 @@
         </StackLayout>
 
         <Grid Grid.Column="1"
-              RowDefinitions="auto,*"
-              Margin="15, 15, 30, 30">
+              RowDefinitions="auto,*" >
             <Button Grid.Row="0"
                     Text="Add Evaluation"
                     Command="{Binding GoToCreateEvaluationCommand}" />
