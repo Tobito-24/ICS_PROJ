@@ -21,26 +21,34 @@
                    Placeholder="Activity description"
                    Text="{Binding Activity.Description}" />
 
-            <Label Text="{x:Static texts:ActivityTexts.StartTime}"
-                   Style="{StaticResource Parent}" />
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="10"
+                  RowDefinitions="auto, *" RowSpacing="10">
+                <Label Text="{x:Static texts:ActivityTexts.StartTime}"
+                       Style="{StaticResource Parent}"
+                       Grid.Row="0"
+                       Grid.Column="0"/>
+                <HorizontalStackLayout Spacing="10"
+                                       Grid.Column="0"
+                                       Grid.Row="1">
+                    <DatePicker Date="{Binding StartTimeDate}"
+                                Format="yyyy-MM-dd" />
+                    <TimePicker Time="{Binding StartTimeTimeSpan}"
+                                Format="HH-mm" />
+                </HorizontalStackLayout>
 
-            <HorizontalStackLayout Spacing="10">
-                <DatePicker Date="{Binding StartTimeDate}"
-                            Format="yyyy-MM-dd" />
-                <TimePicker Time="{Binding StartTimeTimeSpan}"
-                            Format="HH-mm" />
-            </HorizontalStackLayout>
-
-            <Label Text="{x:Static texts:ActivityTexts.EndTime}"
-                   Style="{StaticResource Parent}" />
-
-            <HorizontalStackLayout Spacing="10">
-                <DatePicker Date="{Binding EndTimeDate}"
-                            Format="yyyy-MM-dd" />
-                <TimePicker Time="{Binding EndTimeTimeSpan}"
-                            Format="HH-mm" />
-
-            </HorizontalStackLayout>
+                <Label Text="{x:Static texts:ActivityTexts.EndTime}"
+                       Style="{StaticResource Parent}"
+                       Grid.Row="0"
+                       Grid.Column="1"/>
+                <HorizontalStackLayout Spacing="10"
+                                       Grid.Column="1"
+                                       Grid.Row="1">
+                    <DatePicker Date="{Binding EndTimeDate}"
+                                Format="yyyy-MM-dd" />
+                    <TimePicker Time="{Binding EndTimeTimeSpan}"
+                                Format="HH-mm" />
+                </HorizontalStackLayout>
+            </Grid>
 
             <Label Text="{x:Static texts:ActivityTexts.Room}"
                    Style="{StaticResource Parent}" />
