@@ -15,20 +15,6 @@ public class ActivityFacade(IUnitOfWorkFactory unitOfWorkFactory, IActivityModel
     : FacadeBase<ActivityEntity, ActivityListModel, ActivityDetailModel, ActivityEntityMapper>(unitOfWorkFactory,
         activityModelMapper), IActivityFacade
 {
-    /*public async Task SaveAsync(ActivityDetailModel model, Guid subjectId)
-    {
-        ActivityEntity entity = activityModelMapper.MapToEntity(model, subjectId);
-        await using IUnitOfWork uow = UnitOfWorkFactory.Create();
-        IRepository<ActivityEntity> repository =
-            uow.GetRepository<ActivityEntity, ActivityEntityMapper>();
-
-        if (await repository.ExistsAsync(entity))
-        {
-            await repository.UpdateAsync(entity);
-            await uow.CommitAsync();
-        }
-    }*/
-
     public new async Task DeleteAsync(Guid id)
     {
         var Activity = await GetAsync(id);
