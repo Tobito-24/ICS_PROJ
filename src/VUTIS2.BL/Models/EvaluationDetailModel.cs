@@ -11,7 +11,7 @@ public record EvaluationDetailModel : ModelBase
     public static EvaluationDetailModel Empty => new()
     {
         Id = Guid.Empty,
-        Points = int.MinValue,
+        Points = 0,
         Description = string.Empty,
         Activity = ActivityListModel.Empty,
         Student = StudentListModel.Empty
