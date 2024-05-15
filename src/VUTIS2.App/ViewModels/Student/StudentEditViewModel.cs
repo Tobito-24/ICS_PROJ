@@ -23,7 +23,7 @@ public partial class StudentEditViewModel(IStudentFacade studentFacade, INavigat
     }
 
     [RelayCommand]
-    public void CancelAsync()
+    public void Cancel()
     {
         navigationService.SendBackButtonPressed();
     }

@@ -23,10 +23,9 @@ public partial class SubjectEditViewModel(ISubjectFacade subjectFacade, INavigat
     }
 
     [RelayCommand]
-    public Task CancelAsync()
+    public void Cancel()
     {
         navigationService.SendBackButtonPressed();
-        return Task.CompletedTask;
     }
 
 
