@@ -6,13 +6,13 @@ namespace VUTIS2.Common.Tests.Seeds;
 
 public static class EnrollmentSeeds
 {
-    public static readonly EnrollmentEntity EmptyActivity = new()
+    public static readonly EnrollmentEntity EmptyEnrollment = new()
     {
         Id = default,
         SubjectId = default,
         StudentId = default,
-        Student = default!,
-        Subject = default!,
+        Subject = default,
+        Student = default,
     };
 
     public static readonly EnrollmentEntity SampleEnrollment1 = new()
@@ -21,7 +21,7 @@ public static class EnrollmentSeeds
         SubjectId = SubjectSeeds.SampleSubject1.Id,
         StudentId = StudentSeeds.SampleStudent1.Id,
         Student = StudentSeeds.SampleStudent1,
-        Subject = SubjectSeeds.SampleSubject1,
+        Subject = SubjectSeeds.SampleSubject1
     };
 
     public static readonly EnrollmentEntity SampleEnrollment2 = new()
@@ -30,13 +30,14 @@ public static class EnrollmentSeeds
         SubjectId = SubjectSeeds.SampleSubject2.Id,
         StudentId = StudentSeeds.SampleStudent2.Id,
         Student = StudentSeeds.SampleStudent2,
-        Subject = SubjectSeeds.SampleSubject2,
+        Subject = SubjectSeeds.SampleSubject2
     };
+
     public static void Seed(this ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<EvaluationEntity>().HasData(
-            SampleEnrollment2,
-            SampleEnrollment1
+        modelBuilder.Entity<EnrollmentEntity>().HasData(
+            SampleEnrollment1 with { Student = null!, Subject = null! },
+            SampleEnrollment2 with { Student = null!, Subject = null! }
         );
     }
 }

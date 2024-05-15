@@ -15,8 +15,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VUTIS2.Common.Tests", "src\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VUTIS2.BL.Tests", "src\VUTIS2.BL.Tests\VUTIS2.BL.Tests.csproj", "{CF67A631-FAF7-45BE-97CE-7AACAC5391A5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VUTIS2.DAL.Tests", "src\VUTIS2.DAL.Tests\VUTIS2.DAL.Tests.csproj", "{32BFC752-8E6F-467B-AB55-3C4A3662CCF8}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,10 +46,6 @@ Global
 		{CF67A631-FAF7-45BE-97CE-7AACAC5391A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF67A631-FAF7-45BE-97CE-7AACAC5391A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF67A631-FAF7-45BE-97CE-7AACAC5391A5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{32BFC752-8E6F-467B-AB55-3C4A3662CCF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{32BFC752-8E6F-467B-AB55-3C4A3662CCF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{32BFC752-8E6F-467B-AB55-3C4A3662CCF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{32BFC752-8E6F-467B-AB55-3C4A3662CCF8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

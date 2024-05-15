@@ -11,7 +11,7 @@ namespace VUTIS2.App.ViewModels;
 
 
 public partial class StudentListViewModel(IStudentFacade studentFacade,  INavigationService navigationService,
-    IMessengerService messengerService, IEnrollmentFacade enrollmentFacade)
+    IMessengerService messengerService)
     : ViewModelBase(messengerService), IRecipient<StudentEditMessage>, IRecipient<StudentDeleteMessage>
 {
     public IEnumerable<StudentListModel> Students { get; set; } = null!;

@@ -11,7 +11,7 @@ namespace VUTIS2.App.ViewModels;
 
 
 public partial class SubjectListViewModel(ISubjectFacade subjectFacade, INavigationService navigationService,
-    IMessengerService messengerService, IEnrollmentFacade enrollmentFacade)
+    IMessengerService messengerService)
     : ViewModelBase(messengerService), IRecipient<SubjectEditMessage>, IRecipient<SubjectDeleteMessage>
 {
     bool sortedAscendingName = true;

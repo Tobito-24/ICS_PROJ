@@ -9,11 +9,9 @@ namespace VUTIS2.App.ViewModels;
 
 [QueryProperty(nameof(Student), nameof(Student))]
 public partial class StudentEditViewModel(IStudentFacade studentFacade, INavigationService navigationService,
-    IMessengerService messengerService, IEnrollmentFacade enrollmentFacade, ISubjectFacade subjectFacade)
+    IMessengerService messengerService)
     : ViewModelBase(messengerService)
 {
-    public Guid Id { get; set; }
-
     public StudentDetailModel Student { get; set; } = StudentDetailModel.Empty;
 
     [RelayCommand]
@@ -25,10 +23,9 @@ public partial class StudentEditViewModel(IStudentFacade studentFacade, INavigat
     }
 
     [RelayCommand]
-    public Task CancelAsync()
+    public void CancelAsync()
     {
         navigationService.SendBackButtonPressed();
-        return Task.CompletedTask;
     }
 
 
